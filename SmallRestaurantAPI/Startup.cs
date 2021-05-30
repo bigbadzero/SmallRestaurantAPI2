@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SmallRestaurantAPI.Configurations;
 using SmallRestaurantAPI.Data;
+using SmallRestaurantAPI.IRepository;
+using SmallRestaurantAPI.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +44,8 @@ namespace SmallRestaurantAPI
                     .AllowAnyMethod()
                     .AllowAnyHeader());
             });
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

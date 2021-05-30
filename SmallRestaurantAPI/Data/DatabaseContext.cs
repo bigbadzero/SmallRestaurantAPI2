@@ -11,11 +11,15 @@ namespace SmallRestaurantAPI.Data
         public DatabaseContext(DbContextOptions options): base(options)
         {}
 
+
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Combo> Combos { get; set; }
         public DbSet<Condiment> Condiments { get; set; }
         public DbSet<Drink> Drinks { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
-        public DbSet<Entree> MenuItems { get; set; }
-        public DbSet<MenuItemType> MenuItemTypes { get; set; }
+        public DbSet<Entree> Entrees { get; set; }
+        public DbSet<Side> Sides { get; set; }
+        public DbSet<Size> Sizes { get; set; }
+
     }
 }

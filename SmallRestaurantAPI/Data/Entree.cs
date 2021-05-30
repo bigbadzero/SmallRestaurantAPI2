@@ -1,107 +1,139 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI.Data
 {
-    public class Entree : BaseItemRequirements
+    public class Entree 
     {
-        //using BaseItemRequirements
+        [Key]
+        public int ID { get; set; }
+        [StringLength(50, ErrorMessage = "Cannot exceed 50 chars.")]
+        public string Name { get; set; }
+        [StringLength(250, ErrorMessage = "Cannot Exceed 250 characters.")]
+        public string Description { get; set; }
 
         [ForeignKey(nameof(Category))]
         public int CategoryID { get; set; }
         public Category Category { get; set; }
 
         //MenuItem Ingredients
-        [ForeignKey(nameof(BaseIngredient1))]
-        public int? BaseIngredient1ID { get; set; }
-        public Ingredient BaseIngredient1 { get; set; }
+        [ForeignKey(nameof(Ingredient1))]
+        public int? Ingredient1ID { get; set; }
+        public Ingredient Ingredient1 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient2))]
-        public int? BaseIngredient2ID { get; set; }
-        public Ingredient BaseIngredient2 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient3))]
-        public int? BaseIngredient3ID { get; set; }
-        public Ingredient BaseIngredient3 { get; set; }
+        [ForeignKey(nameof(Ingredient2))]
+        public int? Ingredient2ID { get; set; }
+        public Ingredient Ingredient2 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient4))]
-        public int? BaseIngredient4ID { get; set; }
-        public Ingredient BaseIngredient4 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient5))]
-        public int? BaseIngredient5ID { get; set; }
-        public Ingredient BaseIngredient5 { get; set; }
+        [ForeignKey(nameof(Ingredient3))]
+        public int? Ingredient3ID { get; set; }
+        public Ingredient Ingredient3 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient6))]
-        public int? BaseIngredient6ID { get; set; }
-        public Ingredient BaseIngredient6 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient7))]
-        public int? BaseIngredient7ID { get; set; }
-        public Ingredient BaseIngredient7 { get; set; }
+        [ForeignKey(nameof(Ingredient4))]
+        public int? Ingredient4ID { get; set; }
+        public Ingredient Ingredient4 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient8))]
-        public int? BaseIngredient8ID { get; set; }
-        public Ingredient BaseIngredient8 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient9))]
-        public int? BaseIngredient9ID { get; set; }
-        public Ingredient BaseIngredient9 { get; set; }
+        [ForeignKey(nameof(Ingredient5))]
+        public int? Ingredient5ID { get; set; }
+        public Ingredient Ingredient5 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient10))]
-        public int? BaseIngredient10ID { get; set; }
-        public Ingredient BaseIngredient10 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient11))]
-        public int? BaseIngredient11ID { get; set; }
-        public Ingredient BaseIngredient11 { get; set; }
+        [ForeignKey(nameof(Ingredient6))]
+        public int? Ingredient6ID { get; set; }
+        public Ingredient Ingredient6 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient12))]
-        public int? BaseIngredient12ID { get; set; }
-        public Ingredient BaseIngredient12 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient13))]
-        public int? BaseIngredient13ID { get; set; }
-        public Ingredient BaseIngredient13 { get; set; }
+        [ForeignKey(nameof(Ingredient7))]
+        public int? Ingredient7ID { get; set; }
+        public Ingredient Ingredient7 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient14))]
-        public int? BaseIngredient14ID { get; set; }
-        public Ingredient BaseIngredient14 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient15))]
-        public int? BaseIngredient15ID { get; set; }
-        public Ingredient BaseIngredient15 { get; set; }
+        [ForeignKey(nameof(Ingredient8))]
+        public int? Ingredient8ID { get; set; }
+        public Ingredient Ingredient8 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient16))]
-        public int? BaseIngredient16ID { get; set; }
-        public Ingredient BaseIngredient16 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient17))]
-        public int? BaseIngredient17ID { get; set; }
-        public Ingredient BaseIngredient17 { get; set; }
+        [ForeignKey(nameof(Ingredient9))]
+        public int? Ingredient9ID { get; set; }
+        public Ingredient Ingredient9 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient18))]
-        public int? BaseIngredient18ID { get; set; }
-        public Ingredient BaseIngredient18 { get; set; }
 
-        [ForeignKey(nameof(BaseIngredient19))]
-        public int? BaseIngredient19ID { get; set; }
-        public Ingredient BaseIngredient19 { get; set; }
+        [ForeignKey(nameof(Ingredient10))]
+        public int? Ingredient10ID { get; set; }
+        public Ingredient Ingredient10 { get; set; }
+
+
+        [ForeignKey(nameof(Ingredient11))]
+        public int? Ingredient11ID { get; set; }
+        public Ingredient Ingredient11 { get; set; }
+
+
+        [ForeignKey(nameof(Ingredient12))]
+        public int? Ingredient12ID { get; set; }
+        public Ingredient Ingredient12 { get; set; }
+
+
+        [ForeignKey(nameof(Ingredient13))]
+        public int? Ingredient13ID { get; set; }
+        public Ingredient Ingredient13 { get; set; }
+
+
+        [ForeignKey(nameof(Ingredient14))]
+        public int? Ingredient14ID { get; set; }
+        public Ingredient Ingredient14 { get; set; }
+
+
+        [ForeignKey(nameof(Ingredient15))]
+        public int? Ingredient15ID { get; set; }
+        public Ingredient Ingredient15 { get; set; }
+
+
+        [ForeignKey(nameof(Ingredient16))]
+        public int? Ingredient16ID { get; set; }
+        public Ingredient Ingredient16 { get; set; }
+
+
+        [ForeignKey(nameof(Ingredient17))]
+        public int? Ingredient17ID { get; set; }
+        public Ingredient Ingredient17 { get; set; }
+
+
+        [ForeignKey(nameof(Ingredient18))]
+        public int? Ingredient18ID { get; set; }
+        public Ingredient Ingredient18 { get; set; }
+
+
+        [ForeignKey(nameof(Ingredient19))]
+        public int? Ingredient19ID { get; set; }
+        public Ingredient Ingredient19 { get; set; }
+
 
         [ForeignKey(nameof(Condiment1))]
         public int? Condiment1ID { get; set; }
         public Ingredient Condiment1 { get; set; }
 
+
         [ForeignKey(nameof(Condiment2))]
         public int? Condiment2ID { get; set; }
         public Ingredient Condiment2 { get; set; }
 
+
         [ForeignKey(nameof(Condiment3))]
         public int? Condiment3ID { get; set; }
         public Ingredient Condiment3 { get; set; }
+
+
+        [ForeignKey(nameof(Size))]
+        public int SizeID { get; set; }
+        public Size Size { get; set; }
 
 
 

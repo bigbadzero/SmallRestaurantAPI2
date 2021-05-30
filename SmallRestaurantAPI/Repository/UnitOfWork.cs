@@ -18,6 +18,7 @@ namespace SmallRestaurantAPI.Repository
         private IGenericRepository<Ingredient> _ingredients;
         private IGenericRepository<Entree> _entrees;
         private IGenericRepository<Side> _sides;
+        private IGenericRepository<Size> _sizes;
 
         public UnitOfWork(DatabaseContext context)
         {
@@ -36,6 +37,7 @@ namespace SmallRestaurantAPI.Repository
 
         public IGenericRepository<Entree> Entrees => _entrees ??= new GenericRepository<Entree>(_context);
         public IGenericRepository<Side> Sides => _sides ??= new GenericRepository<Side>(_context);
+        public IGenericRepository<Size> Sizes => _sizes ??= new GenericRepository<Size>(_context);
 
         public void Dispose()
         {

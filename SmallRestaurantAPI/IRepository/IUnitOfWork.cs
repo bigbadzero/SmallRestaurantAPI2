@@ -15,6 +15,7 @@ namespace SmallRestaurantAPI.IRepository
         IGenericRepository<Ingredient> Ingredients { get; }
         IGenericRepository<Entree> Entrees { get; }
         IGenericRepository<Side> Sides { get; }
+        IGenericRepository<Size> Sizes { get; }
 
         Task Save();
     }

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SmallRestaurantAPI.Data
+namespace SmallRestaurantAPI.DTOs
 {
-    public class Drink 
+    public class CategoryDTO
     {
         [Key]
         public int ID { get; set; }
@@ -15,16 +14,5 @@ namespace SmallRestaurantAPI.Data
         public string Name { get; set; }
         [StringLength(250, ErrorMessage = "Cannot Exceed 250 characters.")]
         public string Description { get; set; }
-        public int MyProperty { get; set; }
-
-
-        [ForeignKey(nameof(Category))]
-        public int CategoryID { get; set; }
-        public Category Category { get; set; }
-
-
-        [ForeignKey(nameof(Size))]
-        public int SizeID { get; set; }
-        public Size Size { get; set; }
     }
 }

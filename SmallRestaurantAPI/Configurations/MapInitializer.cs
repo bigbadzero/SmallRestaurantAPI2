@@ -12,6 +12,7 @@ namespace SmallRestaurantAPI.Configurations
     {
         public MapInitializer()
         {
+            CreateMap<Category, CategoryDTO>().ReverseMap();
             CreateMap<Combo, InitialComboDTO>().ReverseMap();
         }
     }
