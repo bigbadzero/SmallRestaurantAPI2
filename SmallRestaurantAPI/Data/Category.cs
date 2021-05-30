@@ -12,7 +12,5 @@ namespace SmallRestaurantAPI.Data
         public int ID { get; set; }
         [StringLength(50, ErrorMessage = "Cannot exceed 50 chars.")]
         public string Name { get; set; }
-        [StringLength(250, ErrorMessage = "Cannot Exceed 250 characters.")]
-        public string Description { get; set; }
     }
 }

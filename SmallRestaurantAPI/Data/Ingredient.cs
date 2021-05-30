@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI.Data
 {
-    public abstract class Ingredient 
+    public  class Ingredient 
     {
         [Key]
         public int ID { get; set; }
@@ -17,8 +17,6 @@ namespace SmallRestaurantAPI.Data
         public string Description { get; set; }
 
         [ForeignKey(nameof(Category))]
-        public int CategoryID { get; set; }
-        public Category Category { get; set; }
         public bool? isRequired { get; set; }
 
     }
