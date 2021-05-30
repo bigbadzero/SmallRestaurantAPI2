@@ -8,12 +8,13 @@ namespace SmallRestaurantAPI.IRepository
 {
     public interface IUnitOfWork : IDisposable
     {
+        IGenericRepository<Category> Categories { get; }
         IGenericRepository<Combo> Combos { get; }
         IGenericRepository<Condiment> Condiments { get; }
         IGenericRepository<Drink> Drinks { get; }
         IGenericRepository<Ingredient> Ingredients { get; }
-        IGenericRepository<MenuItem> MenuItems { get; }
-        IGenericRepository<MenuItemType> MenuItemTypes { get; }
+        IGenericRepository<Entree> Entrees { get; }
+        IGenericRepository<Side> Sides { get; }
 
         Task Save();
     }

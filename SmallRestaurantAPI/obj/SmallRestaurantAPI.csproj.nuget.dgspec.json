@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\projects\\SmallRestaurantAPI\\SmallRestaurantAPI\\SmallRestaurantAPI.csproj": {}
+    "C:\\projects\\SmallRestaurantAPI2\\SmallRestaurantAPI\\SmallRestaurantAPI.csproj": {}
   },
   "projects": {
-    "C:\\projects\\SmallRestaurantAPI\\SmallRestaurantAPI\\SmallRestaurantAPI.csproj": {
+    "C:\\projects\\SmallRestaurantAPI2\\SmallRestaurantAPI\\SmallRestaurantAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\projects\\SmallRestaurantAPI\\SmallRestaurantAPI\\SmallRestaurantAPI.csproj",
+        "projectUniqueName": "C:\\projects\\SmallRestaurantAPI2\\SmallRestaurantAPI\\SmallRestaurantAPI.csproj",
         "projectName": "SmallRestaurantAPI",
-        "projectPath": "C:\\projects\\SmallRestaurantAPI\\SmallRestaurantAPI\\SmallRestaurantAPI.csproj",
-        "packagesPath": "C:\\Users\\bwats\\.nuget\\packages\\",
-        "outputPath": "C:\\projects\\SmallRestaurantAPI\\SmallRestaurantAPI\\obj\\",
+        "projectPath": "C:\\projects\\SmallRestaurantAPI2\\SmallRestaurantAPI\\SmallRestaurantAPI.csproj",
+        "packagesPath": "C:\\Users\\adamw\\.nuget\\packages\\",
+        "outputPath": "C:\\projects\\SmallRestaurantAPI2\\SmallRestaurantAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\bwats\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\adamw\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,10 +58,6 @@
               "target": "Package",
               "version": "[5.0.6, )"
             },
-            "PagedList": {
-              "target": "Package",
-              "version": "[1.17.0, )"
-            },
             "Serilog.AspNetCore": {
               "target": "Package",
               "version": "[4.1.0, )"
@@ -89,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -70,3 +70,13 @@ C:\projects\SmallRestaurantAPI\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaura
 C:\projects\SmallRestaurantAPI\SmallRestaurantAPI\obj\Debug\net5.0\ref\SmallRestaurantAPI.dll
 C:\projects\SmallRestaurantAPI\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.pdb
 C:\projects\SmallRestaurantAPI\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.genruntimeconfig.cache
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.csprojAssemblyReference.cache
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.AssemblyInfoInputs.cache
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.AssemblyInfo.cs
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.csproj.CoreCompileInputs.cache
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.dll
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\ref\SmallRestaurantAPI.dll
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.pdb

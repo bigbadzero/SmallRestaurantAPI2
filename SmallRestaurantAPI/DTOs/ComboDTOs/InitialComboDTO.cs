@@ -10,8 +10,8 @@ namespace SmallRestaurantAPI.DTOs
     {
         public int ComboNumber { get; set; }
         public bool? ComboSizeOverride { get; set; }
-        public MenuItem EntreeMenuItem { get; set; }
-        public MenuItem SideMenuItem { get; set; }
+        public Entree EntreeMenuItem { get; set; }
+        public Entree SideMenuItem { get; set; }
 
     }
 }

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI.Data
 {
-    public class MenuItem : BaseItemRequirements
+    public class Entree : BaseItemRequirements
     {
         //using BaseItemRequirements
 
-        [ForeignKey(nameof(MenuItemType))]
-        public int MenuItemTypeID { get; set; }
-        public MenuItemType MenuItemType { get; set; }
+        [ForeignKey(nameof(Category))]
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
 
         //MenuItem Ingredients
         [ForeignKey(nameof(BaseIngredient1))]
@@ -91,7 +91,6 @@ namespace SmallRestaurantAPI.Data
         public int? BaseIngredient19ID { get; set; }
         public Ingredient BaseIngredient19 { get; set; }
 
-        //MenuItem Condiments
         [ForeignKey(nameof(Condiment1))]
         public int? Condiment1ID { get; set; }
         public Ingredient Condiment1 { get; set; }
@@ -103,7 +102,6 @@ namespace SmallRestaurantAPI.Data
         [ForeignKey(nameof(Condiment3))]
         public int? Condiment3ID { get; set; }
         public Ingredient Condiment3 { get; set; }
-
 
 
 

@@ -1,0 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace SmallRestaurantAPI.Data
+{
+    public class Side: BaseItemRequirements
+    {
+        //implements Base Item Requirements
+    }
+}

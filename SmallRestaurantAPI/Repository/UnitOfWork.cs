@@ -10,17 +10,21 @@ namespace SmallRestaurantAPI.Repository
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DatabaseContext _context;
+
+        private IGenericRepository<Category> _categories;
         private IGenericRepository<Combo> _combos;
         private IGenericRepository<Condiment> _condiments;
         private IGenericRepository<Drink> _drinks;
         private IGenericRepository<Ingredient> _ingredients;
-        private IGenericRepository<MenuItem> _menuItems;
-        private IGenericRepository<MenuItemType> _menuItemTypes;
+        private IGenericRepository<Entree> _entrees;
+        private IGenericRepository<Side> _sides;
 
         public UnitOfWork(DatabaseContext context)
         {
             _context = context;
         }
+
+        public IGenericRepository<Category> Categories => _categories ??= new GenericRepository<Category>(_context);
 
         public IGenericRepository<Combo> Combos => _combos ??= new GenericRepository<Combo>(_context);
 
@@ -30,9 +34,8 @@ namespace SmallRestaurantAPI.Repository
 
         public IGenericRepository<Ingredient> Ingredients => _ingredients ??= new GenericRepository<Ingredient>(_context);
 
-        public IGenericRepository<MenuItem> MenuItems => _menuItems ??= new GenericRepository<MenuItem>(_context);
-
-        public IGenericRepository<MenuItemType> MenuItemTypes => _menuItemTypes ??= new GenericRepository<MenuItemType>(_context);
+        public IGenericRepository<Entree> Entrees => _entrees ??= new GenericRepository<Entree>(_context);
+        public IGenericRepository<Side> Sides => _sides ??= new GenericRepository<Side>(_context);
 
         public void Dispose()
         {

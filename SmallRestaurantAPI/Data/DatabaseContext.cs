@@ -15,7 +15,7 @@ namespace SmallRestaurantAPI.Data
         public DbSet<Condiment> Condiments { get; set; }
         public DbSet<Drink> Drinks { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
-        public DbSet<MenuItem> MenuItems { get; set; }
+        public DbSet<Entree> MenuItems { get; set; }
         public DbSet<MenuItemType> MenuItemTypes { get; set; }
     }
 }

@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI.Data
 {
-    public class MenuItemType : BaseItemRequirements
+    public class Category : BaseItemRequirements
     {
-        //using BaseItemRequirements
+        //implements basse item requirements
     }
 }

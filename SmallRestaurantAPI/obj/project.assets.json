@@ -614,15 +614,6 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
-      "PagedList/1.17.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/PagedList.dll": {}
-        },
-        "runtime": {
-          "lib/net40/PagedList.dll": {}
-        }
-      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2838,19 +2829,6 @@
         "newtonsoft.json.10.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
-      ]
-    },
-    "PagedList/1.17.0": {
-      "sha512": "Ou6F3WKXh49hOo0TxWM+SkIGuKllYPuPPvnSYOlQ1sTrtuEyuDUhYbSJd5Sdb06i/sWUJZTjiUecEs3Ht/Hx3g==",
-      "type": "package",
-      "path": "pagedlist/1.17.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/PagedList.dll",
-        "lib/net40/PagedList.xml",
-        "pagedlist.1.17.0.nupkg.sha512",
-        "pagedlist.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -6808,25 +6786,24 @@
       "Microsoft.EntityFrameworkCore >= 5.0.6",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.6",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.6",
-      "PagedList >= 1.17.0",
       "Serilog.AspNetCore >= 4.1.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bwats\\.nuget\\packages\\": {}
+    "C:\\Users\\adamw\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\projects\\SmallRestaurantAPI\\SmallRestaurantAPI\\SmallRestaurantAPI.csproj",
+      "projectUniqueName": "C:\\projects\\SmallRestaurantAPI2\\SmallRestaurantAPI\\SmallRestaurantAPI.csproj",
       "projectName": "SmallRestaurantAPI",
-      "projectPath": "C:\\projects\\SmallRestaurantAPI\\SmallRestaurantAPI\\SmallRestaurantAPI.csproj",
-      "packagesPath": "C:\\Users\\bwats\\.nuget\\packages\\",
-      "outputPath": "C:\\projects\\SmallRestaurantAPI\\SmallRestaurantAPI\\obj\\",
+      "projectPath": "C:\\projects\\SmallRestaurantAPI2\\SmallRestaurantAPI\\SmallRestaurantAPI.csproj",
+      "packagesPath": "C:\\Users\\adamw\\.nuget\\packages\\",
+      "outputPath": "C:\\projects\\SmallRestaurantAPI2\\SmallRestaurantAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\bwats\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\adamw\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6870,10 +6847,6 @@
             "target": "Package",
             "version": "[5.0.6, )"
           },
-          "PagedList": {
-            "target": "Package",
-            "version": "[1.17.0, )"
-          },
           "Serilog.AspNetCore": {
             "target": "Package",
             "version": "[4.1.0, )"
@@ -6901,20 +6874,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'PagedList 1.17.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
-      "libraryId": "PagedList",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  }
 }

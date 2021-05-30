@@ -13,13 +13,17 @@ namespace SmallRestaurantAPI.Data
 
         public bool? ComboSizeOverride { get; set; }
 
-        [ForeignKey(nameof(EntreeMenuItem))]
-        public int EntreeMenuItemID { get; set; }
-        public MenuItem EntreeMenuItem { get; set; }
+        [ForeignKey(nameof(Category))]
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
 
-        [ForeignKey(nameof(SideMenuItem))]
-        public int SideMenuItemID { get; set; }
-        public MenuItem SideMenuItem { get; set; }
+        [ForeignKey(nameof(Entree))]
+        public int EntreeID { get; set; }
+        public Entree Entree { get; set; }
+
+        [ForeignKey(nameof(Side))]
+        public int SideID { get; set; }
+        public Side Side { get; set; }
 
         [ForeignKey(nameof(Drink))]
         public int DrinkID { get; set; }
