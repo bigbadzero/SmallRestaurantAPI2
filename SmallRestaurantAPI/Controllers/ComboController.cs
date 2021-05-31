@@ -13,35 +13,27 @@ namespace SmallRestaurantAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class ComboController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<CategoryController> _logger;
         private readonly IMapper _mapper;
 
-        public CategoryController(IUnitOfWork unitOfWork, ILogger<CategoryController> logger, IMapper mapper)
+        public ComboController(IUnitOfWork unitOfWork, ILogger<CategoryController> logger, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
             _mapper = mapper;
         }
 
-
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetCategories()
+        public async Task<IActionResult> GetCombos()
         {
-            var categories = await _unitOfWork.Categories.GetAll();
-            var results = _mapper.Map<IList<CategoryDTO>>(categories);
+            var combos = await _unitOfWork.Combos.GetAll();
+            var results = _mapper.Map<IList<InitialComboDTO>>(combos);
             return Ok(results);
         }
-
-        
-
-       
-
-
-
     }
 }
