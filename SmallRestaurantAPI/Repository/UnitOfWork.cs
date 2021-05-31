@@ -15,9 +15,11 @@ namespace SmallRestaurantAPI.Repository
         private IGenericRepository<Combo> _combos;
         private IGenericRepository<Condiment> _condiments;
         private IGenericRepository<Drink> _drinks;
-        private IGenericRepository<Ingredient> _ingredients;
         private IGenericRepository<Entree> _entrees;
+        private IGenericRepository<EntreeAddon> _entreeAddons;
+        private IGenericRepository<Ingredient> _ingredients;
         private IGenericRepository<Side> _sides;
+        private IGenericRepository<SideAddon> _sideAddons;
         private IGenericRepository<Size> _sizes;
 
         public UnitOfWork(DatabaseContext context)
@@ -26,17 +28,14 @@ namespace SmallRestaurantAPI.Repository
         }
 
         public IGenericRepository<Category> Categories => _categories ??= new GenericRepository<Category>(_context);
-
         public IGenericRepository<Combo> Combos => _combos ??= new GenericRepository<Combo>(_context);
-
         public IGenericRepository<Condiment> Condiments => _condiments ??= new GenericRepository<Condiment>(_context);
-
         public IGenericRepository<Drink> Drinks => _drinks ??= new GenericRepository<Drink>(_context);
-
-        public IGenericRepository<Ingredient> Ingredients => _ingredients ??= new GenericRepository<Ingredient>(_context);
-
         public IGenericRepository<Entree> Entrees => _entrees ??= new GenericRepository<Entree>(_context);
+        public IGenericRepository<EntreeAddon> EntreeAddons => _entreeAddons ??= new GenericRepository<EntreeAddon>(_context);
+        public IGenericRepository<Ingredient> Ingredients => _ingredients ??= new GenericRepository<Ingredient>(_context);
         public IGenericRepository<Side> Sides => _sides ??= new GenericRepository<Side>(_context);
+        public IGenericRepository<SideAddon> SideAddons => _sideAddons ??= new GenericRepository<SideAddon>(_context);
         public IGenericRepository<Size> Sizes => _sizes ??= new GenericRepository<Size>(_context);
 
         public void Dispose()

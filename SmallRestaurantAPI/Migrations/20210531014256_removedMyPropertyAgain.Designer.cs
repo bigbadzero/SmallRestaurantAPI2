@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmallRestaurantAPI.Data;
 
 namespace SmallRestaurantAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210531014256_removedMyPropertyAgain")]
+    partial class removedMyPropertyAgain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -461,48 +463,6 @@ namespace SmallRestaurantAPI.Migrations
                     b.ToTable("Sides");
                 });
 
-            modelBuilder.Entity("SmallRestaurantAPI.Data.SideAddon", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("Ingredient1ID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Ingredient2ID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Ingredient3ID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Ingredient4ID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Ingredient5ID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SideID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("Ingredient1ID");
-
-                    b.HasIndex("Ingredient2ID");
-
-                    b.HasIndex("Ingredient3ID");
-
-                    b.HasIndex("Ingredient4ID");
-
-                    b.HasIndex("Ingredient5ID");
-
-                    b.HasIndex("SideID");
-
-                    b.ToTable("SideAddons");
-                });
-
             modelBuilder.Entity("SmallRestaurantAPI.Data.Size", b =>
                 {
                     b.Property<int>("ID")
@@ -903,47 +863,6 @@ namespace SmallRestaurantAPI.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Size");
-                });
-
-            modelBuilder.Entity("SmallRestaurantAPI.Data.SideAddon", b =>
-                {
-                    b.HasOne("SmallRestaurantAPI.Data.Ingredient", "Ingredient1")
-                        .WithMany()
-                        .HasForeignKey("Ingredient1ID");
-
-                    b.HasOne("SmallRestaurantAPI.Data.Ingredient", "Ingredient2")
-                        .WithMany()
-                        .HasForeignKey("Ingredient2ID");
-
-                    b.HasOne("SmallRestaurantAPI.Data.Ingredient", "Ingredient3")
-                        .WithMany()
-                        .HasForeignKey("Ingredient3ID");
-
-                    b.HasOne("SmallRestaurantAPI.Data.Ingredient", "Ingredient4")
-                        .WithMany()
-                        .HasForeignKey("Ingredient4ID");
-
-                    b.HasOne("SmallRestaurantAPI.Data.Ingredient", "Ingredient5")
-                        .WithMany()
-                        .HasForeignKey("Ingredient5ID");
-
-                    b.HasOne("SmallRestaurantAPI.Data.Side", "Side")
-                        .WithMany()
-                        .HasForeignKey("SideID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Ingredient1");
-
-                    b.Navigation("Ingredient2");
-
-                    b.Navigation("Ingredient3");
-
-                    b.Navigation("Ingredient4");
-
-                    b.Navigation("Ingredient5");
-
-                    b.Navigation("Side");
                 });
 #pragma warning restore 612, 618
         }

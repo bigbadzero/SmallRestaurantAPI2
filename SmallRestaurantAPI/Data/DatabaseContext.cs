@@ -21,7 +21,8 @@ namespace SmallRestaurantAPI.Data
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Side> Sides { get; set; }
         public DbSet<Size> Sizes { get; set; }
-        
+        public DbSet<SideAddon> SideAddons { get; set; }
+
 
     }
 }
