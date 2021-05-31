@@ -31,32 +31,17 @@ namespace SmallRestaurantAPI.Data
 
 
         [ForeignKey(nameof(Side))]
-        public int SideID { get; set; }
+        public int? SideID { get; set; }
         public Side Side { get; set; }
 
 
         [ForeignKey(nameof(Drink))]
-        public int DrinkID { get; set; }
+        public int? DrinkID { get; set; }
         public Drink Drink { get; set; }
 
 
-        [ForeignKey(nameof(Condiment1))]
-        public int? Condiment1ID { get; set; }
-        public Ingredient Condiment1 { get; set; }
-
-
-        [ForeignKey(nameof(Condiment2))]
-        public int? Condiment2ID { get; set; }
-        public Ingredient Condiment2 { get; set; }
-
-
-        [ForeignKey(nameof(Condiment3))]
-        public int? Condiment3ID { get; set; }
-        public Ingredient Condiment3 { get; set; }
-
-
         [ForeignKey(nameof(Size))]
-        public int SizeID { get; set; }
+        public int? SizeID { get; set; }
         public Size Size { get; set; }
     }
 }

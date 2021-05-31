@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI.Data
 {
-    public class EntreeAddon
+    public class EntreeBaseIngredient
     {
-        public int Id { get; set; }
-
+        public int ID { get; set; }
 
         [ForeignKey(nameof(Entree))]
         public int EntreeID { get; set; }
@@ -19,5 +18,8 @@ namespace SmallRestaurantAPI.Data
         [ForeignKey(nameof(Ingredient))]
         public int IngredientID { get; set; }
         public Ingredient Ingredient { get; set; }
+
+
+        public bool? isRequired { get; set; }
     }
 }
