@@ -22,6 +22,12 @@ namespace SmallRestaurantAPI.IRepository
             Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null
             );
 
+        //Task<T> GetInclude2(
+        //    Expression<Func<T, bool>> expression = null,
+        //    Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+        //    Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null
+        //    );
+
         Task<IList<T>> GetAllInclude(
             Expression<Func<T, bool>> expression = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,

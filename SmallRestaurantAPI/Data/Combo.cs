@@ -27,15 +27,15 @@ namespace SmallRestaurantAPI.Data
         [Required]
         [ForeignKey(nameof(Entree))]
         public int EntreeID { get; set; }
-        public Entree Entree { get; set; }
+
+
+        public virtual Entree Entree { get; set; }
 
        
 
         [ForeignKey(nameof(Side))]
         public int? SideID { get; set; }
-        public Side Side { get; set; }
-
-        public virtual IList<Side> Sides { get; set; }
+        public virtual Side Side { get; set; }
 
 
         [ForeignKey(nameof(Drink))]

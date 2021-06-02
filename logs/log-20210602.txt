@@ -2162,3 +2162,366 @@ ORDER BY [t].[ID], [t0].[ID], [t0].[ID0], [t1].[Id], [t1].[ID0], [t2].[ID], [t2]
 2021-06-02 13:38:18.085 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.EntreeController.GetEntree (SmallRestaurantAPI) in 1715.3145ms
 2021-06-02 13:38:18.086 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.EntreeController.GetEntree (SmallRestaurantAPI)'
 2021-06-02 13:38:18.089 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/api/Entree/2 - - - 200 1450 application/json;+charset=utf-8 1774.7081ms
+2021-06-02 14:30:30.831 -05:00 [INF] Application Is Starting
+2021-06-02 14:30:31.450 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-02 14:30:31.452 -05:00 [INF] Hosting environment: Development
+2021-06-02 14:30:31.453 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-02 14:30:31.465 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-02 14:30:31.557 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 94.3434ms
+2021-06-02 14:30:31.657 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-02 14:30:31.710 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 52.9284ms
+2021-06-02 14:30:46.748 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/api/Combo/2 - -
+2021-06-02 14:30:46.776 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 14:30:46.799 -05:00 [INF] Route matched with {action = "GetCombo", controller = "Combo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCombo(Int32) on controller SmallRestaurantAPI.Controllers.ComboController (SmallRestaurantAPI).
+2021-06-02 14:30:47.499 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-02 14:30:48.157 -05:00 [INF] Executed DbCommand (61ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ID], [c].[CategoryID], [c].[ComboNumber], [c].[ComboSizeOverride], [c].[Description], [c].[DrinkID], [c].[EntreeID], [c].[Name], [c].[SideID], [c].[SizeID]
+FROM [Combos] AS [c]
+WHERE [c].[ID] = @__id_0
+2021-06-02 14:30:48.241 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI) in 1438.1811ms
+2021-06-02 14:30:48.242 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 14:30:48.245 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> ComboOptionsDTO
+System.Object -> SmallRestaurantAPI.DTOs.ComboOptionsDTO
+   at lambda_method25(Closure , Object , ComboOptionsDTO , ResolutionContext )
+   at SmallRestaurantAPI.Controllers.ComboController.GetCombo(Int32 id) in C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\Controllers\ComboController.cs:line 45
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-06-02 14:30:48.292 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/api/Combo/2 - - - 500 - text/plain 1543.9564ms
+2021-06-02 14:31:13.375 -05:00 [INF] Application Is Starting
+2021-06-02 14:31:14.031 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-02 14:31:14.033 -05:00 [INF] Hosting environment: Development
+2021-06-02 14:31:14.033 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-02 14:31:14.046 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-02 14:31:14.143 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 99.0164ms
+2021-06-02 14:31:14.245 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-02 14:31:14.297 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 51.6798ms
+2021-06-02 14:31:26.947 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/api/Combo/2 - -
+2021-06-02 14:31:26.971 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 14:31:26.997 -05:00 [INF] Route matched with {action = "GetCombo", controller = "Combo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCombo(Int32) on controller SmallRestaurantAPI.Controllers.ComboController (SmallRestaurantAPI).
+2021-06-02 14:31:27.697 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-02 14:31:28.338 -05:00 [INF] Executed DbCommand (60ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[ID], [c].[CategoryID], [c].[ComboNumber], [c].[ComboSizeOverride], [c].[Description], [c].[DrinkID], [c].[EntreeID], [c].[Name], [c].[SideID], [c].[SizeID]
+FROM [Combos] AS [c]
+WHERE ([c].[ID] = @__id_0) AND ([c].[ID] = @__id_0)
+2021-06-02 14:31:28.410 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI) in 1409.4472ms
+2021-06-02 14:31:28.410 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 14:31:28.414 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> ComboOptionsDTO
+System.Object -> SmallRestaurantAPI.DTOs.ComboOptionsDTO
+   at lambda_method25(Closure , Object , ComboOptionsDTO , ResolutionContext )
+   at SmallRestaurantAPI.Controllers.ComboController.GetCombo(Int32 id) in C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\Controllers\ComboController.cs:line 45
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-06-02 14:31:28.461 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/api/Combo/2 - - - 500 - text/plain 1513.9864ms
+2021-06-02 14:32:21.828 -05:00 [INF] Application Is Starting
+2021-06-02 14:32:22.504 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-02 14:32:22.506 -05:00 [INF] Hosting environment: Development
+2021-06-02 14:32:22.507 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-02 14:32:22.520 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-02 14:32:22.618 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 99.9650ms
+2021-06-02 14:32:22.714 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-02 14:32:22.765 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 50.9762ms
+2021-06-02 14:32:30.309 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/api/Combo/2 - -
+2021-06-02 14:32:30.335 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 14:32:30.363 -05:00 [INF] Route matched with {action = "GetCombo", controller = "Combo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCombo(Int32) on controller SmallRestaurantAPI.Controllers.ComboController (SmallRestaurantAPI).
+2021-06-02 14:32:31.451 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-02 14:32:54.246 -05:00 [INF] Executed DbCommand (55ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[ID], [c].[CategoryID], [c].[ComboNumber], [c].[ComboSizeOverride], [c].[Description], [c].[DrinkID], [c].[EntreeID], [c].[Name], [c].[SideID], [c].[SizeID]
+FROM [Combos] AS [c]
+WHERE ([c].[ID] = @__id_0) AND ([c].[ID] = @__id_0)
+2021-06-02 14:34:36.392 -05:00 [INF] Application Is Starting
+2021-06-02 14:34:37.028 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-02 14:34:37.030 -05:00 [INF] Hosting environment: Development
+2021-06-02 14:34:37.031 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-02 14:34:37.044 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-02 14:34:37.142 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 99.9197ms
+2021-06-02 14:34:37.246 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-02 14:34:37.304 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 57.6522ms
+2021-06-02 14:34:44.817 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/api/Combo/2 - -
+2021-06-02 14:34:44.844 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 14:34:44.870 -05:00 [INF] Route matched with {action = "GetCombo", controller = "Combo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCombo(Int32) on controller SmallRestaurantAPI.Controllers.ComboController (SmallRestaurantAPI).
+2021-06-02 14:34:45.843 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-02 14:35:03.486 -05:00 [INF] Executed DbCommand (55ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[ID], [c].[CategoryID], [c].[ComboNumber], [c].[ComboSizeOverride], [c].[Description], [c].[DrinkID], [c].[EntreeID], [c].[Name], [c].[SideID], [c].[SizeID]
+FROM [Combos] AS [c]
+WHERE ([c].[ID] = @__id_0) AND ([c].[ID] = @__id_0)
+2021-06-02 14:35:03.522 -05:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2021-06-02 14:35:03.525 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI) in 18651.8321ms
+2021-06-02 14:35:03.526 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 14:35:03.529 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/api/Combo/2 - - - 200 - - 18712.7941ms
+2021-06-02 14:35:26.090 -05:00 [INF] Application Is Starting
+2021-06-02 14:35:26.710 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-02 14:35:26.712 -05:00 [INF] Hosting environment: Development
+2021-06-02 14:35:26.713 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-02 14:35:26.725 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-02 14:35:26.821 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 98.1397ms
+2021-06-02 14:35:26.921 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-02 14:35:26.980 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 58.8426ms
+2021-06-02 14:35:33.120 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/api/Combo/2 - -
+2021-06-02 14:35:33.148 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 14:35:33.172 -05:00 [INF] Route matched with {action = "GetCombo", controller = "Combo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCombo(Int32) on controller SmallRestaurantAPI.Controllers.ComboController (SmallRestaurantAPI).
+2021-06-02 14:35:34.124 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-02 14:35:43.953 -05:00 [INF] Executed DbCommand (56ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[ID], [c].[CategoryID], [c].[ComboNumber], [c].[ComboSizeOverride], [c].[Description], [c].[DrinkID], [c].[EntreeID], [c].[Name], [c].[SideID], [c].[SizeID]
+FROM [Combos] AS [c]
+WHERE ([c].[ID] = @__id_0) AND ([c].[ID] = @__id_0)
+2021-06-02 14:35:43.991 -05:00 [INF] Executing OkObjectResult, writing value of type 'SmallRestaurantAPI.DTOs.ComboOptionsDTO'.
+2021-06-02 14:35:44.083 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI) in 10907.6737ms
+2021-06-02 14:35:44.084 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 14:35:44.087 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/api/Combo/2 - - - 200 101 application/json;+charset=utf-8 10966.9911ms
+2021-06-02 14:42:06.680 -05:00 [INF] Application Is Starting
+2021-06-02 14:42:07.294 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-02 14:42:07.296 -05:00 [INF] Hosting environment: Development
+2021-06-02 14:42:07.296 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-02 14:42:07.308 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-02 14:42:07.397 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 90.7315ms
+2021-06-02 14:42:07.498 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-02 14:42:07.550 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 52.3605ms
+2021-06-02 14:42:14.591 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/api/Combo/2 - -
+2021-06-02 14:42:14.617 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 14:42:14.643 -05:00 [INF] Route matched with {action = "GetCombo", controller = "Combo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCombo(Int32) on controller SmallRestaurantAPI.Controllers.ComboController (SmallRestaurantAPI).
+2021-06-02 14:42:15.355 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-02 14:42:16.044 -05:00 [INF] Executed DbCommand (61ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[ID], [c].[CategoryID], [c].[ComboNumber], [c].[ComboSizeOverride], [c].[Description], [c].[DrinkID], [c].[EntreeID], [c].[Name], [c].[SideID], [c].[SizeID], [e].[ID], [e].[CategoryID], [e].[Description], [e].[Name], [e].[SizeID]
+FROM [Combos] AS [c]
+INNER JOIN [Entrees] AS [e] ON [c].[EntreeID] = [e].[ID]
+WHERE ([c].[ID] = @__id_0) AND ([c].[ID] = @__id_0)
+2021-06-02 14:44:17.674 -05:00 [INF] Application Is Starting
+2021-06-02 14:44:18.308 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-02 14:44:18.311 -05:00 [INF] Hosting environment: Development
+2021-06-02 14:44:18.311 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-02 14:44:18.324 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-02 14:44:18.416 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 94.2313ms
+2021-06-02 14:44:18.512 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-02 14:44:18.562 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 50.2235ms
+2021-06-02 14:44:26.492 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/api/Combo/2 - -
+2021-06-02 14:44:26.517 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 14:44:26.543 -05:00 [INF] Route matched with {action = "GetCombo", controller = "Combo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCombo(Int32) on controller SmallRestaurantAPI.Controllers.ComboController (SmallRestaurantAPI).
+2021-06-02 14:44:27.246 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-02 14:44:28.043 -05:00 [INF] Executed DbCommand (113ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[CategoryID], [t].[ComboNumber], [t].[ComboSizeOverride], [t].[Description], [t].[DrinkID], [t].[EntreeID], [t].[Name], [t].[SideID], [t].[SizeID], [t].[ID0], [t].[CategoryID0], [t].[Description0], [t].[Name0], [t].[SizeID0], [t0].[ID], [t0].[EntreeID], [t0].[IngredientID], [t0].[isRequired], [t0].[ID0], [t0].[Description], [t0].[Name]
+FROM (
+    SELECT TOP(1) [c].[ID], [c].[CategoryID], [c].[ComboNumber], [c].[ComboSizeOverride], [c].[Description], [c].[DrinkID], [c].[EntreeID], [c].[Name], [c].[SideID], [c].[SizeID], [e].[ID] AS [ID0], [e].[CategoryID] AS [CategoryID0], [e].[Description] AS [Description0], [e].[Name] AS [Name0], [e].[SizeID] AS [SizeID0]
+    FROM [Combos] AS [c]
+    INNER JOIN [Entrees] AS [e] ON [c].[EntreeID] = [e].[ID]
+    WHERE ([c].[ID] = @__id_0) AND ([c].[ID] = @__id_0)
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[ID], [e0].[EntreeID], [e0].[IngredientID], [e0].[isRequired], [i].[ID] AS [ID0], [i].[Description], [i].[Name]
+    FROM [EntreeBaseIngredients] AS [e0]
+    INNER JOIN [Ingredients] AS [i] ON [e0].[IngredientID] = [i].[ID]
+) AS [t0] ON [t].[ID0] = [t0].[EntreeID]
+ORDER BY [t].[ID], [t].[ID0], [t0].[ID], [t0].[ID0]
+2021-06-02 15:10:15.933 -05:00 [INF] Application Is Starting
+2021-06-02 15:10:16.644 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-02 15:10:16.646 -05:00 [INF] Hosting environment: Development
+2021-06-02 15:10:16.647 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-02 15:10:16.660 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-02 15:10:16.757 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 99.2872ms
+2021-06-02 15:10:16.856 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-02 15:10:16.909 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 53.1779ms
+2021-06-02 15:10:22.953 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/api/Combo/2 - -
+2021-06-02 15:10:22.985 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 15:10:23.013 -05:00 [INF] Route matched with {action = "GetCombo", controller = "Combo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCombo(Int32) on controller SmallRestaurantAPI.Controllers.ComboController (SmallRestaurantAPI).
+2021-06-02 15:10:23.732 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-02 15:10:23.944 -05:00 [WRN] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2021-06-02 15:10:24.668 -05:00 [INF] Executed DbCommand (123ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[CategoryID], [t].[ComboNumber], [t].[ComboSizeOverride], [t].[Description], [t].[DrinkID], [t].[EntreeID], [t].[Name], [t].[SideID], [t].[SizeID], [t].[ID0], [t].[CategoryID0], [t].[Description0], [t].[Name0], [t].[SizeID0], [t0].[ID], [t0].[EntreeID], [t0].[IngredientID], [t0].[isRequired], [t0].[ID0], [t0].[Description], [t0].[Name], [t1].[Id], [t1].[EntreeID], [t1].[IngredientID], [t1].[ID0], [t1].[Description], [t1].[Name]
+FROM (
+    SELECT TOP(1) [c].[ID], [c].[CategoryID], [c].[ComboNumber], [c].[ComboSizeOverride], [c].[Description], [c].[DrinkID], [c].[EntreeID], [c].[Name], [c].[SideID], [c].[SizeID], [e].[ID] AS [ID0], [e].[CategoryID] AS [CategoryID0], [e].[Description] AS [Description0], [e].[Name] AS [Name0], [e].[SizeID] AS [SizeID0]
+    FROM [Combos] AS [c]
+    INNER JOIN [Entrees] AS [e] ON [c].[EntreeID] = [e].[ID]
+    WHERE ([c].[ID] = @__id_0) AND ([c].[ID] = @__id_0)
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[ID], [e0].[EntreeID], [e0].[IngredientID], [e0].[isRequired], [i].[ID] AS [ID0], [i].[Description], [i].[Name]
+    FROM [EntreeBaseIngredients] AS [e0]
+    INNER JOIN [Ingredients] AS [i] ON [e0].[IngredientID] = [i].[ID]
+) AS [t0] ON [t].[ID0] = [t0].[EntreeID]
+LEFT JOIN (
+    SELECT [e1].[Id], [e1].[EntreeID], [e1].[IngredientID], [i0].[ID] AS [ID0], [i0].[Description], [i0].[Name]
+    FROM [EntreeAddons] AS [e1]
+    INNER JOIN [Ingredients] AS [i0] ON [e1].[IngredientID] = [i0].[ID]
+) AS [t1] ON [t].[ID0] = [t1].[EntreeID]
+ORDER BY [t].[ID], [t].[ID0], [t0].[ID], [t0].[ID0], [t1].[Id], [t1].[ID0]
+2021-06-02 15:14:46.757 -05:00 [INF] Application Is Starting
+2021-06-02 15:14:47.363 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-02 15:14:47.364 -05:00 [INF] Hosting environment: Development
+2021-06-02 15:14:47.365 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-02 15:14:47.376 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-02 15:14:47.469 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 93.9789ms
+2021-06-02 15:14:47.563 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-02 15:14:47.613 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 50.2084ms
+2021-06-02 15:14:54.740 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/api/Combo/2 - -
+2021-06-02 15:14:54.767 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 15:14:54.796 -05:00 [INF] Route matched with {action = "GetCombo", controller = "Combo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCombo(Int32) on controller SmallRestaurantAPI.Controllers.ComboController (SmallRestaurantAPI).
+2021-06-02 15:14:55.515 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-02 15:14:55.741 -05:00 [WRN] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2021-06-02 15:14:56.360 -05:00 [INF] Executed DbCommand (132ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[CategoryID], [t].[ComboNumber], [t].[ComboSizeOverride], [t].[Description], [t].[DrinkID], [t].[EntreeID], [t].[Name], [t].[SideID], [t].[SizeID], [t].[ID0], [t].[CategoryID0], [t].[Description0], [t].[Name0], [t].[SizeID0], [t0].[ID], [t0].[EntreeID], [t0].[IngredientID], [t0].[isRequired], [t0].[ID0], [t0].[Description], [t0].[Name], [t1].[Id], [t1].[EntreeID], [t1].[IngredientID], [t1].[ID0], [t1].[Description], [t1].[Name], [t2].[ID], [t2].[EntreeID], [t2].[SizeID], [t2].[ID0], [t2].[Name]
+FROM (
+    SELECT TOP(1) [c].[ID], [c].[CategoryID], [c].[ComboNumber], [c].[ComboSizeOverride], [c].[Description], [c].[DrinkID], [c].[EntreeID], [c].[Name], [c].[SideID], [c].[SizeID], [e].[ID] AS [ID0], [e].[CategoryID] AS [CategoryID0], [e].[Description] AS [Description0], [e].[Name] AS [Name0], [e].[SizeID] AS [SizeID0]
+    FROM [Combos] AS [c]
+    INNER JOIN [Entrees] AS [e] ON [c].[EntreeID] = [e].[ID]
+    WHERE ([c].[ID] = @__id_0) AND ([c].[ID] = @__id_0)
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[ID], [e0].[EntreeID], [e0].[IngredientID], [e0].[isRequired], [i].[ID] AS [ID0], [i].[Description], [i].[Name]
+    FROM [EntreeBaseIngredients] AS [e0]
+    INNER JOIN [Ingredients] AS [i] ON [e0].[IngredientID] = [i].[ID]
+) AS [t0] ON [t].[ID0] = [t0].[EntreeID]
+LEFT JOIN (
+    SELECT [e1].[Id], [e1].[EntreeID], [e1].[IngredientID], [i0].[ID] AS [ID0], [i0].[Description], [i0].[Name]
+    FROM [EntreeAddons] AS [e1]
+    INNER JOIN [Ingredients] AS [i0] ON [e1].[IngredientID] = [i0].[ID]
+) AS [t1] ON [t].[ID0] = [t1].[EntreeID]
+LEFT JOIN (
+    SELECT [e2].[ID], [e2].[EntreeID], [e2].[SizeID], [s].[ID] AS [ID0], [s].[Name]
+    FROM [EntreeSizes] AS [e2]
+    INNER JOIN [Sizes] AS [s] ON [e2].[SizeID] = [s].[ID]
+) AS [t2] ON [t].[ID0] = [t2].[EntreeID]
+ORDER BY [t].[ID], [t].[ID0], [t0].[ID], [t0].[ID0], [t1].[Id], [t1].[ID0], [t2].[ID], [t2].[ID0]
+2021-06-02 15:15:22.609 -05:00 [INF] Application Is Starting
+2021-06-02 15:15:23.289 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-02 15:15:23.291 -05:00 [INF] Hosting environment: Development
+2021-06-02 15:15:23.291 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-02 15:15:23.304 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-02 15:15:23.398 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 95.0389ms
+2021-06-02 15:15:23.511 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-02 15:15:23.572 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 61.4593ms
+2021-06-02 15:15:29.942 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/api/Combo/2 - -
+2021-06-02 15:15:29.967 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 15:15:29.993 -05:00 [INF] Route matched with {action = "GetCombo", controller = "Combo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCombo(Int32) on controller SmallRestaurantAPI.Controllers.ComboController (SmallRestaurantAPI).
+2021-06-02 15:15:30.706 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-02 15:15:30.923 -05:00 [WRN] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2021-06-02 15:15:31.658 -05:00 [INF] Executed DbCommand (93ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[CategoryID], [t].[ComboNumber], [t].[ComboSizeOverride], [t].[Description], [t].[DrinkID], [t].[EntreeID], [t].[Name], [t].[SideID], [t].[SizeID], [t].[ID0], [t].[CategoryID0], [t].[Description0], [t].[Name0], [t].[SizeID0], [t0].[ID], [t0].[EntreeID], [t0].[IngredientID], [t0].[isRequired], [t0].[ID0], [t0].[Description], [t0].[Name], [t1].[Id], [t1].[EntreeID], [t1].[IngredientID], [t1].[ID0], [t1].[Description], [t1].[Name], [t2].[ID], [t2].[EntreeID], [t2].[SizeID], [t2].[ID0], [t2].[Name]
+FROM (
+    SELECT TOP(1) [c].[ID], [c].[CategoryID], [c].[ComboNumber], [c].[ComboSizeOverride], [c].[Description], [c].[DrinkID], [c].[EntreeID], [c].[Name], [c].[SideID], [c].[SizeID], [e].[ID] AS [ID0], [e].[CategoryID] AS [CategoryID0], [e].[Description] AS [Description0], [e].[Name] AS [Name0], [e].[SizeID] AS [SizeID0]
+    FROM [Combos] AS [c]
+    INNER JOIN [Entrees] AS [e] ON [c].[EntreeID] = [e].[ID]
+    WHERE ([c].[ID] = @__id_0) AND ([c].[ID] = @__id_0)
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[ID], [e0].[EntreeID], [e0].[IngredientID], [e0].[isRequired], [i].[ID] AS [ID0], [i].[Description], [i].[Name]
+    FROM [EntreeBaseIngredients] AS [e0]
+    INNER JOIN [Ingredients] AS [i] ON [e0].[IngredientID] = [i].[ID]
+) AS [t0] ON [t].[ID0] = [t0].[EntreeID]
+LEFT JOIN (
+    SELECT [e1].[Id], [e1].[EntreeID], [e1].[IngredientID], [i0].[ID] AS [ID0], [i0].[Description], [i0].[Name]
+    FROM [EntreeAddons] AS [e1]
+    INNER JOIN [Ingredients] AS [i0] ON [e1].[IngredientID] = [i0].[ID]
+) AS [t1] ON [t].[ID0] = [t1].[EntreeID]
+LEFT JOIN (
+    SELECT [e2].[ID], [e2].[EntreeID], [e2].[SizeID], [s].[ID] AS [ID0], [s].[Name]
+    FROM [EntreeSizes] AS [e2]
+    INNER JOIN [Sizes] AS [s] ON [e2].[SizeID] = [s].[ID]
+) AS [t2] ON [t].[ID0] = [t2].[EntreeID]
+ORDER BY [t].[ID], [t].[ID0], [t0].[ID], [t0].[ID0], [t1].[Id], [t1].[ID0], [t2].[ID], [t2].[ID0]
+2021-06-02 15:20:25.108 -05:00 [INF] Application Is Starting
+2021-06-02 15:20:25.804 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-02 15:20:25.806 -05:00 [INF] Hosting environment: Development
+2021-06-02 15:20:25.807 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-02 15:20:25.819 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-02 15:20:25.919 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 101.6340ms
+2021-06-02 15:20:26.012 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-02 15:20:26.064 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 51.4152ms
+2021-06-02 15:20:31.793 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/api/Combo/2 - -
+2021-06-02 15:20:31.822 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 15:20:31.845 -05:00 [INF] Route matched with {action = "GetCombo", controller = "Combo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCombo(Int32) on controller SmallRestaurantAPI.Controllers.ComboController (SmallRestaurantAPI).
+2021-06-02 15:20:32.556 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-02 15:20:32.787 -05:00 [WRN] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2021-06-02 15:20:33.454 -05:00 [INF] Executed DbCommand (63ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[CategoryID], [t].[ComboNumber], [t].[ComboSizeOverride], [t].[Description], [t].[DrinkID], [t].[EntreeID], [t].[Name], [t].[SideID], [t].[SizeID], [t].[ID0], [t].[CategoryID0], [t].[Description0], [t].[Name0], [t].[SizeID0], [t0].[ID], [t0].[EntreeID], [t0].[IngredientID], [t0].[isRequired], [t0].[ID0], [t0].[Description], [t0].[Name], [t1].[Id], [t1].[EntreeID], [t1].[IngredientID], [t1].[ID0], [t1].[Description], [t1].[Name], [t2].[ID], [t2].[EntreeID], [t2].[SizeID], [t2].[ID0], [t2].[Name]
+FROM (
+    SELECT TOP(1) [c].[ID], [c].[CategoryID], [c].[ComboNumber], [c].[ComboSizeOverride], [c].[Description], [c].[DrinkID], [c].[EntreeID], [c].[Name], [c].[SideID], [c].[SizeID], [e].[ID] AS [ID0], [e].[CategoryID] AS [CategoryID0], [e].[Description] AS [Description0], [e].[Name] AS [Name0], [e].[SizeID] AS [SizeID0]
+    FROM [Combos] AS [c]
+    INNER JOIN [Entrees] AS [e] ON [c].[EntreeID] = [e].[ID]
+    WHERE ([c].[ID] = @__id_0) AND ([c].[ID] = @__id_0)
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[ID], [e0].[EntreeID], [e0].[IngredientID], [e0].[isRequired], [i].[ID] AS [ID0], [i].[Description], [i].[Name]
+    FROM [EntreeBaseIngredients] AS [e0]
+    INNER JOIN [Ingredients] AS [i] ON [e0].[IngredientID] = [i].[ID]
+) AS [t0] ON [t].[ID0] = [t0].[EntreeID]
+LEFT JOIN (
+    SELECT [e1].[Id], [e1].[EntreeID], [e1].[IngredientID], [i0].[ID] AS [ID0], [i0].[Description], [i0].[Name]
+    FROM [EntreeAddons] AS [e1]
+    INNER JOIN [Ingredients] AS [i0] ON [e1].[IngredientID] = [i0].[ID]
+) AS [t1] ON [t].[ID0] = [t1].[EntreeID]
+LEFT JOIN (
+    SELECT [e2].[ID], [e2].[EntreeID], [e2].[SizeID], [s].[ID] AS [ID0], [s].[Name]
+    FROM [EntreeSizes] AS [e2]
+    INNER JOIN [Sizes] AS [s] ON [e2].[SizeID] = [s].[ID]
+) AS [t2] ON [t].[ID0] = [t2].[EntreeID]
+ORDER BY [t].[ID], [t].[ID0], [t0].[ID], [t0].[ID0], [t1].[Id], [t1].[ID0], [t2].[ID], [t2].[ID0]
+2021-06-02 15:21:39.950 -05:00 [INF] Application Is Starting
+2021-06-02 15:21:40.586 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-02 15:21:40.588 -05:00 [INF] Hosting environment: Development
+2021-06-02 15:21:40.589 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-02 15:21:40.600 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-02 15:21:40.696 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 98.2862ms
+2021-06-02 15:21:40.794 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-02 15:21:40.845 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 50.9037ms
+2021-06-02 15:21:55.899 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/api/Combo/2 - -
+2021-06-02 15:21:55.926 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 15:21:55.952 -05:00 [INF] Route matched with {action = "GetCombo", controller = "Combo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCombo(Int32) on controller SmallRestaurantAPI.Controllers.ComboController (SmallRestaurantAPI).
+2021-06-02 15:21:56.678 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-02 15:21:56.900 -05:00 [WRN] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2021-06-02 15:21:57.461 -05:00 [INF] Executed DbCommand (91ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[CategoryID], [t].[ComboNumber], [t].[ComboSizeOverride], [t].[Description], [t].[DrinkID], [t].[EntreeID], [t].[Name], [t].[SideID], [t].[SizeID], [t].[ID0], [t].[CategoryID0], [t].[Description0], [t].[Name0], [t].[SizeID0], [t0].[ID], [t0].[EntreeID], [t0].[IngredientID], [t0].[isRequired], [t0].[ID0], [t0].[Description], [t0].[Name], [t1].[Id], [t1].[EntreeID], [t1].[IngredientID], [t1].[ID0], [t1].[Description], [t1].[Name], [t2].[ID], [t2].[EntreeID], [t2].[SizeID], [t2].[ID0], [t2].[Name]
+FROM (
+    SELECT TOP(1) [c].[ID], [c].[CategoryID], [c].[ComboNumber], [c].[ComboSizeOverride], [c].[Description], [c].[DrinkID], [c].[EntreeID], [c].[Name], [c].[SideID], [c].[SizeID], [e].[ID] AS [ID0], [e].[CategoryID] AS [CategoryID0], [e].[Description] AS [Description0], [e].[Name] AS [Name0], [e].[SizeID] AS [SizeID0]
+    FROM [Combos] AS [c]
+    INNER JOIN [Entrees] AS [e] ON [c].[EntreeID] = [e].[ID]
+    WHERE ([c].[ID] = @__id_0) AND ([c].[ID] = @__id_0)
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[ID], [e0].[EntreeID], [e0].[IngredientID], [e0].[isRequired], [i].[ID] AS [ID0], [i].[Description], [i].[Name]
+    FROM [EntreeBaseIngredients] AS [e0]
+    INNER JOIN [Ingredients] AS [i] ON [e0].[IngredientID] = [i].[ID]
+) AS [t0] ON [t].[ID0] = [t0].[EntreeID]
+LEFT JOIN (
+    SELECT [e1].[Id], [e1].[EntreeID], [e1].[IngredientID], [i0].[ID] AS [ID0], [i0].[Description], [i0].[Name]
+    FROM [EntreeAddons] AS [e1]
+    INNER JOIN [Ingredients] AS [i0] ON [e1].[IngredientID] = [i0].[ID]
+) AS [t1] ON [t].[ID0] = [t1].[EntreeID]
+LEFT JOIN (
+    SELECT [e2].[ID], [e2].[EntreeID], [e2].[SizeID], [s].[ID] AS [ID0], [s].[Name]
+    FROM [EntreeSizes] AS [e2]
+    INNER JOIN [Sizes] AS [s] ON [e2].[SizeID] = [s].[ID]
+) AS [t2] ON [t].[ID0] = [t2].[EntreeID]
+ORDER BY [t].[ID], [t].[ID0], [t0].[ID], [t0].[ID0], [t1].[Id], [t1].[ID0], [t2].[ID], [t2].[ID0]
+2021-06-02 15:22:17.103 -05:00 [INF] Executing OkObjectResult, writing value of type 'SmallRestaurantAPI.DTOs.ComboOptionsDTO'.
+2021-06-02 15:22:17.214 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI) in 21258.6992ms
+2021-06-02 15:22:17.215 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombo (SmallRestaurantAPI)'
+2021-06-02 15:22:17.219 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/api/Combo/2 - - - 200 1561 application/json;+charset=utf-8 21319.5027ms

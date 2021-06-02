@@ -12,5 +12,7 @@ namespace SmallRestaurantAPI.DTOs
         public string Description { get; set; }
         public int ComboNumber { get; set; }
 
+        public EntreeOptionsDTO Entree { get; set; }
+
     }
 }

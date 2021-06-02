@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SmallRestaurantAPI.DTOs;
 using SmallRestaurantAPI.IRepository;
@@ -41,8 +42,19 @@ namespace SmallRestaurantAPI.Controllers
         [HttpGet("{id:int}", Name = "GetCombo")]
         public async Task<IActionResult> GetCombo(int id)
         {
-            var combo = await _unitOfWork.Combos.Get(q => q.ID == id, new List<string> { "Sides" });
-            var result = _mapper.Map<ComboOptionsDTO>(combo);
+            try
+            {
+                var combo = await _unitOfWork.Combos.GetInclude(q => q.ID == id, include: q => q
+                .Include(x => x.Entree).ThenInclude(x => x.EntreeBaseIngredients).ThenInclude(x => x.Ingredient)
+                .Include(x => x.Entree).ThenInclude(x => x.EntreeAddons).ThenInclude(x => x.Ingredient)
+                .Include(x => x.Entree).ThenInclude(x => x.EntreeSizes).ThenInclude(x => x.Size));
+                var result = _mapper.Map<ComboOptionsDTO>(combo);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+            }
             return Ok();
         }
     }

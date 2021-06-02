@@ -14,6 +14,7 @@ namespace SmallRestaurantAPI.Configurations
         {
             CreateMap<Category, CategoryDTO>().ReverseMap();
             CreateMap<Combo, InitialComboDTO>().ReverseMap();
+            CreateMap<Combo, ComboOptionsDTO>().ReverseMap();
             CreateMap<Entree, InitialEntreeDTO>().ReverseMap();
             CreateMap<Side, InitialSideDTO>().ReverseMap();
             CreateMap<Drink, InitialDrinkDTO>().ReverseMap();
