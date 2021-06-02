@@ -44,7 +44,7 @@ namespace SmallRestaurantAPI.Controllers
         {
             try
             {
-                var combo = await _unitOfWork.Combos.GetInclude(q => q.ID == id, include: q => q
+                var combo = await _unitOfWork.Combos.Get(q => q.ID == id, include: q => q
                 .Include(x => x.Entree).ThenInclude(x => x.EntreeBaseIngredients).ThenInclude(x => x.Ingredient)
                 .Include(x => x.Entree).ThenInclude(x => x.EntreeAddons).ThenInclude(x => x.Ingredient)
                 .Include(x => x.Entree).ThenInclude(x => x.EntreeSizes).ThenInclude(x => x.Size));

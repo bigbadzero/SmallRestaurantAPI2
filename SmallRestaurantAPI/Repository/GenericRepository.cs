@@ -32,21 +32,11 @@ namespace SmallRestaurantAPI.Repository
             _db.RemoveRange(entities);
         }
 
-        public async Task<T> Get(Expression<Func<T, bool>> expression, List<string> includes = null)
-        {
-           IQueryable<T> query = _db;
-            if (includes != null)
-            {
-                foreach (var includePropery in includes)
-                {
-                    query = query.Include(includePropery);
-                }
-           }
+        
 
-            return await query.AsNoTracking().FirstOrDefaultAsync(expression);
-        }
-
-        public async Task<IList<T>> GetAll(Expression<Func<T, bool>> expression = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, List<string> includes = null)
+        public async Task<T> Get(Expression<Func<T, bool>> expression = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
         {
             IQueryable<T> query = _db;
 
@@ -55,12 +45,9 @@ namespace SmallRestaurantAPI.Repository
                 query = query.Where(expression);
             }
 
-            if (includes != null)
+            if (include != null)
             {
-                foreach (var includePropery in includes)
-                {
-                    query = query.Include(includePropery);
-                }
+                query = include(query);
             }
 
             if (orderBy != null)
@@ -68,10 +55,10 @@ namespace SmallRestaurantAPI.Repository
                 query = orderBy(query);
             }
 
-            return await query.AsNoTracking().ToListAsync();
+            return await query.AsNoTracking().FirstOrDefaultAsync(expression);
         }
 
-        public async Task<IList<T>> GetAllInclude(Expression<Func<T, bool>> expression = null,
+        public async Task<IList<T>> GetAll(Expression<Func<T, bool>> expression = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
         {
@@ -95,29 +82,7 @@ namespace SmallRestaurantAPI.Repository
             return await query.AsNoTracking().ToListAsync();
         }
 
-        public async Task<T> GetInclude(Expression<Func<T, bool>> expression = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
-        {
-            IQueryable<T> query = _db;
-
-            if (expression != null)
-            {
-                query = query.Where(expression);
-            }
-
-            if (include != null)
-            {
-                query = include(query);
-            }
-
-            if (orderBy != null)
-            {
-                query = orderBy(query);
-            }
-
-            return await query.AsNoTracking().FirstOrDefaultAsync(expression);
-        }
+        
 
         public async Task Insert(T entity)
         {

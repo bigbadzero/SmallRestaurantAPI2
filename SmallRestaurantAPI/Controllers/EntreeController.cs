@@ -43,7 +43,7 @@ namespace SmallRestaurantAPI.Controllers
         [HttpGet("{id:int}", Name = "GetEntree")]
         public async Task<IActionResult> GetEntree(int id)
         {
-            var entree = await _unitOfWork.Entrees.GetInclude(q => q.ID == id, include: q => q.Include(x => x.EntreeBaseIngredients).ThenInclude(x => x.Ingredient).Include(x => x.EntreeAddons).ThenInclude(x => x.Ingredient).Include(x => x.EntreeSizes).ThenInclude(x => x.Size));
+            var entree = await _unitOfWork.Entrees.Get(q => q.ID == id, include: q => q.Include(x => x.EntreeBaseIngredients).ThenInclude(x => x.Ingredient).Include(x => x.EntreeAddons).ThenInclude(x => x.Ingredient).Include(x => x.EntreeSizes).ThenInclude(x => x.Size));
             var results = _mapper.Map<EntreeOptionsDTO>(entree);
             return Ok(results);
         }
