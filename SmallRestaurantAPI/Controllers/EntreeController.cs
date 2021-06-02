@@ -45,7 +45,7 @@ namespace SmallRestaurantAPI.Controllers
         {
             try
             {
-                var entree = await _unitOfWork.Entrees.GetInclude(q => q.ID == id, include: q => q.Include(x => x.EntreeBaseIngredients).ThenInclude(x => x.Ingredient));
+                var entree = await _unitOfWork.Entrees.GetInclude(q => q.ID == id, include: q => q.Include(x => x.EntreeBaseIngredients).ThenInclude(x => x.Ingredient).Include(x => x.EntreeAddons).ThenInclude(x => x.Ingredient).Include(x => x.EntreeSizes).ThenInclude(x => x.Size));
                 var results = _mapper.Map<EntreeOptionsDTO>(entree);
                 return Ok(results);
             }

@@ -10,5 +10,8 @@ namespace SmallRestaurantAPI.DTOs
         public int ID { get; set; }
         public int EntreeID { get; set; }
         public int SizeID { get; set; }
+
+
+        public SizeDTO Size { get; set; }
     }
 }

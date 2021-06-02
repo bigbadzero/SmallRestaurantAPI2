@@ -11,5 +11,8 @@ namespace SmallRestaurantAPI.DTOs
         public int EntreeID { get; set; }
         public string IngredientName { get; set; }
         public int IngredientID { get; set; }
+
+
+        public IngredientDTO Ingredient { get; set; }
     }
 }
