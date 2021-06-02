@@ -6,22 +6,19 @@ using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI.Data
 {
-    public class EntreeBaseIngredient
+    public class EntreeSize
     {
         public int ID { get; set; }
+
 
         [ForeignKey(nameof(Entree))]
         public int EntreeID { get; set; }
         public Entree Entree { get; set; }
 
 
-        [ForeignKey(nameof(Ingredient))]
-        public int IngredientID { get; set; }
-        public virtual Ingredient Ingredient { get; set; }
+        [ForeignKey(nameof(Size))]
+        public int SizeID { get; set; }
+        public Size Size { get; set; }
 
-
-
-
-        public bool? isRequired { get; set; }
     }
 }

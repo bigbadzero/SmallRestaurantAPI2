@@ -17,8 +17,8 @@ namespace SmallRestaurantAPI.Data
         public string Description { get; set; }
 
         [ForeignKey(nameof(Category))]
-        public int CategoryID { get; set; }
-        public Category Category { get; set; }
+        public  int CategoryID { get; set; }
+        public  Category Category { get; set; }
 
 
         [ForeignKey(nameof(Size))]
@@ -27,5 +27,8 @@ namespace SmallRestaurantAPI.Data
 
 
 
+        public virtual IList<EntreeBaseIngredient> EntreeBaseIngredients { get; set; }
+        public virtual IList<EntreeAddon> EntreeAddons { get; set; }
+        public virtual IList<EntreeSize> EntreeSizes { get; set; }
     }
 }

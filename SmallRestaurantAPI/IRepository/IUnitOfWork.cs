@@ -12,9 +12,13 @@ namespace SmallRestaurantAPI.IRepository
         IGenericRepository<Combo> Combos { get; }
         IGenericRepository<Condiment> Condiments { get; }
         IGenericRepository<Drink> Drinks { get; }
-        IGenericRepository<Ingredient> Ingredients { get; }
         IGenericRepository<Entree> Entrees { get; }
+        IGenericRepository<EntreeAddon> EntreeAddons  {get;}
+        IGenericRepository<EntreeBaseIngredient> EntreeBaseIngredients  {get;}
+        IGenericRepository<EntreeSize> EntreeSizes  {get;}
+        IGenericRepository<Ingredient> Ingredients { get; }
         IGenericRepository<Side> Sides { get; }
+        IGenericRepository<SideAddon> SideAddons { get; }
         IGenericRepository<Size> Sizes { get; }
 
         Task Save();

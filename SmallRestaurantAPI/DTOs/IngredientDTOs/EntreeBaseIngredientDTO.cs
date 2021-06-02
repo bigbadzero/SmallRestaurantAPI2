@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI.DTOs
 {
-    public class InitialComboDTO
+    public class EntreeBaseIngredientDTO
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int ComboNumber { get; set; }
+        public int ID { get; set; }
         public int EntreeID { get; set; }
+        public int IngredientID { get; set; }
+        public bool? isRequired { get; set; }
+        public IngredientDTO Ingredient { get; set; }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using SmallRestaurantAPI.Data;
 using SmallRestaurantAPI.IRepository;
 using System;
@@ -33,14 +34,14 @@ namespace SmallRestaurantAPI.Repository
 
         public async Task<T> Get(Expression<Func<T, bool>> expression, List<string> includes = null)
         {
-            IQueryable<T> query = _db;
+           IQueryable<T> query = _db;
             if (includes != null)
             {
                 foreach (var includePropery in includes)
                 {
                     query = query.Include(includePropery);
                 }
-            }
+           }
 
             return await query.AsNoTracking().FirstOrDefaultAsync(expression);
         }
@@ -68,6 +69,54 @@ namespace SmallRestaurantAPI.Repository
             }
 
             return await query.AsNoTracking().ToListAsync();
+        }
+
+        public async Task<IList<T>> GetAllInclude(Expression<Func<T, bool>> expression = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+        {
+            IQueryable<T> query = _db;
+
+            if (expression != null)
+            {
+                query = query.Where(expression);
+            }
+
+            if (include != null)
+            {
+                query = include(query);
+            }
+
+            if (orderBy != null)
+            {
+                query = orderBy(query);
+            }
+
+            return await query.AsNoTracking().ToListAsync();
+        }
+
+        public async Task<T> GetInclude(Expression<Func<T, bool>> expression = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+        {
+            IQueryable<T> query = _db;
+
+            if (expression != null)
+            {
+                query = query.Where(expression);
+            }
+
+            if (include != null)
+            {
+                query = include(query);
+            }
+
+            if (orderBy != null)
+            {
+                query = orderBy(query);
+            }
+
+            return await query.AsNoTracking().FirstOrDefaultAsync(expression);
         }
 
         public async Task Insert(T entity)

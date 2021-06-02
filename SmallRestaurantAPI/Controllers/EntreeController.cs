@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SmallRestaurantAPI.DTOs;
 using SmallRestaurantAPI.IRepository;
@@ -34,6 +35,26 @@ namespace SmallRestaurantAPI.Controllers
             var entrees = await _unitOfWork.Entrees.GetAll();
             var results = _mapper.Map<IList<InitialEntreeDTO>>(entrees);
             return Ok(results);
+        }
+
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpGet("{id:int}", Name = "GetEntree")]
+        public async Task<IActionResult> GetEntree(int id)
+        {
+            try
+            {
+                var entree = await _unitOfWork.Entrees.GetInclude(q => q.ID == id, include: q => q.Include(x => x.EntreeBaseIngredients).ThenInclude(x => x.Ingredient));
+                var results = _mapper.Map<EntreeOptionsDTO>(entree);
+                return Ok(results);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+            }
+            
+            return Ok();
         }
     }
 }

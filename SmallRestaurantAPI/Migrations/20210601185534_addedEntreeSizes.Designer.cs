@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmallRestaurantAPI.Data;
 
 namespace SmallRestaurantAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210601185534_addedEntreeSizes")]
+    partial class addedEntreeSizes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -453,7 +455,7 @@ namespace SmallRestaurantAPI.Migrations
             modelBuilder.Entity("SmallRestaurantAPI.Data.EntreeSize", b =>
                 {
                     b.HasOne("SmallRestaurantAPI.Data.Entree", "Entree")
-                        .WithMany("EntreeSizes")
+                        .WithMany()
                         .HasForeignKey("EntreeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -510,8 +512,6 @@ namespace SmallRestaurantAPI.Migrations
                     b.Navigation("EntreeAddons");
 
                     b.Navigation("EntreeBaseIngredients");
-
-                    b.Navigation("EntreeSizes");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmallRestaurantAPI.Data;
 
 namespace SmallRestaurantAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210531170717_addedVirtualLists")]
+    partial class addedVirtualLists
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -216,28 +218,6 @@ namespace SmallRestaurantAPI.Migrations
                     b.HasIndex("IngredientID");
 
                     b.ToTable("EntreeBaseIngredients");
-                });
-
-            modelBuilder.Entity("SmallRestaurantAPI.Data.EntreeSize", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("EntreeID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SizeID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("EntreeID");
-
-                    b.HasIndex("SizeID");
-
-                    b.ToTable("EntreeSizes");
                 });
 
             modelBuilder.Entity("SmallRestaurantAPI.Data.Ingredient", b =>
@@ -450,25 +430,6 @@ namespace SmallRestaurantAPI.Migrations
                     b.Navigation("Ingredient");
                 });
 
-            modelBuilder.Entity("SmallRestaurantAPI.Data.EntreeSize", b =>
-                {
-                    b.HasOne("SmallRestaurantAPI.Data.Entree", "Entree")
-                        .WithMany("EntreeSizes")
-                        .HasForeignKey("EntreeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SmallRestaurantAPI.Data.Size", "Size")
-                        .WithMany()
-                        .HasForeignKey("SizeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Entree");
-
-                    b.Navigation("Size");
-                });
-
             modelBuilder.Entity("SmallRestaurantAPI.Data.Side", b =>
                 {
                     b.HasOne("SmallRestaurantAPI.Data.Category", "Category")
@@ -510,8 +471,6 @@ namespace SmallRestaurantAPI.Migrations
                     b.Navigation("EntreeAddons");
 
                     b.Navigation("EntreeBaseIngredients");
-
-                    b.Navigation("EntreeSizes");
                 });
 #pragma warning restore 612, 618
         }

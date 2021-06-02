@@ -35,5 +35,15 @@ namespace SmallRestaurantAPI.Controllers
             var results = _mapper.Map<IList<InitialComboDTO>>(combos);
             return Ok(results);
         }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpGet("{id:int}", Name = "GetCombo")]
+        public async Task<IActionResult> GetCombo(int id)
+        {
+            var combo = await _unitOfWork.Combos.Get(q => q.ID == id, new List<string> { "Sides" });
+            var result = _mapper.Map<ComboOptionsDTO>(combo);
+            return Ok();
+        }
     }
 }

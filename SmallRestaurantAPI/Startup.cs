@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using SmallRestaurantAPI.Configurations;
 using SmallRestaurantAPI.Data;
 using SmallRestaurantAPI.IRepository;
@@ -27,6 +28,7 @@ namespace SmallRestaurantAPI
         }
 
         public IConfiguration Configuration { get; }
+        public ReferenceLoopHandling NewtonSoft { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -52,6 +54,10 @@ namespace SmallRestaurantAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SmallRestaurantAPI", Version = "v1" });
             });
+
+            services.AddControllers().AddNewtonsoftJson(op =>
+                op.SerializerSettings.ReferenceLoopHandling =
+                    ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

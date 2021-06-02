@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,19 @@ namespace SmallRestaurantAPI.IRepository
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             List<string> includes = null
          );
+
+        Task<T> GetInclude(
+            Expression<Func<T, bool>> expression = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null
+            );
+
+        Task<IList<T>> GetAllInclude(
+            Expression<Func<T, bool>> expression = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null
+            );
+
         Task<T> Get(Expression<Func<T, bool>> expression, List<string> includes = null);
         Task Insert(T entity);
         Task InsertRange(IEnumerable<T> entities);
