@@ -23,7 +23,6 @@ namespace SmallRestaurantAPI.IRepository
             Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null
             );
 
-
         
         Task Insert(T entity);
         Task InsertRange(IEnumerable<T> entities);
