@@ -1,3 +1,5 @@
+using HotelListing.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,15 +10,18 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using SmallRestaurantAPI.Configurations;
 using SmallRestaurantAPI.Data;
 using SmallRestaurantAPI.IRepository;
 using SmallRestaurantAPI.Repository;
+using SmallRestaurantAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI
@@ -42,6 +47,8 @@ namespace SmallRestaurantAPI
                 options.UseSqlServer(Configuration.GetConnectionString("sqlConnection"))
             );
 
+            services.ConfigureJWT(Configuration);
+
             services.AddAutoMapper(typeof(MapInitializer));
 
             services.AddCors(c => {
@@ -52,6 +59,7 @@ namespace SmallRestaurantAPI
             });
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IAuthManager, AuthManager>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -80,6 +88,7 @@ namespace SmallRestaurantAPI
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

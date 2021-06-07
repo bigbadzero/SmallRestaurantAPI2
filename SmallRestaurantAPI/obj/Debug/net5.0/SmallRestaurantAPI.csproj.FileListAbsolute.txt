@@ -82,6 +82,12 @@ C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\SmallRestaur
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\AutoMapper.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Humanizer.dll
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
@@ -91,6 +97,8 @@ C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.En
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.Identity.Client.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
@@ -99,6 +107,7 @@ C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.Id
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.OpenApi.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Serilog.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Serilog.AspNetCore.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Serilog.Extensions.Hosting.dll
@@ -143,13 +152,3 @@ C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaur
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\ref\SmallRestaurantAPI.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.pdb
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.genruntimeconfig.cache
-C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.csprojAssemblyReference.cache
-C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
-C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
-C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
-C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
-C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
