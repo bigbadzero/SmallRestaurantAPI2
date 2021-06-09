@@ -152,3 +152,4 @@ C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaur
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\ref\SmallRestaurantAPI.dll
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.pdb
 C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.genruntimeconfig.cache
+C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\obj\Debug\net5.0\SmallRestaurantAPI.csprojAssemblyReference.cache

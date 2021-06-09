@@ -23,6 +23,8 @@ namespace SmallRestaurantAPI.Repository
         private IGenericRepository<Side> _sides;
         private IGenericRepository<SideAddon> _sideAddons;
         private IGenericRepository<Size> _sizes;
+        private IGenericRepository<Cart> _carts;
+        private IGenericRepository<ApiUser> _apiUser;
 
         public UnitOfWork(DatabaseContext context)
         {
@@ -41,6 +43,7 @@ namespace SmallRestaurantAPI.Repository
         public IGenericRepository<Side> Sides => _sides ??= new GenericRepository<Side>(_context);
         public IGenericRepository<SideAddon> SideAddons => _sideAddons ??= new GenericRepository<SideAddon>(_context);
         public IGenericRepository<Size> Sizes => _sizes ??= new GenericRepository<Size>(_context);
+        public IGenericRepository<Cart> Carts => _carts ??= new GenericRepository<Cart>(_context);
 
         public void Dispose()
         {

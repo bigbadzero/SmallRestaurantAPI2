@@ -34,8 +34,6 @@ namespace SmallRestaurantAPI.Data
         public DbSet<Side> Sides { get; set; }
         public DbSet<SideAddon> SideAddons { get; set; }
         public DbSet<Size> Sizes { get; set; }
-        
-
-
+        public DbSet<Cart> Carts { get; set; }
     }
 }

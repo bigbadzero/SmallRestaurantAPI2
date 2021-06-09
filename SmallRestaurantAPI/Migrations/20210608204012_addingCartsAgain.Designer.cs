@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmallRestaurantAPI.Data;
 
 namespace SmallRestaurantAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210608204012_addingCartsAgain")]
+    partial class addingCartsAgain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace SmallRestaurantAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "72fe20e0-4cbf-4b8c-9d1d-197228dfbb12",
-                            ConcurrencyStamp = "18c170cc-64e3-4132-8d1a-b06ee7b3ded9",
+                            Id = "03059a28-4a8a-47c5-95ae-dc3040c05a2d",
+                            ConcurrencyStamp = "f8544e36-6421-49be-8626-d6966d8e2ff4",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "9e87fa7e-d360-45dd-ab19-fb90265ecdf6",
-                            ConcurrencyStamp = "c1e74f68-485b-460d-b361-8bf95c8e5173",
+                            Id = "d8af070f-b6a7-4a44-bfe9-3d9f62136bd8",
+                            ConcurrencyStamp = "d78c0d20-80ba-4980-a3c5-dc7cd4be521e",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -244,6 +246,10 @@ namespace SmallRestaurantAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ApiUserID")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int?>("ComboID")
                         .HasColumnType("int");
 
@@ -256,11 +262,9 @@ namespace SmallRestaurantAPI.Migrations
                     b.Property<int?>("SideID")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserID")
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("ID");
+
+                    b.HasIndex("ApiUserID");
 
                     b.HasIndex("ComboID");
 
@@ -269,8 +273,6 @@ namespace SmallRestaurantAPI.Migrations
                     b.HasIndex("EntreeID");
 
                     b.HasIndex("SideID");
-
-                    b.HasIndex("UserID");
 
                     b.ToTable("Carts");
                 });
@@ -637,6 +639,10 @@ namespace SmallRestaurantAPI.Migrations
 
             modelBuilder.Entity("SmallRestaurantAPI.Data.Cart", b =>
                 {
+                    b.HasOne("SmallRestaurantAPI.Data.ApiUser", "ApiUser")
+                        .WithMany()
+                        .HasForeignKey("ApiUserID");
+
                     b.HasOne("SmallRestaurantAPI.Data.Combo", "Combo")
                         .WithMany()
                         .HasForeignKey("ComboID");
@@ -652,10 +658,6 @@ namespace SmallRestaurantAPI.Migrations
                     b.HasOne("SmallRestaurantAPI.Data.Side", "Side")
                         .WithMany()
                         .HasForeignKey("SideID");
-
-                    b.HasOne("SmallRestaurantAPI.Data.ApiUser", "ApiUser")
-                        .WithMany()
-                        .HasForeignKey("UserID");
 
                     b.Navigation("ApiUser");
 

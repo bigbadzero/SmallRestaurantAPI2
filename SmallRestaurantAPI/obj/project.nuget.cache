@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sSEvZ/RTfYSC5IiFfVSgdCoXhLzQrukK0D2cZFBNg10XAzZlUEh+8/0AxLX+ZYficlpsJm8I3caZiX5UheoKOg==",
+  "dgSpecHash": "W4l2D7ZVIoWbxCb+EC8kV9/fRr3zsD1vCMvdJGSCI8y72eEfmENjXx65DDl60TPoxhJATa7ybVv4lGvPgbUJcw==",
   "success": true,
   "projectFilePath": "C:\\projects\\SmallRestaurantAPI2\\SmallRestaurantAPI\\SmallRestaurantAPI.csproj",
   "expectedPackageFiles": [
@@ -118,10 +118,12 @@
     "C:\\Users\\adamw\\.nuget\\packages\\system.runtime.serialization.json\\4.3.0\\system.runtime.serialization.json.4.3.0.nupkg.sha512",
     "C:\\Users\\adamw\\.nuget\\packages\\system.runtime.serialization.primitives\\4.3.0\\system.runtime.serialization.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\adamw\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\adamw\\.nuget\\packages\\system.security.claims\\4.3.0\\system.security.claims.4.3.0.nupkg.sha512",
     "C:\\Users\\adamw\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
     "C:\\Users\\adamw\\.nuget\\packages\\system.security.cryptography.primitives\\4.3.0\\system.security.cryptography.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\adamw\\.nuget\\packages\\system.security.cryptography.protecteddata\\4.7.0\\system.security.cryptography.protecteddata.4.7.0.nupkg.sha512",
     "C:\\Users\\adamw\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
+    "C:\\Users\\adamw\\.nuget\\packages\\system.security.principal\\4.3.0\\system.security.principal.4.3.0.nupkg.sha512",
     "C:\\Users\\adamw\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\adamw\\.nuget\\packages\\system.security.securestring\\4.3.0\\system.security.securestring.4.3.0.nupkg.sha512",
     "C:\\Users\\adamw\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
