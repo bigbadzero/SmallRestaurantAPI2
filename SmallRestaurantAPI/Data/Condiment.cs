@@ -16,9 +16,6 @@ namespace SmallRestaurantAPI.Data
         [StringLength(250, ErrorMessage = "Cannot Exceed 250 characters.")]
         public string Description { get; set; }
 
-        [ForeignKey(nameof(Category))]
-        public int CategoryID { get; set; }
-        public Category Category { get; set; }
 
     }
 }

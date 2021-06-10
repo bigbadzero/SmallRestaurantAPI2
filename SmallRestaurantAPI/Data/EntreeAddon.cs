@@ -8,7 +8,7 @@ namespace SmallRestaurantAPI.Data
 {
     public class EntreeAddon
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
 
 
         [ForeignKey(nameof(Entree))]

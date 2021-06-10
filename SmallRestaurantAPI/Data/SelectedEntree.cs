@@ -10,14 +10,7 @@ namespace SmallRestaurantAPI.Data
     public class SelectedEntree
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid ID { get; set; }
-
-
-        [ForeignKey(nameof(ApiUser))]
-        public string UserId { get; set; }
-        public ApiUser ApiUser { get; set; }
-
+        public int ID { get; set; }
 
         [ForeignKey(nameof(Entree))]
         public int EntreeID { get; set; }

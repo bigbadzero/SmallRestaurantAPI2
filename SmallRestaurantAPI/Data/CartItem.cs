@@ -7,17 +7,19 @@ using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI.Data
 {
-    public class Cart
+    public class CartItem
     {
         [Key]
-        [ForeignKey(nameof(ApiUser))]
+        public int ID { get; set; }
+
+
+
         [StringLength(450)]
         public string UserID { get; set; }
-        public ApiUser ApiUser { get; set; }
 
 
         [ForeignKey(nameof(selectedEntree))]
-        public Guid? SelectedEntreeID { get; set; }
+        public int? SelectedEntreeID { get; set; }
         public SelectedEntree selectedEntree { get; set; }
 
 

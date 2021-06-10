@@ -1,0 +1,802 @@
+2021-06-10 14:52:25.880 -05:00 [INF] Application Is Starting
+2021-06-10 14:52:26.563 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-10 14:52:26.815 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-10 14:52:26.815 -05:00 [INF] Hosting environment: Development
+2021-06-10 14:52:26.815 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-10 14:52:26.846 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-10 14:52:26.960 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 115.5011ms
+2021-06-10 14:52:27.097 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-10 14:52:27.175 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 77.9382ms
+2021-06-10 14:54:20.234 -05:00 [INF] Request starting HTTP/2 POST https://localhost:44372/api/Account/register application/json-patch+json 150
+2021-06-10 14:54:20.238 -05:00 [INF] CORS policy execution successful.
+2021-06-10 14:54:20.331 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.AccountController.Register (SmallRestaurantAPI)'
+2021-06-10 14:54:20.353 -05:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(SmallRestaurantAPI.DTOs.UserDTO) on controller SmallRestaurantAPI.Controllers.AccountController (SmallRestaurantAPI).
+2021-06-10 14:54:20.712 -05:00 [INF] Registration Attempt for adamwatson08@gmail.com
+2021-06-10 14:54:21.330 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 14:54:21.959 -05:00 [INF] Executed DbCommand (71ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2021-06-10 14:54:22.013 -05:00 [INF] Executed DbCommand (28ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2021-06-10 14:54:22.185 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTimeOffset), @p9='?' (Size = 256), @p10='?' (Size = 256), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 4000), @p15='?' (DbType = Boolean), @p16='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [FirstName], [LastName], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
+2021-06-10 14:54:22.271 -05:00 [INF] Executed DbCommand (33ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2021-06-10 14:54:22.323 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE ([a].[UserId] = @__p_0) AND ([a].[RoleId] = @__p_1)
+2021-06-10 14:54:22.352 -05:00 [INF] Executed DbCommand (23ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2021-06-10 14:54:22.405 -05:00 [INF] Executed DbCommand (44ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2021-06-10 14:54:22.440 -05:00 [INF] Executed DbCommand (33ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2021-06-10 14:54:22.499 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+2021-06-10 14:54:22.560 -05:00 [INF] Executed DbCommand (59ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [FirstName] = @p4, [LastName] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
+WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
+SELECT @@ROWCOUNT;
+2021-06-10 14:54:22.597 -05:00 [INF] Executing AcceptedResult, writing value of type 'null'.
+2021-06-10 14:54:22.601 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.AccountController.Register (SmallRestaurantAPI) in 2245.2074ms
+2021-06-10 14:54:22.602 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.AccountController.Register (SmallRestaurantAPI)'
+2021-06-10 14:54:22.607 -05:00 [INF] Request finished HTTP/2 POST https://localhost:44372/api/Account/register application/json-patch+json 150 - 202 0 - 2375.3500ms
+2021-06-10 14:54:44.486 -05:00 [INF] Request starting HTTP/2 POST https://localhost:44372/api/Account/login application/json-patch+json 58
+2021-06-10 14:54:44.489 -05:00 [INF] CORS policy execution successful.
+2021-06-10 14:54:44.494 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI)'
+2021-06-10 14:54:44.503 -05:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SmallRestaurantAPI.DTOs.LoginUserDTO) on controller SmallRestaurantAPI.Controllers.AccountController (SmallRestaurantAPI).
+2021-06-10 14:54:44.507 -05:00 [INF] Login Attempt for adamwatson08@gmail.com
+2021-06-10 14:54:44.528 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 14:54:44.555 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2021-06-10 14:54:44.643 -05:00 [INF] Executed DbCommand (46ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2021-06-10 14:54:44.709 -05:00 [INF] Executing AcceptedResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2021-06-10 14:54:44.733 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI) in 229.9947ms
+2021-06-10 14:54:44.733 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI)'
+2021-06-10 14:54:44.733 -05:00 [INF] Request finished HTTP/2 POST https://localhost:44372/api/Account/login application/json-patch+json 58 - 202 520 application/json;+charset=utf-8 246.9519ms
+2021-06-10 14:55:11.240 -05:00 [INF] Request starting HTTP/1.1 POST https://localhost:44372/api/Cart application/json 270
+2021-06-10 14:55:11.286 -05:00 [INF] Successfully validated the token.
+2021-06-10 14:55:11.288 -05:00 [INF] Request finished HTTP/1.1 POST https://localhost:44372/api/Cart application/json 270 - 404 - - 47.9514ms
+2021-06-10 14:55:41.140 -05:00 [INF] Request starting HTTP/1.1 POST https://localhost:44372/api/CartItem application/json 270
+2021-06-10 14:55:41.163 -05:00 [INF] Successfully validated the token.
+2021-06-10 14:55:41.167 -05:00 [INF] Authorization was successful.
+2021-06-10 14:55:41.167 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.CartItemController.AddItemToCart (SmallRestaurantAPI)'
+2021-06-10 14:55:41.169 -05:00 [INF] Route matched with {action = "AddItemToCart", controller = "CartItem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddItemToCart(SmallRestaurantAPI.DTOs.SelectedEntreeDTO) on controller SmallRestaurantAPI.Controllers.CartItemController (SmallRestaurantAPI).
+2021-06-10 14:56:45.123 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 14:56:46.953 -05:00 [INF] Executed DbCommand (28ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedEntrees] ([EntreeID], [SizeID], [UserId])
+VALUES (@p0, @p1, @p2);
+SELECT [ID]
+FROM [SelectedEntrees]
+WHERE @@ROWCOUNT = 1 AND [ID] = scope_identity();
+2021-06-10 14:56:50.062 -05:00 [INF] Executed DbCommand (89ms) [Parameters=[@__selectedEntree_UserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[ID], [s].[EntreeID], [s].[SizeID], [s].[UserId]
+FROM [SelectedEntrees] AS [s]
+WHERE ([s].[UserId] = @__selectedEntree_UserId_0) AND ([s].[UserId] = @__selectedEntree_UserId_0)
+2021-06-10 14:57:56.051 -05:00 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 14:59:04.695 -05:00 [INF] Executed DbCommand (23ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 14:59:08.069 -05:00 [INF] Executed DbCommand (23ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 14:59:12.953 -05:00 [INF] Executed DbCommand (22ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 14:59:15.768 -05:00 [INF] Executed DbCommand (22ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 14:59:18.483 -05:00 [INF] Executed DbCommand (21ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 14:59:42.031 -05:00 [INF] Executed DbCommand (23ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:00:06.816 -05:00 [INF] Executed DbCommand (44ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Carts] ([ComboID], [DrinkID], [SelectedEntreeID], [SideID], [UserID])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [ID]
+FROM [Carts]
+WHERE @@ROWCOUNT = 1 AND [ID] = scope_identity();
+2021-06-10 15:00:22.453 -05:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2021-06-10 15:00:22.453 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.CartItemController.AddItemToCart (SmallRestaurantAPI) in 281283.7648ms
+2021-06-10 15:00:22.453 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.CartItemController.AddItemToCart (SmallRestaurantAPI)'
+2021-06-10 15:00:22.454 -05:00 [INF] Request finished HTTP/1.1 POST https://localhost:44372/api/CartItem application/json 270 - 200 - - 281314.0922ms
+2021-06-10 15:08:32.824 -05:00 [INF] Application Is Starting
+2021-06-10 15:08:33.562 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-10 15:08:33.754 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-10 15:08:33.754 -05:00 [INF] Hosting environment: Development
+2021-06-10 15:08:33.754 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-10 15:08:33.783 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-10 15:08:33.868 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 86.1342ms
+2021-06-10 15:08:34.003 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-10 15:08:34.076 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 72.2444ms
+2021-06-10 15:08:55.734 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:44372/api/Combo - -
+2021-06-10 15:08:55.942 -05:00 [INF] Successfully validated the token.
+2021-06-10 15:08:55.945 -05:00 [INF] Authorization was successful.
+2021-06-10 15:08:55.946 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombos (SmallRestaurantAPI)'
+2021-06-10 15:08:55.963 -05:00 [INF] Route matched with {action = "GetCombos", controller = "Combo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCombos() on controller SmallRestaurantAPI.Controllers.ComboController (SmallRestaurantAPI).
+2021-06-10 15:08:56.793 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 15:08:57.353 -05:00 [INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ID], [c].[ComboNumber], [c].[ComboSizeOverride], [c].[Description], [c].[DrinkID], [c].[EntreeID], [c].[Name], [c].[SideID], [c].[SizeID]
+FROM [Combos] AS [c]
+2021-06-10 15:08:57.393 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SmallRestaurantAPI.DTOs.InitialComboDTO, SmallRestaurantAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-06-10 15:08:57.465 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.ComboController.GetCombos (SmallRestaurantAPI) in 1498.8453ms
+2021-06-10 15:08:57.466 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombos (SmallRestaurantAPI)'
+2021-06-10 15:08:57.470 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:44372/api/Combo - - - 200 182 application/json;+charset=utf-8 1735.4456ms
+2021-06-10 15:09:51.590 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/1 - -
+2021-06-10 15:09:51.630 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2021-06-10 15:09:51.633 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2021-06-10 15:09:51.635 -05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:44372/api/CartItem/1 - - - 401 - - 45.1001ms
+2021-06-10 15:10:18.306 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/1 - -
+2021-06-10 15:10:18.310 -05:00 [INF] Successfully validated the token.
+2021-06-10 15:10:18.311 -05:00 [INF] Authorization was successful.
+2021-06-10 15:10:18.311 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI)'
+2021-06-10 15:10:18.321 -05:00 [INF] Route matched with {action = "RemoveItemFromCart", controller = "CartItem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RemoveItemFromCart(Int32) on controller SmallRestaurantAPI.Controllers.CartItemController (SmallRestaurantAPI).
+2021-06-10 15:10:22.035 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 15:11:59.950 -05:00 [INF] Executed DbCommand (95,580ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[ComboID], [t].[DrinkID], [t].[SelectedEntreeID], [t].[SideID], [t].[UserID], [t].[ID0], [t].[EntreeID], [t].[SizeID], [t].[UserId0], [s0].[Id], [s0].[IngredientId], [s0].[SelectedEntreeID]
+FROM (
+    SELECT TOP(1) [c].[ID], [c].[ComboID], [c].[DrinkID], [c].[SelectedEntreeID], [c].[SideID], [c].[UserID], [s].[ID] AS [ID0], [s].[EntreeID], [s].[SizeID], [s].[UserId] AS [UserId0]
+    FROM [Carts] AS [c]
+    LEFT JOIN [SelectedEntrees] AS [s] ON [c].[SelectedEntreeID] = [s].[ID]
+    WHERE ([c].[ID] = @__id_0) AND ([c].[ID] = @__id_0)
+) AS [t]
+LEFT JOIN [SelectedIngredients] AS [s0] ON [t].[ID0] = [s0].[SelectedEntreeID]
+ORDER BY [t].[ID], [t].[ID0], [s0].[Id]
+2021-06-10 15:11:59.977 -05:00 [ERR] Failed executing DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[ID], [c].[ComboID], [c].[DrinkID], [c].[SelectedEntreeID], [c].[SideID], [c].[UserID]
+FROM [Carts] AS [c]
+WHERE [c].[ID] = @__p_0
+2021-06-10 15:12:00.003 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'SmallRestaurantAPI.Data.DatabaseContext'.
+System.InvalidOperationException: A second operation was started on this context before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: A second operation was started on this context before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2021-06-10 15:12:00.004 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'SmallRestaurantAPI.Data.DatabaseContext'.
+System.InvalidOperationException: There is already an open DataReader associated with this Connection which must be closed first.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: There is already an open DataReader associated with this Connection which must be closed first.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2021-06-10 15:12:00.113 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI) in 101791.1167ms
+2021-06-10 15:12:00.113 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI)'
+2021-06-10 15:12:00.114 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: There is already an open DataReader associated with this Connection which must be closed first.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at SmallRestaurantAPI.Repository.GenericRepository`1.Delete(Int32 id) in C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\Repository\GenericRepository.cs:line 26
+   at SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart(Int32 id) in C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\Controllers\CartItemController.cs:line 112
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-06-10 15:12:00.146 -05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:44372/api/CartItem/1 - - - 500 - text/plain 101839.8226ms
+2021-06-10 15:27:41.018 -05:00 [INF] Application Is Starting
+2021-06-10 15:27:41.609 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-10 15:27:41.807 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-10 15:27:41.807 -05:00 [INF] Hosting environment: Development
+2021-06-10 15:27:41.807 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-10 15:27:41.831 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-10 15:27:41.916 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 86.0495ms
+2021-06-10 15:27:41.994 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-10 15:27:42.067 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 72.9338ms
+2021-06-10 15:29:31.027 -05:00 [INF] Application Is Starting
+2021-06-10 15:29:31.543 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-10 15:29:31.737 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-10 15:29:31.737 -05:00 [INF] Hosting environment: Development
+2021-06-10 15:29:31.737 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-10 15:29:31.773 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-10 15:29:31.865 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 92.9371ms
+2021-06-10 15:29:31.952 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-10 15:29:32.023 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 70.9696ms
+2021-06-10 15:29:52.445 -05:00 [INF] Request starting HTTP/2 POST https://localhost:44372/api/Account/login application/json-patch+json 58
+2021-06-10 15:29:52.449 -05:00 [INF] CORS policy execution successful.
+2021-06-10 15:29:52.518 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI)'
+2021-06-10 15:29:52.540 -05:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SmallRestaurantAPI.DTOs.LoginUserDTO) on controller SmallRestaurantAPI.Controllers.AccountController (SmallRestaurantAPI).
+2021-06-10 15:29:52.877 -05:00 [INF] Login Attempt for adamwatson08@gmail.com
+2021-06-10 15:29:53.467 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 15:29:54.055 -05:00 [INF] Executed DbCommand (60ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2021-06-10 15:29:54.193 -05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2021-06-10 15:29:54.265 -05:00 [INF] Executing AcceptedResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2021-06-10 15:29:54.295 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI) in 1751.7137ms
+2021-06-10 15:29:54.295 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI)'
+2021-06-10 15:29:54.299 -05:00 [INF] Request finished HTTP/2 POST https://localhost:44372/api/Account/login application/json-patch+json 58 - 202 415 application/json;+charset=utf-8 1879.4773ms
+2021-06-10 15:30:39.014 -05:00 [INF] Request starting HTTP/1.1 POST https://localhost:44372/api/CartItem application/json 271
+2021-06-10 15:30:39.065 -05:00 [INF] Successfully validated the token.
+2021-06-10 15:30:39.068 -05:00 [INF] Authorization was successful.
+2021-06-10 15:30:39.069 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.CartItemController.AddItemToCart (SmallRestaurantAPI)'
+2021-06-10 15:30:39.075 -05:00 [INF] Route matched with {action = "AddItemToCart", controller = "CartItem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddItemToCart(SmallRestaurantAPI.DTOs.SelectedEntreeDTO) on controller SmallRestaurantAPI.Controllers.CartItemController (SmallRestaurantAPI).
+2021-06-10 15:30:46.872 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 15:31:34.135 -05:00 [INF] Executed DbCommand (29ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedEntrees] ([EntreeID], [SizeID])
+VALUES (@p0, @p1);
+SELECT [ID]
+FROM [SelectedEntrees]
+WHERE @@ROWCOUNT = 1 AND [ID] = scope_identity();
+2021-06-10 15:31:35.315 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__selectedEntree_ID_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[ID], [s].[EntreeID], [s].[SizeID]
+FROM [SelectedEntrees] AS [s]
+WHERE ([s].[ID] = @__selectedEntree_ID_0) AND ([s].[ID] = @__selectedEntree_ID_0)
+2021-06-10 15:31:45.210 -05:00 [INF] Executed DbCommand (24ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:31:45.294 -05:00 [INF] Executed DbCommand (22ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:31:45.370 -05:00 [INF] Executed DbCommand (22ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:31:45.444 -05:00 [INF] Executed DbCommand (23ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:31:45.527 -05:00 [INF] Executed DbCommand (33ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:31:45.605 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:31:45.686 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:31:59.726 -05:00 [INF] Executed DbCommand (29ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [CartItems] ([ComboID], [DrinkID], [SelectedEntreeID], [SideID], [UserID])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [ID]
+FROM [CartItems]
+WHERE @@ROWCOUNT = 1 AND [ID] = scope_identity();
+2021-06-10 15:32:04.297 -05:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2021-06-10 15:32:04.297 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.CartItemController.AddItemToCart (SmallRestaurantAPI) in 85221.5106ms
+2021-06-10 15:32:04.297 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.CartItemController.AddItemToCart (SmallRestaurantAPI)'
+2021-06-10 15:32:04.298 -05:00 [INF] Request finished HTTP/1.1 POST https://localhost:44372/api/CartItem application/json 271 - 200 - - 85284.0629ms
+2021-06-10 15:32:55.548 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/2 - -
+2021-06-10 15:32:55.574 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2021-06-10 15:32:55.596 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+2021-06-10 15:32:55.599 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2021-06-10 15:32:55.604 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2021-06-10 15:32:55.605 -05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:44372/api/CartItem/2 - - - 401 - - 57.3240ms
+2021-06-10 15:33:03.334 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/2 - -
+2021-06-10 15:33:03.334 -05:00 [INF] Successfully validated the token.
+2021-06-10 15:33:03.335 -05:00 [INF] Authorization was successful.
+2021-06-10 15:33:03.335 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI)'
+2021-06-10 15:33:03.338 -05:00 [INF] Route matched with {action = "RemoveItemFromCart", controller = "CartItem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RemoveItemFromCart(Int32) on controller SmallRestaurantAPI.Controllers.CartItemController (SmallRestaurantAPI).
+2021-06-10 15:33:06.671 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 15:42:41.261 -05:00 [INF] Application Is Starting
+2021-06-10 15:42:41.865 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-10 15:42:42.048 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-10 15:42:42.048 -05:00 [INF] Hosting environment: Development
+2021-06-10 15:42:42.048 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-10 15:42:42.075 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-10 15:42:42.176 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 103.1427ms
+2021-06-10 15:42:42.277 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-10 15:42:42.351 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 74.1985ms
+2021-06-10 15:42:45.589 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/2 - -
+2021-06-10 15:42:45.803 -05:00 [INF] Successfully validated the token.
+2021-06-10 15:42:45.807 -05:00 [INF] Authorization was successful.
+2021-06-10 15:42:45.808 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI)'
+2021-06-10 15:42:45.832 -05:00 [INF] Route matched with {action = "RemoveItemFromCart", controller = "CartItem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RemoveItemFromCart(Int32) on controller SmallRestaurantAPI.Controllers.CartItemController (SmallRestaurantAPI).
+2021-06-10 15:42:58.414 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 15:45:08.327 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'SmallRestaurantAPI.Data.DatabaseContext'.
+System.InvalidOperationException: A second operation was started on this context before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: A second operation was started on this context before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2021-06-10 15:45:08.412 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI) in 142576.048ms
+2021-06-10 15:45:08.417 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI)'
+2021-06-10 15:45:08.424 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: A second operation was started on this context before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at SmallRestaurantAPI.Repository.GenericRepository`1.Delete(Int32 id) in C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\Repository\GenericRepository.cs:line 26
+   at SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart(Int32 id) in C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI\Controllers\CartItemController.cs:line 111
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-06-10 15:45:08.461 -05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:44372/api/CartItem/2 - - - 500 - text/plain 142871.7120ms
+2021-06-10 15:45:08.465 -05:00 [ERR] An error occurred using the connection to database 'SmallRestaurantAPI' on server 'tcp:smallrestarauntapi.database.windows.net,1433'.
+2021-06-10 15:45:08.471 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'SmallRestaurantAPI.Data.DatabaseContext'.
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2021-06-10 15:47:35.010 -05:00 [INF] Application Is Starting
+2021-06-10 15:47:35.646 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-10 15:47:35.834 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-10 15:47:35.834 -05:00 [INF] Hosting environment: Development
+2021-06-10 15:47:35.834 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-10 15:47:35.862 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-10 15:47:35.955 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 94.6196ms
+2021-06-10 15:47:36.044 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-10 15:47:36.112 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 67.9318ms
+2021-06-10 15:47:40.780 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/2 - -
+2021-06-10 15:47:40.998 -05:00 [INF] Successfully validated the token.
+2021-06-10 15:47:41.002 -05:00 [INF] Authorization was successful.
+2021-06-10 15:47:41.003 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI)'
+2021-06-10 15:47:41.026 -05:00 [INF] Route matched with {action = "RemoveItemFromCart", controller = "CartItem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RemoveItemFromCart(Int32) on controller SmallRestaurantAPI.Controllers.CartItemController (SmallRestaurantAPI).
+2021-06-10 15:47:45.054 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 15:49:49.563 -05:00 [INF] Application Is Starting
+2021-06-10 15:49:50.179 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-10 15:49:50.367 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-10 15:49:50.367 -05:00 [INF] Hosting environment: Development
+2021-06-10 15:49:50.367 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-10 15:49:50.395 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-10 15:49:50.486 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 92.8726ms
+2021-06-10 15:49:50.564 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-10 15:49:50.632 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 67.7468ms
+2021-06-10 15:50:01.960 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/2 - -
+2021-06-10 15:50:02.167 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2021-06-10 15:50:02.199 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+2021-06-10 15:50:02.202 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2021-06-10 15:50:02.207 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2021-06-10 15:50:02.209 -05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:44372/api/CartItem/2 - - - 401 - - 247.7895ms
+2021-06-10 15:50:25.972 -05:00 [INF] Request starting HTTP/2 POST https://localhost:44372/api/Account/login application/json-patch+json 58
+2021-06-10 15:50:25.975 -05:00 [INF] CORS policy execution successful.
+2021-06-10 15:50:25.980 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI)'
+2021-06-10 15:50:26.003 -05:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SmallRestaurantAPI.DTOs.LoginUserDTO) on controller SmallRestaurantAPI.Controllers.AccountController (SmallRestaurantAPI).
+2021-06-10 15:50:26.293 -05:00 [INF] Login Attempt for adamwatson08@gmail.com
+2021-06-10 15:50:26.875 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 15:50:27.491 -05:00 [INF] Executed DbCommand (62ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2021-06-10 15:50:27.630 -05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2021-06-10 15:50:27.656 -05:00 [INF] Executing AcceptedResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2021-06-10 15:50:27.687 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI) in 1680.7245ms
+2021-06-10 15:50:27.687 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI)'
+2021-06-10 15:50:27.691 -05:00 [INF] Request finished HTTP/2 POST https://localhost:44372/api/Account/login application/json-patch+json 58 - 202 415 application/json;+charset=utf-8 1720.9056ms
+2021-06-10 15:50:58.097 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/2 - -
+2021-06-10 15:50:58.110 -05:00 [INF] Successfully validated the token.
+2021-06-10 15:50:58.115 -05:00 [INF] Authorization was successful.
+2021-06-10 15:50:58.115 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI)'
+2021-06-10 15:50:58.119 -05:00 [INF] Route matched with {action = "RemoveItemFromCart", controller = "CartItem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RemoveItemFromCart(Int32) on controller SmallRestaurantAPI.Controllers.CartItemController (SmallRestaurantAPI).
+2021-06-10 15:51:01.888 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 15:56:33.165 -05:00 [INF] Application Is Starting
+2021-06-10 15:56:33.767 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-10 15:56:34.028 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-10 15:56:34.028 -05:00 [INF] Hosting environment: Development
+2021-06-10 15:56:34.028 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-10 15:56:34.055 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-10 15:56:34.140 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 86.1866ms
+2021-06-10 15:56:34.220 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-10 15:56:34.287 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 66.9509ms
+2021-06-10 15:56:55.433 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:44372/api/Combo - -
+2021-06-10 15:56:55.908 -05:00 [INF] Successfully validated the token.
+2021-06-10 15:56:55.914 -05:00 [INF] Authorization was successful.
+2021-06-10 15:56:55.915 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombos (SmallRestaurantAPI)'
+2021-06-10 15:56:55.935 -05:00 [INF] Route matched with {action = "GetCombos", controller = "Combo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCombos() on controller SmallRestaurantAPI.Controllers.ComboController (SmallRestaurantAPI).
+2021-06-10 15:56:56.766 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 15:56:57.296 -05:00 [INF] Executed DbCommand (57ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ID], [c].[ComboNumber], [c].[ComboSizeOverride], [c].[Description], [c].[DrinkID], [c].[EntreeID], [c].[Name], [c].[SideID], [c].[SizeID]
+FROM [Combos] AS [c]
+2021-06-10 15:56:57.334 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SmallRestaurantAPI.DTOs.InitialComboDTO, SmallRestaurantAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-06-10 15:56:57.404 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.ComboController.GetCombos (SmallRestaurantAPI) in 1465.2157ms
+2021-06-10 15:56:57.404 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.ComboController.GetCombos (SmallRestaurantAPI)'
+2021-06-10 15:56:57.408 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:44372/api/Combo - - - 200 182 application/json;+charset=utf-8 1975.5419ms
+2021-06-10 15:57:11.637 -05:00 [INF] Request starting HTTP/1.1 POST https://localhost:44372/api/CartItem application/json 271
+2021-06-10 15:57:11.639 -05:00 [INF] Successfully validated the token.
+2021-06-10 15:57:11.639 -05:00 [INF] Authorization was successful.
+2021-06-10 15:57:11.639 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.CartItemController.AddItemToCart (SmallRestaurantAPI)'
+2021-06-10 15:57:11.648 -05:00 [INF] Route matched with {action = "AddItemToCart", controller = "CartItem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddItemToCart(SmallRestaurantAPI.DTOs.SelectedEntreeDTO) on controller SmallRestaurantAPI.Controllers.CartItemController (SmallRestaurantAPI).
+2021-06-10 15:57:11.729 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 15:57:11.919 -05:00 [INF] Executed DbCommand (45ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedEntrees] ([EntreeID], [SizeID])
+VALUES (@p0, @p1);
+SELECT [ID]
+FROM [SelectedEntrees]
+WHERE @@ROWCOUNT = 1 AND [ID] = scope_identity();
+2021-06-10 15:57:12.076 -05:00 [INF] Executed DbCommand (33ms) [Parameters=[@__selectedEntree_ID_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[ID], [s].[EntreeID], [s].[SizeID]
+FROM [SelectedEntrees] AS [s]
+WHERE ([s].[ID] = @__selectedEntree_ID_0) AND ([s].[ID] = @__selectedEntree_ID_0)
+2021-06-10 15:57:12.142 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:57:12.226 -05:00 [INF] Executed DbCommand (22ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:57:12.301 -05:00 [INF] Executed DbCommand (23ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:57:12.397 -05:00 [INF] Executed DbCommand (22ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:57:12.483 -05:00 [INF] Executed DbCommand (31ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:57:12.565 -05:00 [INF] Executed DbCommand (23ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:57:12.641 -05:00 [INF] Executed DbCommand (23ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [SelectedIngredients] ([IngredientId], [SelectedEntreeID])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [SelectedIngredients]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2021-06-10 15:57:16.340 -05:00 [INF] Executed DbCommand (29ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [CartItems] ([ComboID], [DrinkID], [SelectedEntreeID], [SideID], [UserID])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [ID]
+FROM [CartItems]
+WHERE @@ROWCOUNT = 1 AND [ID] = scope_identity();
+2021-06-10 15:57:16.382 -05:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2021-06-10 15:57:16.382 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.CartItemController.AddItemToCart (SmallRestaurantAPI) in 4734.2815ms
+2021-06-10 15:57:16.382 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.CartItemController.AddItemToCart (SmallRestaurantAPI)'
+2021-06-10 15:57:16.383 -05:00 [INF] Request finished HTTP/1.1 POST https://localhost:44372/api/CartItem application/json 271 - 200 - - 4745.7392ms
+2021-06-10 15:57:44.833 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/1 - -
+2021-06-10 15:57:44.837 -05:00 [INF] Successfully validated the token.
+2021-06-10 15:57:44.838 -05:00 [INF] Authorization was successful.
+2021-06-10 15:57:44.838 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI)'
+2021-06-10 15:57:44.840 -05:00 [INF] Route matched with {action = "RemoveItemFromCart", controller = "CartItem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RemoveItemFromCart(Int32) on controller SmallRestaurantAPI.Controllers.CartItemController (SmallRestaurantAPI).
+2021-06-10 15:57:44.851 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 16:00:22.395 -05:00 [INF] Application Is Starting
+2021-06-10 16:00:23.055 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-10 16:00:23.276 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-10 16:00:23.277 -05:00 [INF] Hosting environment: Development
+2021-06-10 16:00:23.277 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-10 16:00:23.307 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-10 16:00:23.405 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 100.3631ms
+2021-06-10 16:00:23.486 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-10 16:00:23.556 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 70.3942ms
+2021-06-10 16:00:30.492 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/1 - -
+2021-06-10 16:00:30.708 -05:00 [INF] Successfully validated the token.
+2021-06-10 16:00:30.713 -05:00 [INF] Authorization was successful.
+2021-06-10 16:00:30.713 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI)'
+2021-06-10 16:00:30.738 -05:00 [INF] Route matched with {action = "RemoveItemFromCart", controller = "CartItem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RemoveItemFromCart(Int32) on controller SmallRestaurantAPI.Controllers.CartItemController (SmallRestaurantAPI).
+2021-06-10 16:00:31.578 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 16:05:27.867 -05:00 [INF] Application Is Starting
+2021-06-10 16:05:28.508 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-10 16:05:28.742 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-10 16:05:28.742 -05:00 [INF] Hosting environment: Development
+2021-06-10 16:05:28.742 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-10 16:05:28.769 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-10 16:05:28.855 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 87.5070ms
+2021-06-10 16:05:28.937 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-10 16:05:29.014 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 73.9790ms
+2021-06-10 16:05:30.678 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/1 - -
+2021-06-10 16:05:30.883 -05:00 [INF] Successfully validated the token.
+2021-06-10 16:05:30.887 -05:00 [INF] Authorization was successful.
+2021-06-10 16:05:30.887 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI)'
+2021-06-10 16:05:30.925 -05:00 [INF] Route matched with {action = "RemoveItemFromCart", controller = "CartItem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RemoveItemFromCart(Int32) on controller SmallRestaurantAPI.Controllers.CartItemController (SmallRestaurantAPI).
+2021-06-10 16:05:31.755 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 16:11:48.414 -05:00 [INF] Application Is Starting
+2021-06-10 16:11:49.057 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-10 16:11:49.240 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-10 16:11:49.240 -05:00 [INF] Hosting environment: Development
+2021-06-10 16:11:49.240 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-10 16:11:49.296 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-10 16:11:49.383 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 89.1173ms
+2021-06-10 16:11:49.471 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-10 16:11:49.549 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 77.9486ms
+2021-06-10 16:11:53.233 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/1 - -
+2021-06-10 16:11:53.430 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2021-06-10 16:11:53.461 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+2021-06-10 16:11:53.465 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2021-06-10 16:11:53.472 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2021-06-10 16:11:53.473 -05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:44372/api/CartItem/1 - - - 401 - - 240.6347ms
+2021-06-10 16:12:21.335 -05:00 [INF] Request starting HTTP/2 POST https://localhost:44372/api/Account/login application/json-patch+json 58
+2021-06-10 16:12:21.339 -05:00 [INF] CORS policy execution successful.
+2021-06-10 16:12:21.345 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI)'
+2021-06-10 16:12:21.368 -05:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SmallRestaurantAPI.DTOs.LoginUserDTO) on controller SmallRestaurantAPI.Controllers.AccountController (SmallRestaurantAPI).
+2021-06-10 16:12:21.660 -05:00 [INF] Login Attempt for adamwatson08@gmail.com
+2021-06-10 16:12:22.242 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 16:12:22.972 -05:00 [INF] Executed DbCommand (64ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2021-06-10 16:12:22.996 -05:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2021-06-10 16:12:23.033 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI) in 1662.3037ms
+2021-06-10 16:12:23.034 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI)'
+2021-06-10 16:12:23.038 -05:00 [INF] Request finished HTTP/2 POST https://localhost:44372/api/Account/login application/json-patch+json 58 - 401 162 application/problem+json;+charset=utf-8 1704.9919ms
+2021-06-10 16:13:27.430 -05:00 [INF] Request starting HTTP/2 POST https://localhost:44372/api/Account/register application/json-patch+json 150
+2021-06-10 16:13:27.433 -05:00 [INF] CORS policy execution successful.
+2021-06-10 16:13:27.434 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.AccountController.Register (SmallRestaurantAPI)'
+2021-06-10 16:13:27.437 -05:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(SmallRestaurantAPI.DTOs.UserDTO) on controller SmallRestaurantAPI.Controllers.AccountController (SmallRestaurantAPI).
+2021-06-10 16:13:27.460 -05:00 [INF] Registration Attempt for adamwatson08@gmail.com
+2021-06-10 16:13:27.501 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 16:13:27.528 -05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2021-06-10 16:13:27.561 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2021-06-10 16:13:27.729 -05:00 [INF] Executed DbCommand (28ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTimeOffset), @p9='?' (Size = 256), @p10='?' (Size = 256), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 4000), @p15='?' (DbType = Boolean), @p16='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [FirstName], [LastName], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
+2021-06-10 16:13:27.815 -05:00 [INF] Executed DbCommand (37ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2021-06-10 16:13:27.868 -05:00 [INF] Executed DbCommand (27ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE ([a].[UserId] = @__p_0) AND ([a].[RoleId] = @__p_1)
+2021-06-10 16:13:27.894 -05:00 [INF] Executed DbCommand (23ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2021-06-10 16:13:27.941 -05:00 [INF] Executed DbCommand (39ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2021-06-10 16:13:27.978 -05:00 [INF] Executed DbCommand (35ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2021-06-10 16:13:28.037 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+2021-06-10 16:13:28.075 -05:00 [INF] Executed DbCommand (36ms) [Parameters=[@p16='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p17='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [FirstName] = @p4, [LastName] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
+WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
+SELECT @@ROWCOUNT;
+2021-06-10 16:13:28.105 -05:00 [INF] Executing AcceptedResult, writing value of type 'null'.
+2021-06-10 16:13:28.105 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.AccountController.Register (SmallRestaurantAPI) in 668.2105ms
+2021-06-10 16:13:28.105 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.AccountController.Register (SmallRestaurantAPI)'
+2021-06-10 16:13:28.105 -05:00 [INF] Request finished HTTP/2 POST https://localhost:44372/api/Account/register application/json-patch+json 150 - 202 0 - 675.6295ms
+2021-06-10 16:13:32.892 -05:00 [INF] Request starting HTTP/2 POST https://localhost:44372/api/Account/login application/json-patch+json 58
+2021-06-10 16:13:32.892 -05:00 [INF] CORS policy execution successful.
+2021-06-10 16:13:32.892 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI)'
+2021-06-10 16:13:32.893 -05:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SmallRestaurantAPI.DTOs.LoginUserDTO) on controller SmallRestaurantAPI.Controllers.AccountController (SmallRestaurantAPI).
+2021-06-10 16:13:32.899 -05:00 [INF] Login Attempt for adamwatson08@gmail.com
+2021-06-10 16:13:32.904 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 16:13:32.930 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2021-06-10 16:13:33.011 -05:00 [INF] Executed DbCommand (44ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2021-06-10 16:13:33.035 -05:00 [INF] Executing AcceptedResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2021-06-10 16:13:33.037 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI) in 144.0759ms
+2021-06-10 16:13:33.037 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI)'
+2021-06-10 16:13:33.037 -05:00 [INF] Request finished HTTP/2 POST https://localhost:44372/api/Account/login application/json-patch+json 58 - 202 520 application/json;+charset=utf-8 144.6644ms
+2021-06-10 16:13:50.981 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/1 - -
+2021-06-10 16:13:50.991 -05:00 [INF] Successfully validated the token.
+2021-06-10 16:13:50.993 -05:00 [INF] Authorization was successful.
+2021-06-10 16:13:50.993 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI)'
+2021-06-10 16:13:50.996 -05:00 [INF] Route matched with {action = "RemoveItemFromCart", controller = "CartItem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RemoveItemFromCart(Int32) on controller SmallRestaurantAPI.Controllers.CartItemController (SmallRestaurantAPI).
+2021-06-10 16:13:50.998 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-10 16:13:51.029 -05:00 [INF] Executed DbCommand (23ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[ID], [c].[ComboID], [c].[DrinkID], [c].[SelectedEntreeID], [c].[SideID], [c].[UserID]
+FROM [CartItems] AS [c]
+WHERE ([c].[ID] = @__id_0) AND ([c].[ID] = @__id_0)
+2021-06-10 16:14:06.422 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[ID], [c].[ComboID], [c].[DrinkID], [c].[SelectedEntreeID], [c].[SideID], [c].[UserID]
+FROM [CartItems] AS [c]
+WHERE [c].[ID] = @__p_0
+2021-06-10 16:14:08.293 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [CartItems]
+WHERE [ID] = @p0;
+SELECT @@ROWCOUNT;
+2021-06-10 16:14:12.333 -05:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 204
+2021-06-10 16:14:12.333 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI) in 21337.7768ms
+2021-06-10 16:14:12.333 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveItemFromCart (SmallRestaurantAPI)'
+2021-06-10 16:14:23.959 -05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:44372/api/CartItem/1 - - - 204 - - 32977.7570ms

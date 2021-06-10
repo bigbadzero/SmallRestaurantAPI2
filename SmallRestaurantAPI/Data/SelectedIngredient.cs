@@ -13,7 +13,7 @@ namespace SmallRestaurantAPI.Data
         public int Id { get; set; }
 
         [ForeignKey(nameof(SelectedEntree))]
-        public Guid SelectedEntreeID { get; set; }
+        public int SelectedEntreeID { get; set; }
         public  SelectedEntree SelectedEntree { get; set; }
 
 

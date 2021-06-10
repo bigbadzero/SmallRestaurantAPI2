@@ -23,7 +23,7 @@ namespace SmallRestaurantAPI.Repository
         private IGenericRepository<Side> _sides;
         private IGenericRepository<SideAddon> _sideAddons;
         private IGenericRepository<Size> _sizes;
-        private IGenericRepository<Cart> _carts;
+        private IGenericRepository<CartItem> _cartItems;
         private IGenericRepository<ApiUser> _apiUser;
         private IGenericRepository<SelectedEntree> _selectedEntree;
         private IGenericRepository<SelectedIngredient> _selectedIngredient;
@@ -45,7 +45,7 @@ namespace SmallRestaurantAPI.Repository
         public IGenericRepository<Side> Sides => _sides ??= new GenericRepository<Side>(_context);
         public IGenericRepository<SideAddon> SideAddons => _sideAddons ??= new GenericRepository<SideAddon>(_context);
         public IGenericRepository<Size> Sizes => _sizes ??= new GenericRepository<Size>(_context);
-        public IGenericRepository<Cart> Carts => _carts ??= new GenericRepository<Cart>(_context);
+        public IGenericRepository<CartItem> CartItems => _cartItems ??= new GenericRepository<CartItem>(_context);
         public IGenericRepository<SelectedEntree> SelectedEntrees => _selectedEntree ??= new GenericRepository<SelectedEntree>(_context);
         public IGenericRepository<SelectedIngredient> SelectedIngredients => _selectedIngredient ??= new GenericRepository<SelectedIngredient>(_context);
 

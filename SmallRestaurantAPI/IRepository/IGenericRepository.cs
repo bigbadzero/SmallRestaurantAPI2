@@ -26,7 +26,7 @@ namespace SmallRestaurantAPI.IRepository
         
         Task Insert(T entity);
         Task InsertRange(IEnumerable<T> entities);
-        Task Delete(int id);
+        Task Delete(int id );
         void DeleteRange(IEnumerable<T> entities);
         void Update(T entity);
     }

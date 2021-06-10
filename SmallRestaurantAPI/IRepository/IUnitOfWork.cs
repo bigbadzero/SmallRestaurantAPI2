@@ -20,7 +20,7 @@ namespace SmallRestaurantAPI.IRepository
         IGenericRepository<Side> Sides { get; }
         IGenericRepository<SideAddon> SideAddons { get; }
         IGenericRepository<Size> Sizes { get; }
-        IGenericRepository<Cart> Carts { get; }
+        IGenericRepository<CartItem> CartItems { get; }
         IGenericRepository<SelectedEntree> SelectedEntrees { get; }
         IGenericRepository<SelectedIngredient> SelectedIngredients { get; }
 

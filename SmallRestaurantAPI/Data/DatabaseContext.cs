@@ -18,6 +18,15 @@ namespace SmallRestaurantAPI.Data
             base.OnModelCreating(builder);
 
             builder.ApplyConfiguration(new RoleConfiguration());
+            builder.ApplyConfiguration(new IngredientConfiguration());
+            builder.ApplyConfiguration(new SizeConfiguration());
+            builder.ApplyConfiguration(new CategoryConfiguration());
+            builder.ApplyConfiguration(new EntreeConfiguration());
+            builder.ApplyConfiguration(new EntreeBaseIngredientConfiguration());
+            builder.ApplyConfiguration(new EntreeAddonConfiguration());
+            builder.ApplyConfiguration(new SideConfiguration());
+            builder.ApplyConfiguration(new DrinkConfiguration());
+            builder.ApplyConfiguration(new ComboConfiguration());
 
         }
 
@@ -34,7 +43,7 @@ namespace SmallRestaurantAPI.Data
         public DbSet<Side> Sides { get; set; }
         public DbSet<SideAddon> SideAddons { get; set; }
         public DbSet<Size> Sizes { get; set; }
-        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
         public DbSet<SelectedEntree> SelectedEntrees { get; set; }
         public DbSet<SelectedIngredient> SelectedIngredients { get; set; }
     }

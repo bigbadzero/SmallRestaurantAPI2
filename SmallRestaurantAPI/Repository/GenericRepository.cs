@@ -32,8 +32,6 @@ namespace SmallRestaurantAPI.Repository
             _db.RemoveRange(entities);
         }
 
-        
-
         public async Task<T> Get(Expression<Func<T, bool>> expression = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)

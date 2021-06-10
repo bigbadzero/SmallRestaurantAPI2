@@ -18,11 +18,6 @@ namespace SmallRestaurantAPI.Data
         public int ComboNumber { get; set; }
         public bool? ComboSizeOverride { get; set; }
 
-        [Required]
-        [ForeignKey(nameof(Category))]
-        public int CategoryID { get; set; }
-        public Category Category { get; set; }
-
 
         [Required]
         [ForeignKey(nameof(Entree))]

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI.DTOs
 {
-    public class CartDTO
+    public class CartItemDTO
     {
 
         public UserDTO User { get; set; }

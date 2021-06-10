@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SmallRestaurantAPI.Data;
 using SmallRestaurantAPI.DTOs;
@@ -17,14 +18,14 @@ namespace SmallRestaurantAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CartController : ControllerBase
+    public class CartItemController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<CategoryController> _logger;
         private readonly IMapper _mapper;
         private readonly UserManager<ApiUser> _userManager;
 
-        public CartController(IUnitOfWork unitOfWork, ILogger<CategoryController> logger, IMapper mapper, UserManager<ApiUser> userManager)
+        public CartItemController(IUnitOfWork unitOfWork, ILogger<CategoryController> logger, IMapper mapper, UserManager<ApiUser> userManager)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
@@ -39,7 +40,7 @@ namespace SmallRestaurantAPI.Controllers
         public async Task<IActionResult> GetCart()
         {
             var userID = GetCurrentUserID();
-            var carts = await _unitOfWork.Carts.GetAll(q => q.UserID == userID);
+            var carts = await _unitOfWork.CartItems.GetAll(q => q.UserID == userID);
             return Ok();
         }
 
@@ -58,11 +59,10 @@ namespace SmallRestaurantAPI.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var selectedEntree = _mapper.Map<SelectedEntree>(selectedEntreeDTO);
-                selectedEntree.UserId = GetCurrentUserID();
+                SelectedEntree selectedEntree = _mapper.Map<SelectedEntree>(selectedEntreeDTO);
                 await _unitOfWork.SelectedEntrees.Insert(selectedEntree);
                 await _unitOfWork.Save();
-                var insertedEntree = await _unitOfWork.SelectedEntrees.Get(q => q.UserId == selectedEntree.UserId);
+                var insertedEntree = await _unitOfWork.SelectedEntrees.Get(q => q.ID == selectedEntree.ID);
 
 
                 //get individual ingredients to insert into selected ingredients
@@ -77,12 +77,12 @@ namespace SmallRestaurantAPI.Controllers
                     await _unitOfWork.SelectedIngredients.Insert(selectedIngredient);
                     await _unitOfWork.Save();
                 }
-                var cart = new Cart()
+                var cart = new CartItem()
                 {
                     UserID = GetCurrentUserID(),
                     SelectedEntreeID = insertedEntree.ID
                 };
-                await _unitOfWork.Carts.Insert(cart);
+                await _unitOfWork.CartItems.Insert(cart);
                 await _unitOfWork.Save();
                 return Ok();
             }
@@ -90,6 +90,28 @@ namespace SmallRestaurantAPI.Controllers
             return Ok();
         }
 
+        [Authorize]
+        [HttpDelete("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> RemoveItemFromCart(int id)
+        {
+            if(id < 1)
+            {
+                return BadRequest();
+            }
+
+            CartItem cartItem = await _unitOfWork.CartItems.Get(q => q.ID == id);
+            if (cartItem == null)
+            {
+                return BadRequest();
+            }
+
+            await _unitOfWork.CartItems.Delete(id);
+            await _unitOfWork.Save();
+            return NoContent();
+        }
 
 
 
