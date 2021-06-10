@@ -48,9 +48,9 @@ namespace SmallRestaurantAPI.Controllers
         [HttpPost(Name = "AddItemToCart")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AddItemToCart([FromBody] EntreeDTO entreeDTO =null)
+        public async Task<IActionResult> AddItemToCart([FromBody] SelectedEntreeDTO selectedEntreeDTO =null)
         {
-            if(entreeDTO != null)
+            if(selectedEntreeDTO != null)
             {
                 if (!ModelState.IsValid)
                 {
@@ -58,15 +58,30 @@ namespace SmallRestaurantAPI.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var entree = _mapper.Map<Entree>(entreeDTO);
-                var userID = GetCurrentUserID();
+                var selectedEntree = _mapper.Map<SelectedEntree>(selectedEntreeDTO);
+                selectedEntree.UserId = GetCurrentUserID();
+                await _unitOfWork.SelectedEntrees.Insert(selectedEntree);
+                await _unitOfWork.Save();
+                var insertedEntree = await _unitOfWork.SelectedEntrees.Get(q => q.UserId == selectedEntree.UserId);
 
+
+                //get individual ingredients to insert into selected ingredients
+                var ingredients = _mapper.Map<IList<Ingredient>>(selectedEntreeDTO.SelectedEntreeIngredients);
+                foreach (Ingredient ingredient in ingredients)
+                {
+                    var selectedIngredient = new SelectedIngredient()
+                    {
+                        IngredientId = ingredient.ID,
+                        SelectedEntreeID = insertedEntree.ID
+                    };
+                    await _unitOfWork.SelectedIngredients.Insert(selectedIngredient);
+                    await _unitOfWork.Save();
+                }
                 var cart = new Cart()
                 {
-                    UserID = userID,
-                    EntreeID = entree.ID
+                    UserID = GetCurrentUserID(),
+                    SelectedEntreeID = insertedEntree.ID
                 };
-
                 await _unitOfWork.Carts.Insert(cart);
                 await _unitOfWork.Save();
                 return Ok();

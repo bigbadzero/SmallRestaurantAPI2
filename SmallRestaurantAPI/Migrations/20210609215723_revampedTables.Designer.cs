@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmallRestaurantAPI.Data;
 
 namespace SmallRestaurantAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210609215723_revampedTables")]
+    partial class revampedTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace SmallRestaurantAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6a86fdec-877e-487b-8c39-86d9cb8fb328",
-                            ConcurrencyStamp = "574105b3-cf87-4615-9bbb-6c86e51f7141",
+                            Id = "61ab3b0c-71a0-4088-a446-c9d6a6868795",
+                            ConcurrencyStamp = "46637418-3b9b-4683-a8fd-74ee390c186f",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "1411b65b-e2ba-459a-86c3-d2129b4bcf64",
-                            ConcurrencyStamp = "9e4c10d4-fb93-4072-99b3-1c91e46cc6da",
+                            Id = "f787b1c0-969a-4f30-a11d-bc4fbfbe58fd",
+                            ConcurrencyStamp = "b32f13bd-bfb7-4818-be1d-1867f1b023bc",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -521,14 +523,9 @@ namespace SmallRestaurantAPI.Migrations
                     b.Property<int?>("SizeID")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("ID");
 
                     b.HasIndex("EntreeID");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("SelectedEntrees");
                 });
@@ -857,12 +854,6 @@ namespace SmallRestaurantAPI.Migrations
                         .HasForeignKey("EntreeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("SmallRestaurantAPI.Data.ApiUser", "ApiUser")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("ApiUser");
 
                     b.Navigation("Entree");
                 });

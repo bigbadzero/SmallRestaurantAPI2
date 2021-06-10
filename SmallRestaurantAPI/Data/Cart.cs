@@ -10,18 +10,15 @@ namespace SmallRestaurantAPI.Data
     public class Cart
     {
         [Key]
-        public int ID { get; set; }
-
-
         [ForeignKey(nameof(ApiUser))]
         [StringLength(450)]
         public string UserID { get; set; }
         public ApiUser ApiUser { get; set; }
 
 
-        [ForeignKey(nameof(Entree))]
-        public int? EntreeID { get; set; }
-        public Entree Entree { get; set; }
+        [ForeignKey(nameof(selectedEntree))]
+        public Guid? SelectedEntreeID { get; set; }
+        public SelectedEntree selectedEntree { get; set; }
 
 
         [ForeignKey(nameof(Combo))]
