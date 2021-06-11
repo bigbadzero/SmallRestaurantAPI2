@@ -1,0 +1,111 @@
+2021-06-11 08:38:44.838 -05:00 [INF] Application Is Starting
+2021-06-11 08:38:45.525 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-11 08:38:45.740 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-11 08:38:45.741 -05:00 [INF] Hosting environment: Development
+2021-06-11 08:38:45.741 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-11 08:38:45.787 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-11 08:38:45.891 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 106.4042ms
+2021-06-11 08:38:45.976 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-11 08:38:46.045 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 69.1587ms
+2021-06-11 08:40:29.421 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:44372/api/login application/json 70
+2021-06-11 08:40:29.510 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:44372/api/login application/json 70 - 404 - - 89.8531ms
+2021-06-11 08:40:46.486 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:44372/api/Account/login application/json 70
+2021-06-11 08:40:46.491 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2021-06-11 08:40:46.491 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2021-06-11 08:40:46.492 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:44372/api/Account/login application/json 70 - 405 - - 5.5839ms
+2021-06-11 08:42:44.637 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:44372/api/Account/login application/json 70
+2021-06-11 08:42:44.641 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2021-06-11 08:42:44.641 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2021-06-11 08:42:44.642 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:44372/api/Account/login application/json 70 - 405 - - 5.0541ms
+2021-06-11 08:44:03.149 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:44372/api/Account/login application/json 70
+2021-06-11 08:44:03.151 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2021-06-11 08:44:03.151 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2021-06-11 08:44:03.152 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:44372/api/Account/login application/json 70 - 405 - - 2.7420ms
+2021-06-11 08:44:35.183 -05:00 [INF] Request starting HTTP/2 POST https://localhost:44372/api/Account/login application/json-patch+json 58
+2021-06-11 08:44:35.188 -05:00 [INF] CORS policy execution successful.
+2021-06-11 08:44:35.189 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI)'
+2021-06-11 08:44:35.216 -05:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SmallRestaurantAPI.DTOs.LoginUserDTO) on controller SmallRestaurantAPI.Controllers.AccountController (SmallRestaurantAPI).
+2021-06-11 08:44:35.572 -05:00 [INF] Login Attempt for adamwatson08@gmail.com
+2021-06-11 08:44:36.162 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-11 08:44:36.866 -05:00 [INF] Executed DbCommand (61ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2021-06-11 08:44:37.011 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2021-06-11 08:44:37.085 -05:00 [INF] Executing AcceptedResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2021-06-11 08:44:37.116 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI) in 1896.9699ms
+2021-06-11 08:44:37.116 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.AccountController.Login (SmallRestaurantAPI)'
+2021-06-11 08:44:37.121 -05:00 [INF] Request finished HTTP/2 POST https://localhost:44372/api/Account/login application/json-patch+json 58 - 202 415 application/json;+charset=utf-8 1937.1650ms
+2021-06-11 08:45:32.596 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/5 - -
+2021-06-11 08:45:32.641 -05:00 [INF] Successfully validated the token.
+2021-06-11 08:45:32.644 -05:00 [INF] Authorization was successful.
+2021-06-11 08:45:32.645 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveEntreeFromCart (SmallRestaurantAPI)'
+2021-06-11 08:45:32.650 -05:00 [INF] Route matched with {action = "RemoveEntreeFromCart", controller = "CartItem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RemoveEntreeFromCart(Int32) on controller SmallRestaurantAPI.Controllers.CartItemController (SmallRestaurantAPI).
+2021-06-11 08:45:40.016 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-11 08:45:42.796 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[CartItemID], [t].[EntreeID], [t].[SizeID], [s0].[Id], [s0].[IngredientId], [s0].[SelectedEntreeID]
+FROM (
+    SELECT TOP(1) [s].[ID], [s].[CartItemID], [s].[EntreeID], [s].[SizeID]
+    FROM [SelectedEntrees] AS [s]
+    WHERE ([s].[ID] = @__id_0) AND ([s].[ID] = @__id_0)
+) AS [t]
+LEFT JOIN [SelectedIngredients] AS [s0] ON [t].[ID] = [s0].[SelectedEntreeID]
+ORDER BY [t].[ID], [s0].[Id]
+2021-06-11 08:45:59.226 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[ID], [s].[CartItemID], [s].[EntreeID], [s].[SizeID]
+FROM [SelectedEntrees] AS [s]
+WHERE [s].[ID] = @__p_0
+2021-06-11 08:46:01.345 -05:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 204
+2021-06-11 08:46:01.345 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.CartItemController.RemoveEntreeFromCart (SmallRestaurantAPI) in 28695.0813ms
+2021-06-11 08:46:01.345 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveEntreeFromCart (SmallRestaurantAPI)'
+2021-06-11 08:46:03.769 -05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:44372/api/CartItem/5 - - - 204 - - 31172.8959ms
+2021-06-11 08:46:56.966 -05:00 [INF] Application Is Starting
+2021-06-11 08:46:57.490 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-11 08:46:57.645 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-11 08:46:57.645 -05:00 [INF] Hosting environment: Development
+2021-06-11 08:46:57.645 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-11 08:46:57.669 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-11 08:46:57.752 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 83.5297ms
+2021-06-11 08:46:57.833 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-11 08:46:57.902 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 68.8324ms
+2021-06-11 08:47:06.073 -05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:44372/api/CartItem/5 - -
+2021-06-11 08:47:06.279 -05:00 [INF] Successfully validated the token.
+2021-06-11 08:47:06.283 -05:00 [INF] Authorization was successful.
+2021-06-11 08:47:06.283 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveEntreeFromCart (SmallRestaurantAPI)'
+2021-06-11 08:47:06.305 -05:00 [INF] Route matched with {action = "RemoveEntreeFromCart", controller = "CartItem"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RemoveEntreeFromCart(Int32) on controller SmallRestaurantAPI.Controllers.CartItemController (SmallRestaurantAPI).
+2021-06-11 08:47:10.192 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-11 08:47:12.776 -05:00 [INF] Executed DbCommand (56ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[CartItemID], [t].[EntreeID], [t].[SizeID], [s0].[Id], [s0].[IngredientId], [s0].[SelectedEntreeID]
+FROM (
+    SELECT TOP(1) [s].[ID], [s].[CartItemID], [s].[EntreeID], [s].[SizeID]
+    FROM [SelectedEntrees] AS [s]
+    WHERE ([s].[ID] = @__id_0) AND ([s].[ID] = @__id_0)
+) AS [t]
+LEFT JOIN [SelectedIngredients] AS [s0] ON [t].[ID] = [s0].[SelectedEntreeID]
+ORDER BY [t].[ID], [s0].[Id]
+2021-06-11 08:47:14.229 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[ID], [s].[CartItemID], [s].[EntreeID], [s].[SizeID]
+FROM [SelectedEntrees] AS [s]
+WHERE [s].[ID] = @__p_0
+2021-06-11 08:47:15.357 -05:00 [INF] Executed DbCommand (28ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [SelectedEntrees]
+WHERE [ID] = @p0;
+SELECT @@ROWCOUNT;
+2021-06-11 08:47:16.864 -05:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 204
+2021-06-11 08:47:16.868 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.CartItemController.RemoveEntreeFromCart (SmallRestaurantAPI) in 10558.9748ms
+2021-06-11 08:47:16.868 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.CartItemController.RemoveEntreeFromCart (SmallRestaurantAPI)'
+2021-06-11 08:47:19.297 -05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:44372/api/CartItem/5 - - - 204 - - 13224.0864ms
+2021-06-11 08:52:38.619 -05:00 [INF] Application Is Starting
+2021-06-11 08:52:39.218 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-11 08:52:39.398 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-11 08:52:39.398 -05:00 [INF] Hosting environment: Development
+2021-06-11 08:52:39.398 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-11 08:52:39.423 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-11 08:52:39.505 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 83.3423ms
+2021-06-11 08:52:39.583 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-11 08:52:39.653 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 70.4395ms

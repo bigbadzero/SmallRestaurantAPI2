@@ -46,68 +46,6 @@ namespace SmallRestaurantAPI.Controllers
             return Ok(results);
         }
 
-
-        [Authorize]
-        [HttpPost(Name = "AddEntreeToCart")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AddEntreeToCart([FromBody] SelectedEntreeDTO selectedEntreeDTO =null)
-        {
-            var userID = GetCurrentUserID();
-            //checkIfCartExists
-            var cartItem = await _unitOfWork.CartItems.Get(q => q.UserID == userID);
-            if(cartItem == null)
-            {
-                cartItem = new CartItem()
-                {
-                    UserID = userID
-                };
-                await _unitOfWork.CartItems.Insert(cartItem);
-                await _unitOfWork.Save();
-            }
-
-            if(selectedEntreeDTO != null)
-            {
-                if (!ModelState.IsValid)
-                {
-                    _logger.LogError($"Invalid Post attempt in {nameof(AddEntreeToCart)}");
-                    return BadRequest(ModelState);
-                }
-                
-                var selectedEntree = _mapper.Map<SelectedEntree>(selectedEntreeDTO);
-                await _unitOfWork.SelectedEntrees.Insert(selectedEntree);
-                await _unitOfWork.Save();
-                return Ok();
-            }
-
-            return Ok();
-        }
-
-        [Authorize]
-        [HttpDelete("{id:int}")]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> RemoveItemFromCart(int id)
-        {
-            if(id < 1)
-            {
-                return BadRequest();
-            }
-
-            CartItem cartItem = await _unitOfWork.CartItems.Get(q => q.ID == id);
-            if (cartItem == null)
-            {
-                return BadRequest();
-            }
-
-            await _unitOfWork.CartItems.Delete(id);
-            await _unitOfWork.Save();
-            return NoContent();
-        }
-
-
-
         private string GetCurrentUserID()
         {
             var claimsIdentity = (ClaimsIdentity)this.User.Identity;
