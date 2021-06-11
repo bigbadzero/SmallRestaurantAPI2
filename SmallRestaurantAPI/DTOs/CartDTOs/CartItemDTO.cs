@@ -8,9 +8,11 @@ namespace SmallRestaurantAPI.DTOs
     public class CartItemDTO
     {
 
-        public UserDTO User { get; set; }
+        public int ID { get; set; }
 
-        public EntreeOptionsDTO Entree { get; set; }
+        public string UserID { get; set; }
+
+        public virtual IList<SelectedEntreeDTO> SelectedEntrees { get; set; }
 
     }
 }

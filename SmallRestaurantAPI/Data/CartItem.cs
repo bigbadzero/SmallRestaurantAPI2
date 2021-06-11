@@ -12,31 +12,12 @@ namespace SmallRestaurantAPI.Data
         [Key]
         public int ID { get; set; }
 
-
-
+        [ForeignKey(nameof(ApiUser))]
         [StringLength(450)]
         public string UserID { get; set; }
+        public ApiUser ApiUser { get; set; }
 
-
-        [ForeignKey(nameof(selectedEntree))]
-        public int? SelectedEntreeID { get; set; }
-        public SelectedEntree selectedEntree { get; set; }
-
-
-        [ForeignKey(nameof(Combo))]
-        public int? ComboID { get; set; }
-        public Combo Combo { get; set; }
-
-
-        [ForeignKey(nameof(Drink))]
-        public int? DrinkID { get; set; }
-        public Drink Drink { get; set; }
-
-
-        [ForeignKey(nameof(Side))]
-        public int? SideID { get; set; }
-        public Side Side { get; set; }
-
+        public virtual IList<SelectedEntree> SelectedEntrees { get; set; }
 
     }
 }

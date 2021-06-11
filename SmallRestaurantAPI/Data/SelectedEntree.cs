@@ -16,11 +16,17 @@ namespace SmallRestaurantAPI.Data
         public int EntreeID { get; set; }
         public Entree Entree { get; set; }
 
+
+        [ForeignKey(nameof(cartItem))]
+        public int CartItemID { get; set; }
+        public CartItem cartItem { get; set; }
+
+
         public int? SizeID { get; set; }
 
 
 
-        public virtual IList<SelectedIngredient> SelectedIngredients { get; set; }
+        public virtual IList<SelectedIngredient> SelectedEntreeIngredients { get; set; }
 
 
     }

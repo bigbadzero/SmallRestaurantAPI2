@@ -40,49 +40,42 @@ namespace SmallRestaurantAPI.Controllers
         public async Task<IActionResult> GetCart()
         {
             var userID = GetCurrentUserID();
-            var carts = await _unitOfWork.CartItems.GetAll(q => q.UserID == userID);
-            return Ok();
+            var cartItem = await _unitOfWork.CartItems.Get(q => q.UserID == userID, include: q => q.Include(x => x.SelectedEntrees).ThenInclude(x => x.SelectedEntreeIngredients));
+            var results = _mapper.Map<CartItemDTO>(cartItem);
+
+            return Ok(results);
         }
 
 
         [Authorize]
-        [HttpPost(Name = "AddItemToCart")]
+        [HttpPost(Name = "AddEntreeToCart")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AddItemToCart([FromBody] SelectedEntreeDTO selectedEntreeDTO =null)
+        public async Task<IActionResult> AddEntreeToCart([FromBody] SelectedEntreeDTO selectedEntreeDTO =null)
         {
+            var userID = GetCurrentUserID();
+            //checkIfCartExists
+            var cartItem = await _unitOfWork.CartItems.Get(q => q.UserID == userID);
+            if(cartItem == null)
+            {
+                cartItem = new CartItem()
+                {
+                    UserID = userID
+                };
+                await _unitOfWork.CartItems.Insert(cartItem);
+                await _unitOfWork.Save();
+            }
+
             if(selectedEntreeDTO != null)
             {
                 if (!ModelState.IsValid)
                 {
-                    _logger.LogError($"Invalid Post attempt in {nameof(AddItemToCart)}");
+                    _logger.LogError($"Invalid Post attempt in {nameof(AddEntreeToCart)}");
                     return BadRequest(ModelState);
                 }
-
-                SelectedEntree selectedEntree = _mapper.Map<SelectedEntree>(selectedEntreeDTO);
+                
+                var selectedEntree = _mapper.Map<SelectedEntree>(selectedEntreeDTO);
                 await _unitOfWork.SelectedEntrees.Insert(selectedEntree);
-                await _unitOfWork.Save();
-                var insertedEntree = await _unitOfWork.SelectedEntrees.Get(q => q.ID == selectedEntree.ID);
-
-
-                //get individual ingredients to insert into selected ingredients
-                var ingredients = _mapper.Map<IList<Ingredient>>(selectedEntreeDTO.SelectedEntreeIngredients);
-                foreach (Ingredient ingredient in ingredients)
-                {
-                    var selectedIngredient = new SelectedIngredient()
-                    {
-                        IngredientId = ingredient.ID,
-                        SelectedEntreeID = insertedEntree.ID
-                    };
-                    await _unitOfWork.SelectedIngredients.Insert(selectedIngredient);
-                    await _unitOfWork.Save();
-                }
-                var cart = new CartItem()
-                {
-                    UserID = GetCurrentUserID(),
-                    SelectedEntreeID = insertedEntree.ID
-                };
-                await _unitOfWork.CartItems.Insert(cart);
                 await _unitOfWork.Save();
                 return Ok();
             }

@@ -9,10 +9,8 @@ namespace SmallRestaurantAPI.DTOs
     {
         public int EntreeID { get; set; }
         public int CartItemID { get; set; }
-
-        public int CategoryID { get; set; }
         public int? SizeID { get; set; }
 
-        public IList<IngredientDTO> SelectedEntreeIngredients { get; set; }
+        public IList<SelectedIngredientDTO> SelectedEntreeIngredients { get; set; }
     }
 }
