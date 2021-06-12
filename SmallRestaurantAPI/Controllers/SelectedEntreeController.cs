@@ -33,6 +33,17 @@ namespace SmallRestaurantAPI.Controllers
             _userManager = userManager;
         }
 
+
+
+        [HttpGet("{id:int}", Name = "GetSelectedEntree")]
+        public async Task<IActionResult> GetSelectedEntree(int id)
+        {
+            var selectedEntree = await _unitOfWork.SelectedEntrees.Get(q => q.ID == id, include: q => q.Include(x => x.SelectedEntreeIngredients));
+            var results = _mapper.Map<SelectedEntreeDTO>(selectedEntree);
+
+            return Ok(results);
+        }
+
         [Authorize]
         [HttpPost(Name = "AddEntreeToCart")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -91,6 +102,7 @@ namespace SmallRestaurantAPI.Controllers
             await _unitOfWork.Save();
             return NoContent();
         }
+
 
 
         private string GetCurrentUserID()

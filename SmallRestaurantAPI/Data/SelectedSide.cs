@@ -7,27 +7,24 @@ using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI.Data
 {
-    public class SelectedEntree
+    public class SelectedSide
     {
         [Key]
         public int ID { get; set; }
 
-        [ForeignKey(nameof(Entree))]
-        public int EntreeID { get; set; }
-        public Entree Entree { get; set; }
+
+        [ForeignKey(nameof(Side))]
+        public int SideID { get; set; }
+        public Side Side { get; set; }
 
         [Required]
-        [ForeignKey(nameof(cartItem))]
+        [ForeignKey(nameof(CartItem))]
         public int CartItemID { get; set; }
-        public CartItem cartItem { get; set; }
+        public CartItem CartItem { get; set; }
 
 
+        [ForeignKey(nameof(Size))]
         public int? SizeID { get; set; }
-
-
-
-        public virtual IList<SelectedIngredient> SelectedEntreeIngredients { get; set; }
-
-
+        public Size Size { get; set; }
     }
 }
