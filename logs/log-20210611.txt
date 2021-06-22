@@ -109,3 +109,29 @@ SELECT @@ROWCOUNT;
 2021-06-11 08:52:39.505 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 83.3423ms
 2021-06-11 08:52:39.583 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
 2021-06-11 08:52:39.653 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 70.4395ms
+2021-06-11 09:10:54.751 -05:00 [INF] Application Is Starting
+2021-06-11 09:10:55.324 -05:00 [INF] User profile is available. Using 'C:\Users\adamw\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-11 09:10:55.501 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-11 09:10:55.501 -05:00 [INF] Hosting environment: Development
+2021-06-11 09:10:55.501 -05:00 [INF] Content root path: C:\projects\SmallRestaurantAPI2\SmallRestaurantAPI
+2021-06-11 09:10:55.528 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/index.html - -
+2021-06-11 09:10:55.616 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/index.html - - - 200 - text/html;charset=utf-8 89.1915ms
+2021-06-11 09:10:55.707 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - -
+2021-06-11 09:10:55.790 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 83.4125ms
+2021-06-11 09:11:13.591 -05:00 [INF] Request starting HTTP/2 GET https://localhost:44372/api/SelectedEntree/6 - -
+2021-06-11 09:11:13.661 -05:00 [INF] Executing endpoint 'SmallRestaurantAPI.Controllers.SelectedEntreeController.GetSelectedEntree (SmallRestaurantAPI)'
+2021-06-11 09:11:13.685 -05:00 [INF] Route matched with {action = "GetSelectedEntree", controller = "SelectedEntree"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSelectedEntree(Int32) on controller SmallRestaurantAPI.Controllers.SelectedEntreeController (SmallRestaurantAPI).
+2021-06-11 09:11:14.510 -05:00 [INF] Entity Framework Core 5.0.6 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-06-11 09:11:15.213 -05:00 [INF] Executed DbCommand (103ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[CartItemID], [t].[EntreeID], [t].[SizeID], [s0].[Id], [s0].[IngredientId], [s0].[SelectedEntreeID]
+FROM (
+    SELECT TOP(1) [s].[ID], [s].[CartItemID], [s].[EntreeID], [s].[SizeID]
+    FROM [SelectedEntrees] AS [s]
+    WHERE ([s].[ID] = @__id_0) AND ([s].[ID] = @__id_0)
+) AS [t]
+LEFT JOIN [SelectedIngredients] AS [s0] ON [t].[ID] = [s0].[SelectedEntreeID]
+ORDER BY [t].[ID], [s0].[Id]
+2021-06-11 09:11:15.257 -05:00 [INF] Executing OkObjectResult, writing value of type 'SmallRestaurantAPI.DTOs.SelectedEntreeDTO'.
+2021-06-11 09:11:15.352 -05:00 [INF] Executed action SmallRestaurantAPI.Controllers.SelectedEntreeController.GetSelectedEntree (SmallRestaurantAPI) in 1664.167ms
+2021-06-11 09:11:15.352 -05:00 [INF] Executed endpoint 'SmallRestaurantAPI.Controllers.SelectedEntreeController.GetSelectedEntree (SmallRestaurantAPI)'
+2021-06-11 09:11:15.356 -05:00 [INF] Request finished HTTP/2 GET https://localhost:44372/api/SelectedEntree/6 - - - 200 409 application/json;+charset=utf-8 1765.0737ms

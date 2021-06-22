@@ -17,6 +17,12 @@ namespace SmallRestaurantAPI.Data
         public string UserID { get; set; }
         public ApiUser ApiUser { get; set; }
 
+
+        [ForeignKey(nameof(CartItemStatus))]
+        public int CartItemStatusID { get; set; }
+        public CartItemStatus CartItemStatus { get; set; }
+
+
         public virtual IList<SelectedEntree> SelectedEntrees { get; set; }
 
     }

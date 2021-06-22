@@ -10,6 +10,8 @@ namespace SmallRestaurantAPI.Repository
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DatabaseContext _context;
+        //template
+        //private IGenericRepository<> _something;
 
         private IGenericRepository<Category> _categories;
         private IGenericRepository<Combo> _combos;
@@ -26,12 +28,17 @@ namespace SmallRestaurantAPI.Repository
         private IGenericRepository<CartItem> _cartItems;
         private IGenericRepository<ApiUser> _apiUser;
         private IGenericRepository<SelectedEntree> _selectedEntree;
-        private IGenericRepository<SelectedIngredient> _selectedIngredient;
+        private IGenericRepository<SelectedEntreeIngredient> _selectedEntreeIngredient;
+        private IGenericRepository<SelectedSide> _selectedSide;
+        private IGenericRepository<SelectedSideIngredient> _selectedSideIngredient;
 
         public UnitOfWork(DatabaseContext context)
         {
             _context = context;
         }
+
+        //template
+        //public IGenericRepository<> something => _something ?? new GenericRepository<>(_context);
 
         public IGenericRepository<Category> Categories => _categories ??= new GenericRepository<Category>(_context);
         public IGenericRepository<Combo> Combos => _combos ??= new GenericRepository<Combo>(_context);
@@ -47,7 +54,11 @@ namespace SmallRestaurantAPI.Repository
         public IGenericRepository<Size> Sizes => _sizes ??= new GenericRepository<Size>(_context);
         public IGenericRepository<CartItem> CartItems => _cartItems ??= new GenericRepository<CartItem>(_context);
         public IGenericRepository<SelectedEntree> SelectedEntrees => _selectedEntree ??= new GenericRepository<SelectedEntree>(_context);
-        public IGenericRepository<SelectedIngredient> SelectedIngredients => _selectedIngredient ??= new GenericRepository<SelectedIngredient>(_context);
+        public IGenericRepository<SelectedEntreeIngredient> SelectedEntreeIngredients => _selectedEntreeIngredient ??= new GenericRepository<SelectedEntreeIngredient>(_context);
+        public IGenericRepository<SelectedSideIngredient> SelectedSideIngredients => _selectedSideIngredient ??= new GenericRepository<SelectedSideIngredient>(_context);
+        public IGenericRepository<SelectedSide> SelectedSides => _selectedSide ??= new GenericRepository<SelectedSide>(_context);
+        
+
 
         public void Dispose()
         {

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI.DTOs
 {
-    public class SelectedIngredientDTO
+    public class SelectedEntreeIngredientDTO
     {
         public int Id { get; set; }
 

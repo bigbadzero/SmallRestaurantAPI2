@@ -27,6 +27,7 @@ namespace SmallRestaurantAPI.Data
             builder.ApplyConfiguration(new SideConfiguration());
             builder.ApplyConfiguration(new DrinkConfiguration());
             builder.ApplyConfiguration(new ComboConfiguration());
+            builder.ApplyConfiguration(new CartItemStatusConfiguration());
 
         }
 
@@ -44,7 +45,12 @@ namespace SmallRestaurantAPI.Data
         public DbSet<SideAddon> SideAddons { get; set; }
         public DbSet<Size> Sizes { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
+        public DbSet <CartItemStatus> CartItemStatuses { get; set; }
         public DbSet<SelectedEntree> SelectedEntrees { get; set; }
-        public DbSet<SelectedIngredient> SelectedIngredients { get; set; }
+        public DbSet<SelectedEntreeIngredient> SelectedEntreeIngredients { get; set; }
+        public DbSet<SelectedSide> SelectedSides { get; set; }
+        public DbSet<SideBaseIngredient> SideBaseIngredients { get; set; }
+        public DbSet<SideSize> SideSizes { get; set; }
+        public DbSet<SelectedSideIngredient> SelectedSideIngredients { get; set; }
     }
 }

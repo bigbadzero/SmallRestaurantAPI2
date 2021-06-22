@@ -8,6 +8,9 @@ namespace SmallRestaurantAPI.IRepository
 {
     public interface IUnitOfWork : IDisposable
     {
+        //template
+        //IGenericRepository<> something { get; }
+
         IGenericRepository<Category> Categories { get; }
         IGenericRepository<Combo> Combos { get; }
         IGenericRepository<Condiment> Condiments { get; }
@@ -22,7 +25,9 @@ namespace SmallRestaurantAPI.IRepository
         IGenericRepository<Size> Sizes { get; }
         IGenericRepository<CartItem> CartItems { get; }
         IGenericRepository<SelectedEntree> SelectedEntrees { get; }
-        IGenericRepository<SelectedIngredient> SelectedIngredients { get; }
+        IGenericRepository<SelectedEntreeIngredient> SelectedEntreeIngredients { get; }
+        IGenericRepository<SelectedSide> SelectedSides { get; }
+        IGenericRepository<SelectedSideIngredient> SelectedSideIngredients { get; }
 
         Task Save();
     }

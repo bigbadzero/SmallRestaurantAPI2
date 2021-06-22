@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmallRestaurantAPI.Data;
 
 namespace SmallRestaurantAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210621171553_addingSideConfigs")]
+    partial class addingSideConfigs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace SmallRestaurantAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b5754f19-7bd3-47b5-8810-0498156666d6",
-                            ConcurrencyStamp = "f4675455-409f-4a6b-b627-4ac52b6237f4",
+                            Id = "83acd732-4f3b-4383-bc66-824ce0c0cec4",
+                            ConcurrencyStamp = "484e06b2-4666-46c4-8702-ac8d41e05b71",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "6d0a6dd1-c067-4332-b270-c53a138a0f77",
-                            ConcurrencyStamp = "ce545013-6147-40f5-9c2e-495006dcf9fd",
+                            Id = "b4f764aa-3f73-488f-8b3f-78139fbd038f",
+                            ConcurrencyStamp = "d826a54b-6ee3-476d-801c-defac5b0e84a",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -822,12 +824,10 @@ namespace SmallRestaurantAPI.Migrations
 
                     b.HasIndex("EntreeID");
 
-                    b.HasIndex("SizeID");
-
                     b.ToTable("SelectedEntrees");
                 });
 
-            modelBuilder.Entity("SmallRestaurantAPI.Data.SelectedEntreeIngredient", b =>
+            modelBuilder.Entity("SmallRestaurantAPI.Data.SelectedIngredient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -840,67 +840,13 @@ namespace SmallRestaurantAPI.Migrations
                     b.Property<int>("SelectedEntreeID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SelectedSideID")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IngredientId");
 
                     b.HasIndex("SelectedEntreeID");
 
-                    b.HasIndex("SelectedSideID");
-
-                    b.ToTable("SelectedEntreeIngredients");
-                });
-
-            modelBuilder.Entity("SmallRestaurantAPI.Data.SelectedSide", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CartItemID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SideID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SizeID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CartItemID");
-
-                    b.HasIndex("SideID");
-
-                    b.HasIndex("SizeID");
-
-                    b.ToTable("SelectedSides");
-                });
-
-            modelBuilder.Entity("SmallRestaurantAPI.Data.SelectedSideIngredient", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("IngredientId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SelectedSideID")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IngredientId");
-
-                    b.HasIndex("SelectedSideID");
-
-                    b.ToTable("SelectedSideIngredients");
+                    b.ToTable("SelectedIngredients");
                 });
 
             modelBuilder.Entity("SmallRestaurantAPI.Data.Side", b =>
@@ -984,29 +930,7 @@ namespace SmallRestaurantAPI.Migrations
 
                     b.HasIndex("SideID");
 
-                    b.ToTable("SideBaseIngredients");
-                });
-
-            modelBuilder.Entity("SmallRestaurantAPI.Data.SideSize", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("SideID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SizeID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("SideID");
-
-                    b.HasIndex("SizeID");
-
-                    b.ToTable("SideSizes");
+                    b.ToTable("SideBaseIngredient");
                 });
 
             modelBuilder.Entity("SmallRestaurantAPI.Data.Size", b =>
@@ -1236,18 +1160,12 @@ namespace SmallRestaurantAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SmallRestaurantAPI.Data.Size", "Size")
-                        .WithMany()
-                        .HasForeignKey("SizeID");
-
                     b.Navigation("cartItem");
 
                     b.Navigation("Entree");
-
-                    b.Navigation("Size");
                 });
 
-            modelBuilder.Entity("SmallRestaurantAPI.Data.SelectedEntreeIngredient", b =>
+            modelBuilder.Entity("SmallRestaurantAPI.Data.SelectedIngredient", b =>
                 {
                     b.HasOne("SmallRestaurantAPI.Data.Ingredient", "Ingredient")
                         .WithMany()
@@ -1261,57 +1179,9 @@ namespace SmallRestaurantAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SmallRestaurantAPI.Data.SelectedSide", null)
-                        .WithMany("SelectedSideIngredients")
-                        .HasForeignKey("SelectedSideID");
-
                     b.Navigation("Ingredient");
 
                     b.Navigation("SelectedEntree");
-                });
-
-            modelBuilder.Entity("SmallRestaurantAPI.Data.SelectedSide", b =>
-                {
-                    b.HasOne("SmallRestaurantAPI.Data.CartItem", "CartItem")
-                        .WithMany()
-                        .HasForeignKey("CartItemID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SmallRestaurantAPI.Data.Side", "Side")
-                        .WithMany()
-                        .HasForeignKey("SideID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SmallRestaurantAPI.Data.Size", "Size")
-                        .WithMany()
-                        .HasForeignKey("SizeID");
-
-                    b.Navigation("CartItem");
-
-                    b.Navigation("Side");
-
-                    b.Navigation("Size");
-                });
-
-            modelBuilder.Entity("SmallRestaurantAPI.Data.SelectedSideIngredient", b =>
-                {
-                    b.HasOne("SmallRestaurantAPI.Data.Ingredient", "Ingredient")
-                        .WithMany()
-                        .HasForeignKey("IngredientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SmallRestaurantAPI.Data.SelectedSide", "SelectedSide")
-                        .WithMany()
-                        .HasForeignKey("SelectedSideID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Ingredient");
-
-                    b.Navigation("SelectedSide");
                 });
 
             modelBuilder.Entity("SmallRestaurantAPI.Data.Side", b =>
@@ -1359,25 +1229,6 @@ namespace SmallRestaurantAPI.Migrations
                     b.Navigation("Side");
                 });
 
-            modelBuilder.Entity("SmallRestaurantAPI.Data.SideSize", b =>
-                {
-                    b.HasOne("SmallRestaurantAPI.Data.Side", "Side")
-                        .WithMany("SideSizes")
-                        .HasForeignKey("SideID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SmallRestaurantAPI.Data.Size", "Size")
-                        .WithMany()
-                        .HasForeignKey("SizeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Side");
-
-                    b.Navigation("Size");
-                });
-
             modelBuilder.Entity("SmallRestaurantAPI.Data.CartItem", b =>
                 {
                     b.Navigation("SelectedEntrees");
@@ -1397,18 +1248,11 @@ namespace SmallRestaurantAPI.Migrations
                     b.Navigation("SelectedEntreeIngredients");
                 });
 
-            modelBuilder.Entity("SmallRestaurantAPI.Data.SelectedSide", b =>
-                {
-                    b.Navigation("SelectedSideIngredients");
-                });
-
             modelBuilder.Entity("SmallRestaurantAPI.Data.Side", b =>
                 {
                     b.Navigation("SideAddons");
 
                     b.Navigation("SideBaseIngredients");
-
-                    b.Navigation("SideSizes");
                 });
 #pragma warning restore 612, 618
         }

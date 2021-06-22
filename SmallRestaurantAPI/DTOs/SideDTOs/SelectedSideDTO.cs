@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI.DTOs
 {
-    public class SelectedEntreeDTO
+    public class SelectedSideDTO
     {
-        public int EntreeID { get; set; }
+        public int SideID { get; set; }
         public int? SizeID { get; set; }
 
-        public IList<SelectedEntreeIngredientDTO> SelectedEntreeIngredients { get; set; }
+        public IList<SelectedSideIngredientDTO> SelectedSideIngredients { get; set; }
     }
 }

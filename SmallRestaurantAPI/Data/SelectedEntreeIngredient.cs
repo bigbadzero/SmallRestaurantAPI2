@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI.Data
 {
-    public class SelectedIngredient
+    public class SelectedEntreeIngredient
     {
         [Key]
         public int Id { get; set; }

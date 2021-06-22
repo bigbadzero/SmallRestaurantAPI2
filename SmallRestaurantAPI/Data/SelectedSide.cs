@@ -26,5 +26,8 @@ namespace SmallRestaurantAPI.Data
         [ForeignKey(nameof(Size))]
         public int? SizeID { get; set; }
         public Size Size { get; set; }
+
+
+        public virtual IList<SelectedSideIngredient> SelectedSideIngredients { get; set; }
     }
 }
