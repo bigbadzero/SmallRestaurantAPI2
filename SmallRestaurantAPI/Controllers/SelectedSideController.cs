@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using SmallRestaurantAPI.Common.ControllerMethods;
 using SmallRestaurantAPI.Data;
 using SmallRestaurantAPI.DTOs;
 using SmallRestaurantAPI.IRepository;
@@ -22,12 +23,14 @@ namespace SmallRestaurantAPI.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<CategoryController> _logger;
         private readonly IMapper _mapper;
+        private readonly IControllerMethods _controllerMethods;
 
-        public SelectedSideController(IUnitOfWork unitOfWork, ILogger<CategoryController> logger, IMapper mapper)
+        public SelectedSideController(IUnitOfWork unitOfWork, ILogger<CategoryController> logger, IMapper mapper, IControllerMethods controllerMethods)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
             _mapper = mapper;
+            _controllerMethods = controllerMethods;
         }
 
         [HttpGet("{id:int}", Name = "GetSelectedSide")]
@@ -102,7 +105,7 @@ namespace SmallRestaurantAPI.Controllers
 
         private string GetCurrentUserID()
         {
-            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
             var idClaim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             var userId = idClaim.Value;
 

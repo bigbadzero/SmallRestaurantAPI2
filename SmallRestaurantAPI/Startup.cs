@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using SmallRestaurantAPI.Common.ControllerMethods;
 using SmallRestaurantAPI.Configurations;
 using SmallRestaurantAPI.Data;
 using SmallRestaurantAPI.IRepository;
@@ -60,6 +61,7 @@ namespace SmallRestaurantAPI
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IAuthManager, AuthManager>();
+            services.AddTransient<IControllerMethods, ControllerMethods>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
