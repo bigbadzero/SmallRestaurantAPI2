@@ -8,30 +8,34 @@ using System.Threading.Tasks;
 
 namespace SmallRestaurantAPI.Configurations.Entities
 {
-    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
+    public class ItemSizeConfiguration : IEntityTypeConfiguration<ItemSize>
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
+        public void Configure(EntityTypeBuilder<ItemSize> builder)
         {
             builder.HasData(
-                new Category
+                new ItemSize
                 {
                     ID = 1,
-                    Name = "Burgers"
+                    ItemID = 1,
+                    SizeID = 2
                 },
-                new Category
+                new ItemSize
                 {
                     ID = 2,
-                    Name = "Chicken"
+                    ItemID = 1,
+                    SizeID = 3
                 },
-                new Category
+                new ItemSize
                 {
                     ID = 3,
-                    Name = "Pizza"
+                    ItemID = 2,
+                    SizeID = 2
                 },
-                new Category
+                new ItemSize
                 {
                     ID = 4,
-                    Name = "Test"
+                    ItemID = 2,
+                    SizeID = 3
                 }
                 );
         }

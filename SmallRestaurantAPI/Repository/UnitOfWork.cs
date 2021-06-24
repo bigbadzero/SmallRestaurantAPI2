@@ -31,6 +31,13 @@ namespace SmallRestaurantAPI.Repository
         private IGenericRepository<SelectedEntreeIngredient> _selectedEntreeIngredient;
         private IGenericRepository<SelectedSide> _selectedSide;
         private IGenericRepository<SelectedSideIngredient> _selectedSideIngredient;
+        
+        private IGenericRepository<Item> _item;
+        private IGenericRepository<Data.Type> _type;
+        private IGenericRepository<ItemCategory> _itemCategory;
+        private IGenericRepository<ItemBaseIngredient> _itemBaseIngredients;
+        private IGenericRepository<ItemAvailableAddon> _itemAvailableAddon;
+        private IGenericRepository<ItemSize> _itemSize;
 
         public UnitOfWork(DatabaseContext context)
         {
@@ -57,7 +64,14 @@ namespace SmallRestaurantAPI.Repository
         public IGenericRepository<SelectedEntreeIngredient> SelectedEntreeIngredients => _selectedEntreeIngredient ??= new GenericRepository<SelectedEntreeIngredient>(_context);
         public IGenericRepository<SelectedSideIngredient> SelectedSideIngredients => _selectedSideIngredient ??= new GenericRepository<SelectedSideIngredient>(_context);
         public IGenericRepository<SelectedSide> SelectedSides => _selectedSide ??= new GenericRepository<SelectedSide>(_context);
-        
+
+        public IGenericRepository<Item> Items => _item ?? new GenericRepository<Item>(_context);
+        public IGenericRepository<Data.Type> Types => _type ?? new GenericRepository<Data.Type>(_context);
+        public IGenericRepository<ItemCategory> ItemCategories => _itemCategory ?? new GenericRepository<ItemCategory>(_context);
+        public IGenericRepository<ItemBaseIngredient> ItemBaseIngredients => _itemBaseIngredients ?? new GenericRepository<ItemBaseIngredient>(_context);
+        public IGenericRepository<ItemAvailableAddon> ItemAvailableAddons => _itemAvailableAddon ?? new GenericRepository<ItemAvailableAddon>(_context);
+        public IGenericRepository<ItemSize> ItemSizes => _itemSize ?? new GenericRepository<ItemSize>(_context);
+
 
 
         public void Dispose()

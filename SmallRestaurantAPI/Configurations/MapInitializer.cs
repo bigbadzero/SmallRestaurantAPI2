@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using SmallRestaurantAPI.Data;
 using SmallRestaurantAPI.DTOs;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,6 +35,13 @@ namespace SmallRestaurantAPI.Configurations
             CreateMap<SideAddon, SideAddonDTO>().ReverseMap();
             CreateMap<SideSize, SideSizesDTO>().ReverseMap();
             CreateMap<SelectedSideIngredient, SelectedSideIngredientDTO>().ReverseMap();
+
+            CreateMap<Item, MenuItemDTO>().ReverseMap();
+            CreateMap<Type, TypeDTO>().ReverseMap();
+            CreateMap<ItemCategory, ItemCategoryDTO>().ReverseMap();
+            CreateMap<ItemBaseIngredient, ItemBaseIngredientDTO>().ReverseMap();
+            CreateMap<ItemAvailableAddon, ItemAvailableAddonDTO>().ReverseMap();
+            CreateMap<ItemSize, ItemSizeDTO>().ReverseMap();
         }
     }
 }

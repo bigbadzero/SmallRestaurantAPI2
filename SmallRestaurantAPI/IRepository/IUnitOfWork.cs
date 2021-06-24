@@ -29,6 +29,16 @@ namespace SmallRestaurantAPI.IRepository
         IGenericRepository<SelectedSide> SelectedSides { get; }
         IGenericRepository<SelectedSideIngredient> SelectedSideIngredients { get; }
 
+
+        IGenericRepository<Item> Items { get; }
+        IGenericRepository<Data.Type> Types { get; }
+        IGenericRepository<ItemCategory> ItemCategories { get; }
+        IGenericRepository<ItemBaseIngredient> ItemBaseIngredients { get; }
+        IGenericRepository<ItemAvailableAddon> ItemAvailableAddons { get; }
+        IGenericRepository<ItemSize> ItemSizes { get; }
+
+
+
         Task Save();
     }
 }

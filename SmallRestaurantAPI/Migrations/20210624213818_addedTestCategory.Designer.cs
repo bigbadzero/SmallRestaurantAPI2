@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmallRestaurantAPI.Data;
 
 namespace SmallRestaurantAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210624213818_addedTestCategory")]
+    partial class addedTestCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace SmallRestaurantAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5a5e3a3f-35ce-4624-8a5a-0454515fcb19",
-                            ConcurrencyStamp = "e6f458a6-3123-468e-922e-1b7a050d44b2",
+                            Id = "9a87feef-b664-4adb-8f4a-67c58b4fd959",
+                            ConcurrencyStamp = "e3c0f844-c4f6-4aef-86d2-f0fad18be56a",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "bb2002f5-6aa8-4396-aa92-4a6e2f4a27a1",
-                            ConcurrencyStamp = "3b6c6182-d5f9-4951-9f1f-0b816c077c48",
+                            Id = "25949db7-acaa-47c5-87b8-71e2577eee73",
+                            ConcurrencyStamp = "486901fd-8639-4a7f-b73d-024c18e810d0",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -833,12 +835,6 @@ namespace SmallRestaurantAPI.Migrations
                             ID = 1,
                             Name = "CheeseBurger",
                             TypeID = 1
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Name = "Hamburger",
-                            TypeID = 1
                         });
                 });
 
@@ -869,12 +865,6 @@ namespace SmallRestaurantAPI.Migrations
                             ID = 1,
                             IngredientID = 13,
                             ItemID = 1
-                        },
-                        new
-                        {
-                            ID = 2,
-                            IngredientID = 13,
-                            ItemID = 2
                         });
                 });
 
@@ -951,48 +941,6 @@ namespace SmallRestaurantAPI.Migrations
                             IngredientID = 7,
                             ItemID = 1,
                             isRequired = false
-                        },
-                        new
-                        {
-                            ID = 8,
-                            IngredientID = 1,
-                            ItemID = 2,
-                            isRequired = true
-                        },
-                        new
-                        {
-                            ID = 9,
-                            IngredientID = 2,
-                            ItemID = 2,
-                            isRequired = true
-                        },
-                        new
-                        {
-                            ID = 10,
-                            IngredientID = 4,
-                            ItemID = 2,
-                            isRequired = false
-                        },
-                        new
-                        {
-                            ID = 11,
-                            IngredientID = 5,
-                            ItemID = 2,
-                            isRequired = false
-                        },
-                        new
-                        {
-                            ID = 12,
-                            IngredientID = 6,
-                            ItemID = 2,
-                            isRequired = false
-                        },
-                        new
-                        {
-                            ID = 13,
-                            IngredientID = 7,
-                            ItemID = 2,
-                            isRequired = false
                         });
                 });
 
@@ -1029,12 +977,6 @@ namespace SmallRestaurantAPI.Migrations
                             ID = 2,
                             CategoryID = 4,
                             ItemID = 1
-                        },
-                        new
-                        {
-                            ID = 3,
-                            CategoryID = 1,
-                            ItemID = 2
                         });
                 });
 
@@ -1070,18 +1012,6 @@ namespace SmallRestaurantAPI.Migrations
                         {
                             ID = 2,
                             ItemID = 1,
-                            SizeID = 3
-                        },
-                        new
-                        {
-                            ID = 3,
-                            ItemID = 2,
-                            SizeID = 2
-                        },
-                        new
-                        {
-                            ID = 4,
-                            ItemID = 2,
                             SizeID = 3
                         });
                 });

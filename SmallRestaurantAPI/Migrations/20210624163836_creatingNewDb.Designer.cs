@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmallRestaurantAPI.Data;
 
 namespace SmallRestaurantAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210624163836_creatingNewDb")]
+    partial class creatingNewDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace SmallRestaurantAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5a5e3a3f-35ce-4624-8a5a-0454515fcb19",
-                            ConcurrencyStamp = "e6f458a6-3123-468e-922e-1b7a050d44b2",
+                            Id = "ac00d236-f18d-47cf-a2c0-5548fd9965eb",
+                            ConcurrencyStamp = "fcaefc6d-8e26-432e-8e89-701bd92e44f7",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "bb2002f5-6aa8-4396-aa92-4a6e2f4a27a1",
-                            ConcurrencyStamp = "3b6c6182-d5f9-4951-9f1f-0b816c077c48",
+                            Id = "b207b8a9-7770-472d-ae0d-3411a6025f66",
+                            ConcurrencyStamp = "b0a3bb10-8e07-4372-91f8-9da5c25f78f2",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -327,11 +329,6 @@ namespace SmallRestaurantAPI.Migrations
                         {
                             ID = 3,
                             Name = "Pizza"
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Name = "Test"
                         });
                 });
 
@@ -833,12 +830,6 @@ namespace SmallRestaurantAPI.Migrations
                             ID = 1,
                             Name = "CheeseBurger",
                             TypeID = 1
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Name = "Hamburger",
-                            TypeID = 1
                         });
                 });
 
@@ -869,12 +860,6 @@ namespace SmallRestaurantAPI.Migrations
                             ID = 1,
                             IngredientID = 13,
                             ItemID = 1
-                        },
-                        new
-                        {
-                            ID = 2,
-                            IngredientID = 13,
-                            ItemID = 2
                         });
                 });
 
@@ -951,48 +936,6 @@ namespace SmallRestaurantAPI.Migrations
                             IngredientID = 7,
                             ItemID = 1,
                             isRequired = false
-                        },
-                        new
-                        {
-                            ID = 8,
-                            IngredientID = 1,
-                            ItemID = 2,
-                            isRequired = true
-                        },
-                        new
-                        {
-                            ID = 9,
-                            IngredientID = 2,
-                            ItemID = 2,
-                            isRequired = true
-                        },
-                        new
-                        {
-                            ID = 10,
-                            IngredientID = 4,
-                            ItemID = 2,
-                            isRequired = false
-                        },
-                        new
-                        {
-                            ID = 11,
-                            IngredientID = 5,
-                            ItemID = 2,
-                            isRequired = false
-                        },
-                        new
-                        {
-                            ID = 12,
-                            IngredientID = 6,
-                            ItemID = 2,
-                            isRequired = false
-                        },
-                        new
-                        {
-                            ID = 13,
-                            IngredientID = 7,
-                            ItemID = 2,
-                            isRequired = false
                         });
                 });
 
@@ -1023,18 +966,6 @@ namespace SmallRestaurantAPI.Migrations
                             ID = 1,
                             CategoryID = 1,
                             ItemID = 1
-                        },
-                        new
-                        {
-                            ID = 2,
-                            CategoryID = 4,
-                            ItemID = 1
-                        },
-                        new
-                        {
-                            ID = 3,
-                            CategoryID = 1,
-                            ItemID = 2
                         });
                 });
 
@@ -1070,18 +1001,6 @@ namespace SmallRestaurantAPI.Migrations
                         {
                             ID = 2,
                             ItemID = 1,
-                            SizeID = 3
-                        },
-                        new
-                        {
-                            ID = 3,
-                            ItemID = 2,
-                            SizeID = 2
-                        },
-                        new
-                        {
-                            ID = 4,
-                            ItemID = 2,
                             SizeID = 3
                         });
                 });
