@@ -35,6 +35,7 @@ namespace SmallRestaurantAPI.Data
             builder.ApplyConfiguration(new ItemBaseIngredientConfiguration());
             builder.ApplyConfiguration(new ItemAvailableAddonConfiguration());
             builder.ApplyConfiguration(new ItemSizeConfiguration());
+            builder.ApplyConfiguration(new ComboSideItemConfiguration());
 
         }
 
@@ -67,6 +68,9 @@ namespace SmallRestaurantAPI.Data
         public DbSet<ItemBaseIngredient> ItemBaseIngredients { get; set; }
         public DbSet<ItemAvailableAddon> ItemAvailableAddons { get; set; }
         public DbSet<ItemSize> ItemSizes { get; set; }
+        public DbSet<ComboSideItem> ComboSideItems { get; set; }
+        public DbSet<ComboDrinkItem> ComboDrinkItems { get; set; }
+
 
 
 

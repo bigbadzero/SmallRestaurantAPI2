@@ -81,7 +81,31 @@ namespace SmallRestaurantAPI.Controllers
             .Include(x => x.ItemSizes).ThenInclude(x => x.Size));
 
             var result = _mapper.Map<IList<MenuItemDTO>>(items);
-            return Ok();
+            return Ok(result);
         }
+
+
+        [HttpGet("id:int")]
+        [ActionName("ViewMenuItem")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ViewMenuItem(int id)
+        {
+            if (id < 1)
+            {
+                _logger.LogError($"Invalid id {nameof(ViewMenuItem)}");
+                return BadRequest("Invalid id");
+            }
+
+            var item = await _unitOfWork.Items.Get(q => q.ID == id, include: q => q
+            .Include(x => x.ItemCategories).ThenInclude(x => x.Category)
+            .Include(x => x.ItemBaseIngredients).ThenInclude(x => x.Ingredient)
+            .Include(x => x.ItemAvailableAddons).ThenInclude(x => x.Ingredient)
+            .Include(x => x.ItemSizes).ThenInclude(x => x.Size));
+
+            var result = _mapper.Map<MenuItemDTO>(item);
+            return Ok(result);
+        }
+
     }
 }

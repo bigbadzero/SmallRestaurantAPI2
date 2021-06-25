@@ -38,6 +38,8 @@ namespace SmallRestaurantAPI.Repository
         private IGenericRepository<ItemBaseIngredient> _itemBaseIngredients;
         private IGenericRepository<ItemAvailableAddon> _itemAvailableAddon;
         private IGenericRepository<ItemSize> _itemSize;
+        private IGenericRepository<ComboSideItem> _comboSideItem;
+        private IGenericRepository<ComboDrinkItem> _comboDrinkItem;
 
         public UnitOfWork(DatabaseContext context)
         {
@@ -71,6 +73,8 @@ namespace SmallRestaurantAPI.Repository
         public IGenericRepository<ItemBaseIngredient> ItemBaseIngredients => _itemBaseIngredients ?? new GenericRepository<ItemBaseIngredient>(_context);
         public IGenericRepository<ItemAvailableAddon> ItemAvailableAddons => _itemAvailableAddon ?? new GenericRepository<ItemAvailableAddon>(_context);
         public IGenericRepository<ItemSize> ItemSizes => _itemSize ?? new GenericRepository<ItemSize>(_context);
+        public IGenericRepository<ComboSideItem> ComboSideItems => _comboSideItem ?? new GenericRepository<ComboSideItem>(_context);
+        public IGenericRepository<ComboDrinkItem> ComboDrinkItems => _comboDrinkItem ?? new GenericRepository<ComboDrinkItem>(_context);
 
 
 

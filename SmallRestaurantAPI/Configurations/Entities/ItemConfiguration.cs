@@ -24,6 +24,18 @@ namespace SmallRestaurantAPI.Configurations.Entities
                     ID = 2,
                     Name = "Hamburger",
                     TypeID = 1
+                },
+                new Item
+                {
+                    ID = 3,
+                    Name = "Fries",
+                    TypeID = 2
+                },
+                new Item
+                {
+                    ID = 4,
+                    Name = "Coke",
+                    TypeID = 3
                 }
                 );
         }

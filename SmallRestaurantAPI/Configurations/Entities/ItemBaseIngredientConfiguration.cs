@@ -103,8 +103,21 @@ namespace SmallRestaurantAPI.Configurations.Entities
                     ItemID = 2,
                     IngredientID = 7,
                     isRequired = false
+                },
+                new ItemBaseIngredient
+                {
+                    ID = 14,
+                    ItemID = 3,
+                    IngredientID = 16,
+                    isRequired = true
+                },
+                new ItemBaseIngredient
+                {
+                    ID = 15,
+                    ItemID = 4,
+                    IngredientID = 18,
+                    isRequired = true
                 }
-
                 );
         }
     }

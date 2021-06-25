@@ -46,25 +46,25 @@ namespace SmallRestaurantAPI.Controllers
             return Ok(results);
         }
 
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpGet("{id:int}", Name = "GetCombo")]
-        public async Task<IActionResult> GetCombo(int id)
-        {
-            try
-            {
-                var combo = await _unitOfWork.Combos.Get(q => q.ID == id, include: q => q
-                .Include(x => x.Entree).ThenInclude(x => x.EntreeBaseIngredients).ThenInclude(x => x.Ingredient)
-                .Include(x => x.Entree).ThenInclude(x => x.EntreeAddons).ThenInclude(x => x.Ingredient)
-                .Include(x => x.Entree).ThenInclude(x => x.EntreeSizes).ThenInclude(x => x.Size));
-                var result = _mapper.Map<ComboOptionsDTO>(combo);
-                return Ok(result);
-            }
-            catch(Exception ex)
-            {
-                _logger.LogError(ex.ToString());
-            }
-            return Ok();
-        }
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        //[HttpGet("{id:int}", Name = "GetCombo")]
+        //public async Task<IActionResult> GetCombo(int id)
+        //{
+        //    try
+        //    {
+        //        var combo = await _unitOfWork.Combos.Get(q => q.ID == id, include: q => q
+        //        .Include(x => x.Entree).ThenInclude(x => x.EntreeBaseIngredients).ThenInclude(x => x.Ingredient)
+        //        .Include(x => x.Entree).ThenInclude(x => x.EntreeAddons).ThenInclude(x => x.Ingredient)
+        //        .Include(x => x.Entree).ThenInclude(x => x.EntreeSizes).ThenInclude(x => x.Size));
+        //        var result = _mapper.Map<ComboOptionsDTO>(combo);
+        //        return Ok(result);
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        _logger.LogError(ex.ToString());
+        //    }
+        //    return Ok();
+        //}
     }
 }

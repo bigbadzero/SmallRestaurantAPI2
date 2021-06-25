@@ -13,9 +13,9 @@ namespace SmallRestaurantAPI.Configurations.Entities
     //    public void Configure(EntityTypeBuilder<> builder)
     //    {
     //        builder.HasData(
-    //            new 
+    //            new
     //            {
-                    
+
     //            }
     //            );
     //    }

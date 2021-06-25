@@ -36,7 +36,44 @@ namespace SmallRestaurantAPI.Configurations.Entities
                     ID = 4,
                     ItemID = 2,
                     SizeID = 3
+                },
+                new ItemSize
+                {
+                    ID = 5,
+                    ItemID = 3,
+                    SizeID = 1
+                },
+                new ItemSize
+                {
+                    ID = 6,
+                    ItemID = 3,
+                    SizeID = 2
+                },
+                new ItemSize
+                {
+                    ID = 7,
+                    ItemID = 3,
+                    SizeID = 3
+                },
+                new ItemSize
+                {
+                    ID = 8,
+                    ItemID = 4,
+                    SizeID = 1
+                },
+                new ItemSize
+                {
+                    ID = 9,
+                    ItemID = 4,
+                    SizeID = 2
+                },
+                new ItemSize
+                {
+                    ID = 10,
+                    ItemID = 4,
+                    SizeID = 3
                 }
+
                 );
         }
     }

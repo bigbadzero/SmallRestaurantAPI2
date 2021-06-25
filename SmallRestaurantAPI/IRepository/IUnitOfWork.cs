@@ -36,7 +36,8 @@ namespace SmallRestaurantAPI.IRepository
         IGenericRepository<ItemBaseIngredient> ItemBaseIngredients { get; }
         IGenericRepository<ItemAvailableAddon> ItemAvailableAddons { get; }
         IGenericRepository<ItemSize> ItemSizes { get; }
-
+        IGenericRepository<ComboSideItem> ComboSideItems { get; }
+        IGenericRepository<ComboDrinkItem> ComboDrinkItems { get; }
 
 
         Task Save();

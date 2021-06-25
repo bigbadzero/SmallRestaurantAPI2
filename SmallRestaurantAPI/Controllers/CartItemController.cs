@@ -33,7 +33,6 @@ namespace SmallRestaurantAPI.Controllers
             _userManager = userManager;
         }
 
-        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet]
@@ -45,6 +44,11 @@ namespace SmallRestaurantAPI.Controllers
 
             return Ok(results);
         }
+
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        //[HttpPost]
+        //public async Task<IActionResult> AddItemToCart
 
         private string GetCurrentUserID()
         {

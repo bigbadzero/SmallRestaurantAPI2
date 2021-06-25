@@ -97,6 +97,11 @@ namespace SmallRestaurantAPI.Configurations.Entities
                 {
                     ID = 17,
                     Name = "Onion Rings"
+                },
+                new Ingredient
+                {
+                    ID = 18,
+                    Name = "Coke"
                 }
                 );
         }
