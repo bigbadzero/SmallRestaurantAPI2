@@ -13,5 +13,9 @@ namespace SmallRestaurantAPI.DTOs
         public string Description { get; set; }
         public int ComboNumber { get; set; }
         public int EntreeID { get; set; }
+
+        public virtual IList<ComboSideItemDTO> ComboSideItems { get; set; }
+
+        public virtual IList<ComboDrinkItemDTO> ComboDrinkItems { get; set; }
     }
 }

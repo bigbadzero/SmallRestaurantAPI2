@@ -42,6 +42,8 @@ namespace SmallRestaurantAPI.Configurations
             CreateMap<ItemBaseIngredient, ItemBaseIngredientDTO>().ReverseMap();
             CreateMap<ItemAvailableAddon, ItemAvailableAddonDTO>().ReverseMap();
             CreateMap<ItemSize, ItemSizeDTO>().ReverseMap();
+            CreateMap<ComboSideItem, ComboSideItemDTO>().ReverseMap();
+            CreateMap<ComboDrinkItem, ComboDrinkItemDTO>().ReverseMap();
         }
     }
 }
