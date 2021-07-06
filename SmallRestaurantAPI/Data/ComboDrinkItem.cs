@@ -11,7 +11,7 @@ namespace SmallRestaurantAPI.Data
         public int ID { get; set; }
 
         [ForeignKey(nameof(Type))]
-        public int TypeID { get { return 3; } set { TypeID = value; } }
+        public int TypeID { get; set; }
         public Type Type { get; set; }
 
 

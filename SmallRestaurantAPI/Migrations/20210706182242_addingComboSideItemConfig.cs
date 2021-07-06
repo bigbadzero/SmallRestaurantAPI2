@@ -2,39 +2,34 @@
 
 namespace SmallRestaurantAPI.Migrations
 {
-    public partial class addedTestCategory : Migration
+    public partial class addingComboSideItemConfig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "ac00d236-f18d-47cf-a2c0-5548fd9965eb");
+                keyValue: "8cb2de16-9371-4d66-9817-dd3ccb5def4b");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "b207b8a9-7770-472d-ae0d-3411a6025f66");
+                keyValue: "980c81d8-c660-4042-a64f-ade192d02cf3");
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "9a87feef-b664-4adb-8f4a-67c58b4fd959", "e3c0f844-c4f6-4aef-86d2-f0fad18be56a", "User", "USER" });
+                values: new object[] { "c839bc2a-580c-4bbd-836a-80ee65fcc870", "979608e6-5171-4682-be40-368a16fb3ed8", "User", "USER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "25949db7-acaa-47c5-87b8-71e2577eee73", "486901fd-8639-4a7f-b73d-024c18e810d0", "Administrator", "ADMINISTRATOR" });
+                values: new object[] { "22fe09dd-3166-45e7-951c-0daef0850bb8", "d8cb8f72-cabb-4f9b-b1f7-f501fb29421b", "Administrator", "ADMINISTRATOR" });
 
             migrationBuilder.InsertData(
-                table: "Categories",
-                columns: new[] { "ID", "Name" },
-                values: new object[] { 4, "Test" });
-
-            migrationBuilder.InsertData(
-                table: "ItemCategories",
-                columns: new[] { "ID", "CategoryID", "ItemID" },
-                values: new object[] { 2, 4, 1 });
+                table: "ComboSideItems",
+                columns: new[] { "ID", "ComboID", "ItemID", "TypeID" },
+                values: new object[] { 1, 1, 3, 2 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -42,32 +37,27 @@ namespace SmallRestaurantAPI.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "25949db7-acaa-47c5-87b8-71e2577eee73");
+                keyValue: "22fe09dd-3166-45e7-951c-0daef0850bb8");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "9a87feef-b664-4adb-8f4a-67c58b4fd959");
+                keyValue: "c839bc2a-580c-4bbd-836a-80ee65fcc870");
 
             migrationBuilder.DeleteData(
-                table: "ItemCategories",
+                table: "ComboSideItems",
                 keyColumn: "ID",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "Categories",
-                keyColumn: "ID",
-                keyValue: 4);
+                keyValue: 1);
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "ac00d236-f18d-47cf-a2c0-5548fd9965eb", "fcaefc6d-8e26-432e-8e89-701bd92e44f7", "User", "USER" });
+                values: new object[] { "8cb2de16-9371-4d66-9817-dd3ccb5def4b", "65c4d55b-ca28-441b-9d73-bbdb8e36147a", "User", "USER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "b207b8a9-7770-472d-ae0d-3411a6025f66", "b0a3bb10-8e07-4372-91f8-9da5c25f78f2", "Administrator", "ADMINISTRATOR" });
+                values: new object[] { "980c81d8-c660-4042-a64f-ade192d02cf3", "a5120976-9914-42a2-a4d0-3fba32f12889", "Administrator", "ADMINISTRATOR" });
         }
     }
 }

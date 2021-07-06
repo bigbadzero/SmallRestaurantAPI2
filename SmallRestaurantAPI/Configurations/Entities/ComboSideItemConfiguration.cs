@@ -16,6 +16,7 @@ namespace SmallRestaurantAPI.Configurations.Entities
                 new ComboSideItem
                 {
                     ID = 1,
+                    TypeID = 2,
                     ComboID = 1,
                     ItemID = 3
                 }

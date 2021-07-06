@@ -36,6 +36,7 @@ namespace SmallRestaurantAPI.Data
             builder.ApplyConfiguration(new ItemAvailableAddonConfiguration());
             builder.ApplyConfiguration(new ItemSizeConfiguration());
             builder.ApplyConfiguration(new ComboSideItemConfiguration());
+            builder.ApplyConfiguration(new ComboDrinkItemConfiguration());
 
         }
 

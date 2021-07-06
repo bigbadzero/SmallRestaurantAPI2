@@ -2,29 +2,34 @@
 
 namespace SmallRestaurantAPI.Migrations
 {
-    public partial class test : Migration
+    public partial class addingDrinkItemConfigAgain : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "214d702a-a0ac-467a-9f5a-c66c6dcd4da1");
+                keyValue: "22fe09dd-3166-45e7-951c-0daef0850bb8");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "21777d84-625c-49cf-a610-1facff1f55d5");
+                keyValue: "c839bc2a-580c-4bbd-836a-80ee65fcc870");
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1e0770f8-158b-43ac-a5a1-1074c40d5e09", "d9981068-74af-4384-8a34-83329141e4b1", "User", "USER" });
+                values: new object[] { "1fe466a2-b747-44e7-b0df-bd1f23dac257", "c054dbaa-2e9d-45a2-aec5-2af7282fde15", "User", "USER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "951de9ef-ad46-4620-a510-54e7122f1131", "5cf2949e-16db-4b9e-b3c0-cfa7cc70a448", "Administrator", "ADMINISTRATOR" });
+                values: new object[] { "b64310f3-f60d-443e-a0d3-6616e74006bc", "34990e20-e6a3-4599-88df-022bd3b474c5", "Administrator", "ADMINISTRATOR" });
+
+            migrationBuilder.InsertData(
+                table: "ComboDrinkItems",
+                columns: new[] { "ID", "ComboID", "ItemID", "TypeID" },
+                values: new object[] { 1, 1, 4, 3 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -32,22 +37,27 @@ namespace SmallRestaurantAPI.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "1e0770f8-158b-43ac-a5a1-1074c40d5e09");
+                keyValue: "1fe466a2-b747-44e7-b0df-bd1f23dac257");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "951de9ef-ad46-4620-a510-54e7122f1131");
+                keyValue: "b64310f3-f60d-443e-a0d3-6616e74006bc");
+
+            migrationBuilder.DeleteData(
+                table: "ComboDrinkItems",
+                keyColumn: "ID",
+                keyValue: 1);
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "214d702a-a0ac-467a-9f5a-c66c6dcd4da1", "30448616-fe3d-41a4-893b-367cdb11584c", "User", "USER" });
+                values: new object[] { "c839bc2a-580c-4bbd-836a-80ee65fcc870", "979608e6-5171-4682-be40-368a16fb3ed8", "User", "USER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "21777d84-625c-49cf-a610-1facff1f55d5", "fc6bc6bf-0789-4292-9f8f-d667f7ce98f5", "Administrator", "ADMINISTRATOR" });
+                values: new object[] { "22fe09dd-3166-45e7-951c-0daef0850bb8", "d8cb8f72-cabb-4f9b-b1f7-f501fb29421b", "Administrator", "ADMINISTRATOR" });
         }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SmallRestaurantAPI.Migrations
 {
-    public partial class createDb : Migration
+    public partial class newMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,6 +46,19 @@ namespace SmallRestaurantAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CartItemStatuses",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartItemStatuses", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -100,6 +113,19 @@ namespace SmallRestaurantAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sizes", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Types",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Types", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -209,6 +235,32 @@ namespace SmallRestaurantAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CartItems",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
+                    CartItemStatusID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartItems", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_CartItems_AspNetUsers_UserID",
+                        column: x => x.UserID,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CartItems_CartItemStatuses_CartItemStatusID",
+                        column: x => x.CartItemStatusID,
+                        principalTable: "CartItemStatuses",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Drinks",
                 columns: table => new
                 {
@@ -276,6 +328,27 @@ namespace SmallRestaurantAPI.Migrations
                         principalTable: "Sizes",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Items",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TypeID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Items", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Items_Types_TypeID",
+                        column: x => x.TypeID,
+                        principalTable: "Types",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -364,57 +437,59 @@ namespace SmallRestaurantAPI.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EntreeID = table.Column<int>(type: "int", nullable: false),
+                    CartItemID = table.Column<int>(type: "int", nullable: false),
                     SizeID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SelectedEntrees", x => x.ID);
                     table.ForeignKey(
+                        name: "FK_SelectedEntrees_CartItems_CartItemID",
+                        column: x => x.CartItemID,
+                        principalTable: "CartItems",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_SelectedEntrees_Entrees_EntreeID",
                         column: x => x.EntreeID,
                         principalTable: "Entrees",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SelectedEntrees_Sizes_SizeID",
+                        column: x => x.SizeID,
+                        principalTable: "Sizes",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Combos",
+                name: "SelectedSides",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
-                    ComboNumber = table.Column<int>(type: "int", nullable: false),
-                    ComboSizeOverride = table.Column<bool>(type: "bit", nullable: true),
-                    EntreeID = table.Column<int>(type: "int", nullable: false),
-                    SideID = table.Column<int>(type: "int", nullable: true),
-                    DrinkID = table.Column<int>(type: "int", nullable: true),
+                    SideID = table.Column<int>(type: "int", nullable: false),
+                    CartItemID = table.Column<int>(type: "int", nullable: false),
                     SizeID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Combos", x => x.ID);
+                    table.PrimaryKey("PK_SelectedSides", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Combos_Drinks_DrinkID",
-                        column: x => x.DrinkID,
-                        principalTable: "Drinks",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Combos_Entrees_EntreeID",
-                        column: x => x.EntreeID,
-                        principalTable: "Entrees",
+                        name: "FK_SelectedSides_CartItems_CartItemID",
+                        column: x => x.CartItemID,
+                        principalTable: "CartItems",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Combos_Sides_SideID",
+                        name: "FK_SelectedSides_Sides_SideID",
                         column: x => x.SideID,
                         principalTable: "Sides",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Combos_Sizes_SizeID",
+                        name: "FK_SelectedSides_Sizes_SizeID",
                         column: x => x.SizeID,
                         principalTable: "Sizes",
                         principalColumn: "ID",
@@ -448,7 +523,209 @@ namespace SmallRestaurantAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SelectedIngredients",
+                name: "SideBaseIngredients",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SideID = table.Column<int>(type: "int", nullable: false),
+                    IngredientID = table.Column<int>(type: "int", nullable: false),
+                    isRequired = table.Column<bool>(type: "bit", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SideBaseIngredients", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_SideBaseIngredients_Ingredients_IngredientID",
+                        column: x => x.IngredientID,
+                        principalTable: "Ingredients",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SideBaseIngredients_Sides_SideID",
+                        column: x => x.SideID,
+                        principalTable: "Sides",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SideSizes",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SideID = table.Column<int>(type: "int", nullable: false),
+                    SizeID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SideSizes", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_SideSizes_Sides_SideID",
+                        column: x => x.SideID,
+                        principalTable: "Sides",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SideSizes_Sizes_SizeID",
+                        column: x => x.SizeID,
+                        principalTable: "Sizes",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Combos",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    ComboNumber = table.Column<int>(type: "int", nullable: false),
+                    ComboSizeOverride = table.Column<bool>(type: "bit", nullable: true),
+                    EntreeID = table.Column<int>(type: "int", nullable: false),
+                    SideID = table.Column<int>(type: "int", nullable: true),
+                    DrinkID = table.Column<int>(type: "int", nullable: true),
+                    SizeID = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Combos", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Combos_Items_DrinkID",
+                        column: x => x.DrinkID,
+                        principalTable: "Items",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Combos_Items_EntreeID",
+                        column: x => x.EntreeID,
+                        principalTable: "Items",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Combos_Items_SideID",
+                        column: x => x.SideID,
+                        principalTable: "Items",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Combos_Sizes_SizeID",
+                        column: x => x.SizeID,
+                        principalTable: "Sizes",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ItemAvailableAddons",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IngredientID = table.Column<int>(type: "int", nullable: false),
+                    ItemID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemAvailableAddons", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_ItemAvailableAddons_Ingredients_IngredientID",
+                        column: x => x.IngredientID,
+                        principalTable: "Ingredients",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ItemAvailableAddons_Items_ItemID",
+                        column: x => x.ItemID,
+                        principalTable: "Items",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ItemBaseIngredients",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IngredientID = table.Column<int>(type: "int", nullable: false),
+                    ItemID = table.Column<int>(type: "int", nullable: false),
+                    isRequired = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemBaseIngredients", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_ItemBaseIngredients_Ingredients_IngredientID",
+                        column: x => x.IngredientID,
+                        principalTable: "Ingredients",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ItemBaseIngredients_Items_ItemID",
+                        column: x => x.ItemID,
+                        principalTable: "Items",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ItemCategories",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ItemID = table.Column<int>(type: "int", nullable: false),
+                    CategoryID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemCategories", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_ItemCategories_Categories_CategoryID",
+                        column: x => x.CategoryID,
+                        principalTable: "Categories",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ItemCategories_Items_ItemID",
+                        column: x => x.ItemID,
+                        principalTable: "Items",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ItemSizes",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ItemID = table.Column<int>(type: "int", nullable: false),
+                    SizeID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemSizes", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_ItemSizes_Items_ItemID",
+                        column: x => x.ItemID,
+                        principalTable: "Items",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ItemSizes_Sizes_SizeID",
+                        column: x => x.SizeID,
+                        principalTable: "Sizes",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SelectedEntreeIngredients",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -458,15 +735,15 @@ namespace SmallRestaurantAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SelectedIngredients", x => x.Id);
+                    table.PrimaryKey("PK_SelectedEntreeIngredients", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SelectedIngredients_Ingredients_IngredientId",
+                        name: "FK_SelectedEntreeIngredients_Ingredients_IngredientId",
                         column: x => x.IngredientId,
                         principalTable: "Ingredients",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_SelectedIngredients_SelectedEntrees_SelectedEntreeID",
+                        name: "FK_SelectedEntreeIngredients_SelectedEntrees_SelectedEntreeID",
                         column: x => x.SelectedEntreeID,
                         principalTable: "SelectedEntrees",
                         principalColumn: "ID",
@@ -474,42 +751,93 @@ namespace SmallRestaurantAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CartItems",
+                name: "SelectedSideIngredients",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SelectedSideID = table.Column<int>(type: "int", nullable: false),
+                    IngredientId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SelectedSideIngredients", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SelectedSideIngredients_Ingredients_IngredientId",
+                        column: x => x.IngredientId,
+                        principalTable: "Ingredients",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SelectedSideIngredients_SelectedSides_SelectedSideID",
+                        column: x => x.SelectedSideID,
+                        principalTable: "SelectedSides",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ComboDrinkItems",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: true),
-                    SelectedEntreeID = table.Column<int>(type: "int", nullable: true),
-                    ComboID = table.Column<int>(type: "int", nullable: true),
-                    DrinkID = table.Column<int>(type: "int", nullable: true),
-                    SideID = table.Column<int>(type: "int", nullable: true)
+                    TypeID = table.Column<int>(type: "int", nullable: false),
+                    ComboID = table.Column<int>(type: "int", nullable: false),
+                    ItemID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CartItems", x => x.ID);
+                    table.PrimaryKey("PK_ComboDrinkItems", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_CartItems_Combos_ComboID",
+                        name: "FK_ComboDrinkItems_Combos_ComboID",
                         column: x => x.ComboID,
                         principalTable: "Combos",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CartItems_Drinks_DrinkID",
-                        column: x => x.DrinkID,
-                        principalTable: "Drinks",
+                        name: "FK_ComboDrinkItems_Items_ItemID",
+                        column: x => x.ItemID,
+                        principalTable: "Items",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_CartItems_SelectedEntrees_SelectedEntreeID",
-                        column: x => x.SelectedEntreeID,
-                        principalTable: "SelectedEntrees",
+                        name: "FK_ComboDrinkItems_Types_TypeID",
+                        column: x => x.TypeID,
+                        principalTable: "Types",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ComboSideItems",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TypeID = table.Column<int>(type: "int", nullable: false),
+                    ComboID = table.Column<int>(type: "int", nullable: false),
+                    ItemID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ComboSideItems", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_ComboSideItems_Combos_ComboID",
+                        column: x => x.ComboID,
+                        principalTable: "Combos",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ComboSideItems_Items_ItemID",
+                        column: x => x.ItemID,
+                        principalTable: "Items",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_CartItems_Sides_SideID",
-                        column: x => x.SideID,
-                        principalTable: "Sides",
+                        name: "FK_ComboSideItems_Types_TypeID",
+                        column: x => x.TypeID,
+                        principalTable: "Types",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -519,8 +847,19 @@ namespace SmallRestaurantAPI.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "214d702a-a0ac-467a-9f5a-c66c6dcd4da1", "30448616-fe3d-41a4-893b-367cdb11584c", "User", "USER" },
-                    { "21777d84-625c-49cf-a610-1facff1f55d5", "fc6bc6bf-0789-4292-9f8f-d667f7ce98f5", "Administrator", "ADMINISTRATOR" }
+                    { "8cb2de16-9371-4d66-9817-dd3ccb5def4b", "65c4d55b-ca28-441b-9d73-bbdb8e36147a", "User", "USER" },
+                    { "980c81d8-c660-4042-a64f-ade192d02cf3", "a5120976-9914-42a2-a4d0-3fba32f12889", "Administrator", "ADMINISTRATOR" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "CartItemStatuses",
+                columns: new[] { "ID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Ordering" },
+                    { 2, "Order Processing" },
+                    { 3, "Order Ready" },
+                    { 4, "Order Complete" }
                 });
 
             migrationBuilder.InsertData(
@@ -530,7 +869,8 @@ namespace SmallRestaurantAPI.Migrations
                 {
                     { 1, "Burgers" },
                     { 2, "Chicken" },
-                    { 3, "Pizza" }
+                    { 3, "Pizza" },
+                    { 4, "Test" }
                 });
 
             migrationBuilder.InsertData(
@@ -538,9 +878,9 @@ namespace SmallRestaurantAPI.Migrations
                 columns: new[] { "ID", "Description", "Name", "SizeID" },
                 values: new object[,]
                 {
+                    { 3, null, "Dr.Pepper", null },
                     { 1, null, "Sweat Tea", null },
-                    { 2, null, "Coke", null },
-                    { 3, null, "Dr.Pepper", null }
+                    { 2, null, "Coke", null }
                 });
 
             migrationBuilder.InsertData(
@@ -548,21 +888,24 @@ namespace SmallRestaurantAPI.Migrations
                 columns: new[] { "ID", "Description", "Name" },
                 values: new object[,]
                 {
+                    { 11, null, "Shredded Cheese" },
+                    { 18, null, "Coke" },
+                    { 17, null, "Onion Rings" },
+                    { 16, null, "French Fries" },
                     { 15, null, "Pineapple" },
                     { 14, null, "Buffalo Sauce" },
                     { 13, null, "Bacon" },
                     { 12, null, "Pepperoni" },
-                    { 11, null, "Shredded Cheese" },
                     { 10, null, "Pizza Sauce" },
-                    { 9, null, "Pizza Crust" },
-                    { 6, null, "Onion" },
                     { 7, null, "Pickle" },
+                    { 8, null, "Chicken Finger" },
+                    { 6, null, "Onion" },
                     { 5, null, "Mustard" },
                     { 4, null, "Ketchup" },
                     { 3, null, "Sliced Cheese" },
                     { 2, null, "Hamburger Patty" },
                     { 1, null, "Hamburger bun" },
-                    { 8, null, "Chicken Finger" }
+                    { 9, null, "Pizza Crust" }
                 });
 
             migrationBuilder.InsertData(
@@ -570,8 +913,8 @@ namespace SmallRestaurantAPI.Migrations
                 columns: new[] { "ID", "Description", "Name", "SizeID" },
                 values: new object[,]
                 {
-                    { 1, null, "French Fries", null },
-                    { 2, null, "Onion Rings", null }
+                    { 2, null, "Onion Rings", null },
+                    { 1, null, "French Fries", null }
                 });
 
             migrationBuilder.InsertData(
@@ -579,43 +922,56 @@ namespace SmallRestaurantAPI.Migrations
                 columns: new[] { "ID", "Name" },
                 values: new object[,]
                 {
-                    { 2, "M" },
                     { 1, "S" },
+                    { 2, "M" },
                     { 3, "L" }
                 });
 
             migrationBuilder.InsertData(
-                table: "Entrees",
-                columns: new[] { "ID", "CategoryID", "Description", "Name", "SizeID" },
-                values: new object[] { 1, 1, null, "Cheese Burger", null });
+                table: "Types",
+                columns: new[] { "ID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Entree" },
+                    { 2, "Side" },
+                    { 3, "Drink" },
+                    { 4, "Combo" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Entrees",
                 columns: new[] { "ID", "CategoryID", "Description", "Name", "SizeID" },
-                values: new object[] { 2, 2, null, "3 Piece Chicken Finger", null });
+                values: new object[,]
+                {
+                    { 1, 1, null, "Cheese Burger", null },
+                    { 2, 2, null, "3 Piece Chicken Finger", null },
+                    { 3, 3, null, "Pepperoni Pizza", null }
+                });
 
             migrationBuilder.InsertData(
-                table: "Entrees",
-                columns: new[] { "ID", "CategoryID", "Description", "Name", "SizeID" },
-                values: new object[] { 3, 3, null, "Pepperoni Pizza", null });
+                table: "Items",
+                columns: new[] { "ID", "Description", "Name", "TypeID" },
+                values: new object[,]
+                {
+                    { 1, null, "CheeseBurger", 1 },
+                    { 2, null, "Hamburger", 1 },
+                    { 3, null, "Fries", 2 },
+                    { 4, null, "Coke", 3 }
+                });
 
             migrationBuilder.InsertData(
                 table: "Combos",
                 columns: new[] { "ID", "ComboNumber", "ComboSizeOverride", "Description", "DrinkID", "EntreeID", "Name", "SideID", "SizeID" },
-                values: new object[,]
-                {
-                    { 1, 1, null, null, null, 1, "Cheese Burger Combo", null, null },
-                    { 2, 2, null, null, null, 2, "3 Piece Chicken Finger Combo", null, null }
-                });
+                values: new object[] { 1, 1, null, null, null, 1, "Cheese Burger Combo", null, null });
 
             migrationBuilder.InsertData(
                 table: "EntreeAddons",
                 columns: new[] { "ID", "EntreeID", "IngredientID" },
                 values: new object[,]
                 {
-                    { 2, 2, 14 },
+                    { 1, 1, 13 },
                     { 3, 3, 15 },
-                    { 1, 1, 13 }
+                    { 2, 2, 14 }
                 });
 
             migrationBuilder.InsertData(
@@ -623,20 +979,85 @@ namespace SmallRestaurantAPI.Migrations
                 columns: new[] { "ID", "EntreeID", "IngredientID", "isRequired" },
                 values: new object[,]
                 {
+                    { 14, 3, 12, false },
+                    { 13, 3, 11, true },
                     { 12, 3, 10, true },
-                    { 11, 3, 9, true },
                     { 10, 2, 8, true },
                     { 9, 2, 8, true },
-                    { 8, 2, 8, true },
-                    { 1, 1, 1, true },
+                    { 11, 3, 9, true },
                     { 7, 1, 7, false },
                     { 6, 1, 6, false },
                     { 5, 1, 5, false },
+                    { 8, 2, 8, true },
                     { 4, 1, 4, false },
                     { 3, 1, 3, false },
                     { 2, 1, 2, true },
-                    { 13, 3, 11, true },
-                    { 14, 3, 12, false }
+                    { 1, 1, 1, true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ItemAvailableAddons",
+                columns: new[] { "ID", "IngredientID", "ItemID" },
+                values: new object[,]
+                {
+                    { 1, 13, 1 },
+                    { 2, 13, 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ItemBaseIngredients",
+                columns: new[] { "ID", "IngredientID", "ItemID", "isRequired" },
+                values: new object[,]
+                {
+                    { 15, 18, 4, true },
+                    { 14, 16, 3, true },
+                    { 13, 7, 2, false },
+                    { 12, 6, 2, false },
+                    { 11, 5, 2, false },
+                    { 10, 4, 2, false },
+                    { 9, 2, 2, true },
+                    { 8, 1, 2, true },
+                    { 5, 5, 1, false },
+                    { 7, 7, 1, false },
+                    { 6, 6, 1, false },
+                    { 4, 4, 1, false },
+                    { 3, 3, 1, false },
+                    { 1, 1, 1, true },
+                    { 2, 2, 1, true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ItemCategories",
+                columns: new[] { "ID", "CategoryID", "ItemID" },
+                values: new object[,]
+                {
+                    { 2, 4, 1 },
+                    { 1, 1, 1 },
+                    { 3, 1, 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ItemSizes",
+                columns: new[] { "ID", "ItemID", "SizeID" },
+                values: new object[,]
+                {
+                    { 2, 1, 3 },
+                    { 8, 4, 1 },
+                    { 7, 3, 3 },
+                    { 6, 3, 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ItemSizes",
+                columns: new[] { "ID", "ItemID", "SizeID" },
+                values: new object[,]
+                {
+                    { 3, 2, 2 },
+                    { 4, 2, 3 },
+                    { 1, 1, 2 },
+                    { 9, 4, 2 },
+                    { 5, 3, 1 },
+                    { 10, 4, 3 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -679,24 +1100,29 @@ namespace SmallRestaurantAPI.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartItems_ComboID",
+                name: "IX_CartItems_CartItemStatusID",
                 table: "CartItems",
+                column: "CartItemStatusID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartItems_UserID",
+                table: "CartItems",
+                column: "UserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ComboDrinkItems_ComboID",
+                table: "ComboDrinkItems",
                 column: "ComboID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartItems_DrinkID",
-                table: "CartItems",
-                column: "DrinkID");
+                name: "IX_ComboDrinkItems_ItemID",
+                table: "ComboDrinkItems",
+                column: "ItemID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartItems_SelectedEntreeID",
-                table: "CartItems",
-                column: "SelectedEntreeID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CartItems_SideID",
-                table: "CartItems",
-                column: "SideID");
+                name: "IX_ComboDrinkItems_TypeID",
+                table: "ComboDrinkItems",
+                column: "TypeID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Combos_DrinkID",
@@ -717,6 +1143,21 @@ namespace SmallRestaurantAPI.Migrations
                 name: "IX_Combos_SizeID",
                 table: "Combos",
                 column: "SizeID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ComboSideItems_ComboID",
+                table: "ComboSideItems",
+                column: "ComboID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ComboSideItems_ItemID",
+                table: "ComboSideItems",
+                column: "ItemID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ComboSideItems_TypeID",
+                table: "ComboSideItems",
+                column: "TypeID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Drinks_SizeID",
@@ -764,19 +1205,99 @@ namespace SmallRestaurantAPI.Migrations
                 column: "SizeID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ItemAvailableAddons_IngredientID",
+                table: "ItemAvailableAddons",
+                column: "IngredientID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemAvailableAddons_ItemID",
+                table: "ItemAvailableAddons",
+                column: "ItemID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemBaseIngredients_IngredientID",
+                table: "ItemBaseIngredients",
+                column: "IngredientID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemBaseIngredients_ItemID",
+                table: "ItemBaseIngredients",
+                column: "ItemID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemCategories_CategoryID",
+                table: "ItemCategories",
+                column: "CategoryID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemCategories_ItemID",
+                table: "ItemCategories",
+                column: "ItemID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Items_TypeID",
+                table: "Items",
+                column: "TypeID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemSizes_ItemID",
+                table: "ItemSizes",
+                column: "ItemID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemSizes_SizeID",
+                table: "ItemSizes",
+                column: "SizeID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SelectedEntreeIngredients_IngredientId",
+                table: "SelectedEntreeIngredients",
+                column: "IngredientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SelectedEntreeIngredients_SelectedEntreeID",
+                table: "SelectedEntreeIngredients",
+                column: "SelectedEntreeID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SelectedEntrees_CartItemID",
+                table: "SelectedEntrees",
+                column: "CartItemID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SelectedEntrees_EntreeID",
                 table: "SelectedEntrees",
                 column: "EntreeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SelectedIngredients_IngredientId",
-                table: "SelectedIngredients",
+                name: "IX_SelectedEntrees_SizeID",
+                table: "SelectedEntrees",
+                column: "SizeID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SelectedSideIngredients_IngredientId",
+                table: "SelectedSideIngredients",
                 column: "IngredientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SelectedIngredients_SelectedEntreeID",
-                table: "SelectedIngredients",
-                column: "SelectedEntreeID");
+                name: "IX_SelectedSideIngredients_SelectedSideID",
+                table: "SelectedSideIngredients",
+                column: "SelectedSideID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SelectedSides_CartItemID",
+                table: "SelectedSides",
+                column: "CartItemID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SelectedSides_SideID",
+                table: "SelectedSides",
+                column: "SideID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SelectedSides_SizeID",
+                table: "SelectedSides",
+                column: "SizeID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SideAddons_IngredientID",
@@ -789,8 +1310,28 @@ namespace SmallRestaurantAPI.Migrations
                 column: "SideID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_SideBaseIngredients_IngredientID",
+                table: "SideBaseIngredients",
+                column: "IngredientID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SideBaseIngredients_SideID",
+                table: "SideBaseIngredients",
+                column: "SideID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Sides_SizeID",
                 table: "Sides",
+                column: "SizeID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SideSizes_SideID",
+                table: "SideSizes",
+                column: "SideID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SideSizes_SizeID",
+                table: "SideSizes",
                 column: "SizeID");
         }
 
@@ -812,10 +1353,16 @@ namespace SmallRestaurantAPI.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "CartItems");
+                name: "ComboDrinkItems");
+
+            migrationBuilder.DropTable(
+                name: "ComboSideItems");
 
             migrationBuilder.DropTable(
                 name: "Condiments");
+
+            migrationBuilder.DropTable(
+                name: "Drinks");
 
             migrationBuilder.DropTable(
                 name: "EntreeAddons");
@@ -827,16 +1374,34 @@ namespace SmallRestaurantAPI.Migrations
                 name: "EntreeSizes");
 
             migrationBuilder.DropTable(
-                name: "SelectedIngredients");
+                name: "ItemAvailableAddons");
+
+            migrationBuilder.DropTable(
+                name: "ItemBaseIngredients");
+
+            migrationBuilder.DropTable(
+                name: "ItemCategories");
+
+            migrationBuilder.DropTable(
+                name: "ItemSizes");
+
+            migrationBuilder.DropTable(
+                name: "SelectedEntreeIngredients");
+
+            migrationBuilder.DropTable(
+                name: "SelectedSideIngredients");
 
             migrationBuilder.DropTable(
                 name: "SideAddons");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "SideBaseIngredients");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "SideSizes");
+
+            migrationBuilder.DropTable(
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "Combos");
@@ -845,19 +1410,34 @@ namespace SmallRestaurantAPI.Migrations
                 name: "SelectedEntrees");
 
             migrationBuilder.DropTable(
+                name: "SelectedSides");
+
+            migrationBuilder.DropTable(
                 name: "Ingredients");
 
             migrationBuilder.DropTable(
-                name: "Drinks");
-
-            migrationBuilder.DropTable(
-                name: "Sides");
+                name: "Items");
 
             migrationBuilder.DropTable(
                 name: "Entrees");
 
             migrationBuilder.DropTable(
+                name: "CartItems");
+
+            migrationBuilder.DropTable(
+                name: "Sides");
+
+            migrationBuilder.DropTable(
+                name: "Types");
+
+            migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "CartItemStatuses");
 
             migrationBuilder.DropTable(
                 name: "Sizes");

@@ -10,15 +10,15 @@ using SmallRestaurantAPI.Data;
 namespace SmallRestaurantAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20210624214544_addedNewItem")]
-    partial class addedNewItem
+    [Migration("20210706192458_addingDrinkItemConfigAgain")]
+    partial class addingDrinkItemConfigAgain
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.6")
+                .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -50,15 +50,15 @@ namespace SmallRestaurantAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5a5e3a3f-35ce-4624-8a5a-0454515fcb19",
-                            ConcurrencyStamp = "e6f458a6-3123-468e-922e-1b7a050d44b2",
+                            Id = "1fe466a2-b747-44e7-b0df-bd1f23dac257",
+                            ConcurrencyStamp = "c054dbaa-2e9d-45a2-aec5-2af7282fde15",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "bb2002f5-6aa8-4396-aa92-4a6e2f4a27a1",
-                            ConcurrencyStamp = "3b6c6182-d5f9-4951-9f1f-0b816c077c48",
+                            Id = "b64310f3-f60d-443e-a0d3-6616e74006bc",
+                            ConcurrencyStamp = "34990e20-e6a3-4599-88df-022bd3b474c5",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -389,13 +389,78 @@ namespace SmallRestaurantAPI.Migrations
                             ComboNumber = 1,
                             EntreeID = 1,
                             Name = "Cheese Burger Combo"
-                        },
+                        });
+                });
+
+            modelBuilder.Entity("SmallRestaurantAPI.Data.ComboDrinkItem", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ComboID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ItemID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TypeID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ComboID");
+
+                    b.HasIndex("ItemID");
+
+                    b.HasIndex("TypeID");
+
+                    b.ToTable("ComboDrinkItems");
+
+                    b.HasData(
                         new
                         {
-                            ID = 2,
-                            ComboNumber = 2,
-                            EntreeID = 2,
-                            Name = "3 Piece Chicken Finger Combo"
+                            ID = 1,
+                            ComboID = 1,
+                            ItemID = 4,
+                            TypeID = 3
+                        });
+                });
+
+            modelBuilder.Entity("SmallRestaurantAPI.Data.ComboSideItem", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ComboID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ItemID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TypeID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ComboID");
+
+                    b.HasIndex("ItemID");
+
+                    b.HasIndex("TypeID");
+
+                    b.ToTable("ComboSideItems");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            ComboID = 1,
+                            ItemID = 3,
+                            TypeID = 2
                         });
                 });
 
@@ -804,6 +869,11 @@ namespace SmallRestaurantAPI.Migrations
                         {
                             ID = 17,
                             Name = "Onion Rings"
+                        },
+                        new
+                        {
+                            ID = 18,
+                            Name = "Coke"
                         });
                 });
 
@@ -841,6 +911,18 @@ namespace SmallRestaurantAPI.Migrations
                             ID = 2,
                             Name = "Hamburger",
                             TypeID = 1
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Name = "Fries",
+                            TypeID = 2
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Name = "Coke",
+                            TypeID = 3
                         });
                 });
 
@@ -995,6 +1077,20 @@ namespace SmallRestaurantAPI.Migrations
                             IngredientID = 7,
                             ItemID = 2,
                             isRequired = false
+                        },
+                        new
+                        {
+                            ID = 14,
+                            IngredientID = 16,
+                            ItemID = 3,
+                            isRequired = true
+                        },
+                        new
+                        {
+                            ID = 15,
+                            IngredientID = 18,
+                            ItemID = 4,
+                            isRequired = true
                         });
                 });
 
@@ -1084,6 +1180,42 @@ namespace SmallRestaurantAPI.Migrations
                         {
                             ID = 4,
                             ItemID = 2,
+                            SizeID = 3
+                        },
+                        new
+                        {
+                            ID = 5,
+                            ItemID = 3,
+                            SizeID = 1
+                        },
+                        new
+                        {
+                            ID = 6,
+                            ItemID = 3,
+                            SizeID = 2
+                        },
+                        new
+                        {
+                            ID = 7,
+                            ItemID = 3,
+                            SizeID = 3
+                        },
+                        new
+                        {
+                            ID = 8,
+                            ItemID = 4,
+                            SizeID = 1
+                        },
+                        new
+                        {
+                            ID = 9,
+                            ItemID = 4,
+                            SizeID = 2
+                        },
+                        new
+                        {
+                            ID = 10,
+                            ItemID = 4,
                             SizeID = 3
                         });
                 });
@@ -1433,17 +1565,17 @@ namespace SmallRestaurantAPI.Migrations
 
             modelBuilder.Entity("SmallRestaurantAPI.Data.Combo", b =>
                 {
-                    b.HasOne("SmallRestaurantAPI.Data.Drink", "Drink")
+                    b.HasOne("SmallRestaurantAPI.Data.Item", "Drink")
                         .WithMany()
                         .HasForeignKey("DrinkID");
 
-                    b.HasOne("SmallRestaurantAPI.Data.Entree", "Entree")
+                    b.HasOne("SmallRestaurantAPI.Data.Item", "Entree")
                         .WithMany()
                         .HasForeignKey("EntreeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SmallRestaurantAPI.Data.Side", "Side")
+                    b.HasOne("SmallRestaurantAPI.Data.Item", "Side")
                         .WithMany()
                         .HasForeignKey("SideID");
 
@@ -1458,6 +1590,60 @@ namespace SmallRestaurantAPI.Migrations
                     b.Navigation("Side");
 
                     b.Navigation("Size");
+                });
+
+            modelBuilder.Entity("SmallRestaurantAPI.Data.ComboDrinkItem", b =>
+                {
+                    b.HasOne("SmallRestaurantAPI.Data.Combo", "Combo")
+                        .WithMany()
+                        .HasForeignKey("ComboID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SmallRestaurantAPI.Data.Item", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SmallRestaurantAPI.Data.Type", "Type")
+                        .WithMany()
+                        .HasForeignKey("TypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Combo");
+
+                    b.Navigation("Item");
+
+                    b.Navigation("Type");
+                });
+
+            modelBuilder.Entity("SmallRestaurantAPI.Data.ComboSideItem", b =>
+                {
+                    b.HasOne("SmallRestaurantAPI.Data.Combo", "Combo")
+                        .WithMany()
+                        .HasForeignKey("ComboID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SmallRestaurantAPI.Data.Item", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SmallRestaurantAPI.Data.Type", "Type")
+                        .WithMany()
+                        .HasForeignKey("TypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Combo");
+
+                    b.Navigation("Item");
+
+                    b.Navigation("Type");
                 });
 
             modelBuilder.Entity("SmallRestaurantAPI.Data.Drink", b =>

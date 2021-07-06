@@ -16,6 +16,7 @@ namespace SmallRestaurantAPI.Configurations.Entities
                 new ComboDrinkItem
                 {
                     ID = 1,
+                    TypeID = 3,
                     ComboID = 1,
                     ItemID = 4
                 }
