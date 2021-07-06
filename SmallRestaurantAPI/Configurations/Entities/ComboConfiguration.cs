@@ -19,13 +19,6 @@ namespace SmallRestaurantAPI.Configurations.Entities
                     ComboNumber = 1,
                     Name = "Cheese Burger Combo",
                     EntreeID = 1
-                },
-                new Combo
-                {
-                    ID = 2,
-                    ComboNumber = 2,
-                    Name = "3 Piece Chicken Finger Combo",
-                    EntreeID = 2
                 }
                 );
         }
