@@ -58,8 +58,42 @@ namespace SmallRestaurantAPI.Controllers
             );
             
             var results = _mapper.Map<IList<InitialComboDTO>>(combos);
+            if(results == null)
+            {
+                return BadRequest();
+            }
             return Ok(results);
         }
+
+
+        [HttpGet("id:int")]
+        [ActionName("ViewMenuCombo")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ViewMenuCombo(int id)
+        {
+            var combo = await _unitOfWork.Combos.Get(q => q.ID == id, include: q => q
+            .Include(x => x.ComboDrinkItems).ThenInclude(x => x.Item).ThenInclude(x => x.ItemCategories)
+            .Include(x => x.ComboDrinkItems).ThenInclude(x => x.Item).ThenInclude(x => x.ItemBaseIngredients).ThenInclude(x => x.Ingredient)
+            .Include(x => x.ComboDrinkItems).ThenInclude(x => x.Item).ThenInclude(x => x.ItemAvailableAddons).ThenInclude(x => x.Ingredient)
+            .Include(x => x.ComboDrinkItems).ThenInclude(x => x.Item).ThenInclude(x => x.ItemSizes)
+
+            .Include(x => x.ComboSideItems).ThenInclude(x => x.Item).ThenInclude(x => x.ItemCategories)
+            .Include(x => x.ComboSideItems).ThenInclude(x => x.Item).ThenInclude(x => x.ItemBaseIngredients).ThenInclude(x => x.Ingredient)
+            .Include(x => x.ComboSideItems).ThenInclude(x => x.Item).ThenInclude(x => x.ItemAvailableAddons).ThenInclude(x => x.Ingredient)
+            .Include(x => x.ComboSideItems).ThenInclude(x => x.Item).ThenInclude(x => x.ItemSizes)
+            );
+
+            var result = _mapper.Map<InitialComboDTO>(combo);
+            if(result == null)
+            {
+                return BadRequest();
+            }
+
+
+            return Ok(result);
+        }
+
 
 
         [HttpGet("id:int")]
