@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmallRestaurantAPI.Data;
 
 namespace SmallRestaurantAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20211107204219_seedingNewDb")]
+    partial class seedingNewDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace SmallRestaurantAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "684f84c8-a448-4f46-95dd-a76218913705",
-                            ConcurrencyStamp = "81af6149-5cd8-447f-b817-71973fd6b92a",
+                            Id = "0fea52c5-50cf-4813-bfab-9414b9ca75f3",
+                            ConcurrencyStamp = "cf99ac69-9059-4efc-bcb0-21b996e85fa0",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "a83bf280-c5df-4d19-bbfc-1f92b56c8eea",
-                            ConcurrencyStamp = "e52bfb0a-64e5-4b76-b925-fd7e1ec1362d",
+                            Id = "d7f8bc03-8b28-40b7-83d8-e4026b5ffb61",
+                            ConcurrencyStamp = "3afd12ad-835e-4701-9818-f014c242f119",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -174,9 +176,6 @@ namespace SmallRestaurantAPI.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("Birthday")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -216,15 +215,6 @@ namespace SmallRestaurantAPI.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<int?>("Question1")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Question2")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Question3")
-                        .HasColumnType("int");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
