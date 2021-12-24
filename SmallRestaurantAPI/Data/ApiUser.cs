@@ -14,5 +14,6 @@ namespace SmallRestaurantAPI.Data
         public int? Question1 { get; set; }
         public int? Question2 { get; set; }
         public int? Question3 { get; set; }
+        public DateTime? CompletionDate { get; set; }
     }
 }

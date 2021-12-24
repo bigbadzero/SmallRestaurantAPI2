@@ -38,7 +38,7 @@ namespace SmallRestaurantAPI.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
+        public async Task<IActionResult> Register([FromBody] RegistrationDTO userDTO)
         {
             _logger.LogInformation($"Registration Attempt for {userDTO.Email}");
             if (!ModelState.IsValid)
@@ -68,7 +68,7 @@ namespace SmallRestaurantAPI.Controllers
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginUserDTO userDTO)
         {
-            var timeout = 15;
+            
             _logger.LogInformation($"Login Attempt for {userDTO.Email}");
             if (!ModelState.IsValid)
             {
@@ -79,8 +79,14 @@ namespace SmallRestaurantAPI.Controllers
             {
                 return Unauthorized();
             }
+            var timeout = 15;
+            var token = await _authManager.CreateToken();
+            var user = await _unitOfWork.SelectedApiUsers.Get(q => q.Email == userDTO.Email);
+            var results = _mapper.Map<UserDataDTO>(user);
+            results.Token = token;
+            results.Timeout = timeout;
 
-            return Accepted(new { Token = await _authManager.CreateToken(), timeout });
+            return Accepted(new {results});
         }
 
         [HttpPost]
@@ -92,12 +98,13 @@ namespace SmallRestaurantAPI.Controllers
             return Ok(results);
         }
 
-
+        
         [HttpPut]
         [Route("answers")]
-        public async Task<IActionResult> SubmitAnswers([FromBody] UserDTO userDTO)
+        public async Task<IActionResult> SubmitAnswers([FromBody] UserDataDTO userDTO)
         {
             var user = await _unitOfWork.SelectedApiUsers.Get(q => q.Email == userDTO.Email);
+            
             if (userDTO.Birthday != null)
             {
                 user.Birthday = userDTO.Birthday;
@@ -114,10 +121,35 @@ namespace SmallRestaurantAPI.Controllers
             {
                 user.Question3 = userDTO.Question3;
             }
+            if (userDTO.Question1 != null && userDTO.Question2 != null && userDTO.Question3 != null)
+            {
+                user.CompletionDate = DateTime.Now;
+            }
 
-             _unitOfWork.SelectedApiUsers.Update(user);
+
+            _unitOfWork.SelectedApiUsers.Update(user);
             await _unitOfWork.Save();
-            var results = _mapper.Map<UserDTO>(user);
+            var results = _mapper.Map<UserDataDTO>(user);
+            results.Token = userDTO.Token;
+            
+            return Ok(results);
+        }
+
+        [HttpPut]
+        [Route("resetanswers")]
+        public async Task<IActionResult> ResetAnswers([FromBody] UserDataDTO userDTO)
+        {
+            var user = await _unitOfWork.SelectedApiUsers.Get(q => q.Email == userDTO.Email);
+
+            user.Question1 = null;
+            user.Question2 = null;
+            user.Question3 = null;
+            user.CompletionDate = null;
+
+            _unitOfWork.SelectedApiUsers.Update(user);
+            await _unitOfWork.Save();
+            var results = _mapper.Map<UserDataDTO>(user);
+            results.Token = userDTO.Token;
             return Ok(results);
         }
     }

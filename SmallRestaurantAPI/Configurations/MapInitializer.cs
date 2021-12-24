@@ -24,6 +24,10 @@ namespace SmallRestaurantAPI.Configurations
             CreateMap<EntreeSize, EntreeSizesDTO>().ReverseMap();
             CreateMap<Ingredient, IngredientDTO>().ReverseMap();
             CreateMap<ApiUser, UserDTO>().ReverseMap();
+            CreateMap<ApiUser, RegistrationDTO>().ReverseMap();
+            CreateMap<ApiUser, UserDataDTO>().ReverseMap();
+
+
             CreateMap<CartItem, CartItemDTO>().ReverseMap();
             CreateMap<SelectedEntree, SelectedEntreeDTO>().ReverseMap();
             CreateMap<SelectedEntreeIngredient, SelectedEntreeDTO>();
