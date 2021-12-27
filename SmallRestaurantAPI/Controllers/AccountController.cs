@@ -41,6 +41,9 @@ namespace SmallRestaurantAPI.Controllers
         public async Task<IActionResult> Register([FromBody] RegistrationDTO userDTO)
         {
             _logger.LogInformation($"Registration Attempt for {userDTO.Email}");
+            var basicRole = new List<string>();
+            basicRole.Add("user");
+            userDTO.Roles = basicRole;
             if (!ModelState.IsValid)
             {
                 //inform sender what went wrong
